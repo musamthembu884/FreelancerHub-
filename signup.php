@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Materil | Angular Material Design Admin Template</title>
+  <title>Freelancer Hub</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
  <link rel="stylesheet" href="css/animate.css" type="text/css" />
@@ -27,13 +27,13 @@
           <path d="M 8 80 L 50 0 L 50 100 Z" fill="#fff"></path>
           <path d="M 50 0 L 8 80 L 0 14 Z" fill="rgba(255, 255, 255, 0.6)"></path>
         </svg>
-        <span class="m-l inline">Materil</span>
+        <span class="m-l inline">Freelancer Hub</span>
       </div>
     </div>
 
     <div class="p-lg panel md-whiteframe-z1 text-color m">
       <div class="m-b text-sm">
-        Sign up to your Materil Account
+        Sign up to your Freelancer Hub Account
       </div>
       <form name="form">
         <div class="md-form-group">
