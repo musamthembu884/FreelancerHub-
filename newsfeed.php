@@ -464,13 +464,16 @@
 										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md" >
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
+										<h5 class="media-heading">Marry Jones</h5>
+										1 day ago
 									</div>
 									
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										We customise weddings by combining everything from the widest range of wedding décor ideas right down to the flowers and stationery – every little detail counts and turns a standard affair into a wedding with flair.
 									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<img class="img-responsive" src="assets/demo/images/post-image-1.png" alt="" />
 								</div>
 								<div class="like-info">
 									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
