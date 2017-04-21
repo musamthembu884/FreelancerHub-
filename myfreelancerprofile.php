@@ -16,7 +16,9 @@
     <link type='text/css'  href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet"> 
 
     <link href="assets/fonts/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">        <!-- Font Awesome -->
-    <link href="assets/css/styles.css" type="text/css" rel="stylesheet">                                     <!-- Core CSS with all styles -->
+    <link href="assets/css/styles.css" type="text/css" rel="stylesheet">
+
+ 	<!-- Core CSS with all styles -->
 
     <link href="assets/plugins/codeprettifier/prettify.css" type="text/css" rel="stylesheet">                <!-- Code Prettifier -->
 
@@ -268,12 +270,12 @@
         <div class="widget-body">
             <div class="userinfo ">
                 <div class="avatar pull-left">
-                    <img src="assets/demo/avatar/avatar_15.png" class="img-responsive img-circle"> 
+                    <img src="assets/img/propic/t5.jpg" class="img-responsive img-circle"> 
                 </div>
                 <div class="info">
-                    <span class="username">Jonathan Smith</span>
+                    <span class="username">Sankofa Future</span>
 					
-                    <span class="useremail">jon@paperadmin.com</span>
+                    <span class="useremail">kofa@gmail.com</span>
                 </div>
 
                 <div class="acct-dropdown clearfix dropdown">
@@ -296,8 +298,25 @@
 		<li><a  class="withripple" href="#"><span class="icon">
 		<i class="material-icons">home</i></span><span>My Profile</span></a></li>
 		
-		<li><a  class="withripple" href="#"><span class="icon">
-		<i class="material-icons">home</i></span><span>Dashboard</span><span class="badge badge-teal">2</span></a></li>
+		<li><a  class="withripple" href="statistics.php"><span class="icon">
+		<i class="material-icons">show_chart</i></span><span>Statistics</span></a></li>
+		
+		<li><a  class="withripple" href="billing.php"><span class="icon">
+		<i class="material-icons">attach_money</i></span><span>Billing</span></a></li>
+		
+		<li class="hasChild"><a class="withripple" href="javascript:;"><span class="icon"><i class="material-icons">style</i></span><span>My Apps</span><div class="ripple-container"></div></a>
+			<ul class="acc-menu" style="display: block;">
+				<li><a class="withripple" href="notes.php">Note Keeper</a></li>
+				
+				<li><a class="withripple" href="form-pickers.html">Calendar</a></li>
+				<li><a class="withripple" href="form-wizard.html">To-do List</a></li>
+				<li><a class="withripple" href="form-validation.html">Weather</a></li>
+				
+			</ul>
+		</li>
+		
+		<li><a  class="withripple" href="login.php"><span class="icon">
+		<i class="material-icons">settings</i></span><span>Settings</span></a></li>
 		
 		<li><a  class="withripple" href="login.php"><span class="icon">
 		<i class="material-icons">subdirectory_arrow_left</i></span><span>Log Out</span></a></li>
@@ -330,12 +349,12 @@
 		<div class="col-md-12 profile-area">
 			<div class="media col-md-6 col-sm-6 col-xs-6">
 				<a class="media-left pr-n" href="#">
-					<img class="media-object img-resposnive" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image" width='88' height='88'>
+					<img class="media-object img-resposnive" src="assets/img/propic/t5.jpg" alt="Generic placeholder image" width='88' height='88'>
 				</a>
 				<div class="media-body pl-xl">
-				<button class="btn btn-primary btn-raised ">Jonathan Smith</button>
+				<button class="btn btn-primary btn-raised ">Sankofa Future</button>
 					<br>
-					<a href="http://google.com"><button class="btn btn-info btn-raised btn-xs">Java Developer</button></a>
+					<a href="#"><button class="btn btn-info btn-raised btn-xs">Music Producer</button></a>
 					
 					
 						
@@ -351,7 +370,7 @@
 				</ul>
 				<div>
 					<ul class="demo-btns text-right">
-                       <button class="btn btn-primary btn-raised"><i class="fa fa-thumbs-up"></i>1205 Followers</button>
+                       <button class="btn btn-primary btn-raised"><i class="fa fa-thumbs-up"></i>554 Followers</button>
                        
                     </ul>
 				</div>
@@ -376,7 +395,7 @@
 						<div class="personel-info pt-n">
 							
 							<button class="btn btn-info btn-raised btn-xs"><i class="fa fa-envelope"></i></button>
-							<span><strong>jonathan@gmail.com</strong></span>
+							<span><strong>Sankofa@gmail.com</strong></span>
 							
 						</div>
 
@@ -387,12 +406,12 @@
 
 						<div class="personel-info">
 							<button class="btn btn-info btn-raised btn-xs"><i class="fa fa-map-marker"></i></button>
-							<span><strong>Auckland Park</strong></span>
+							<span><strong>Cape Town</strong></span>
 						</div>
 
 						<div class="personel-info pb-n">
 							<button class="btn btn-info btn-raised btn-xs"><i class="fa fa-globe"></i></button>
-							<span><strong>www.github.com/jon</strong></span>
+							<span><strong>www.soundcloud.com/kofa</strong></span>
 						</div>
 					</div>
 
@@ -406,34 +425,7 @@
 			  	</div>
 			</div><!-- panel -->
 
-			<div class="panel panel-profile">
-				<div style="background-color:#00bcd4" class="panel-heading">
-					<h2 style="color:white">Gallery</h2>
-				</div>
-			  	<div class="panel-body">
-					<div class="row">
-						<div class="gallery-image col-md-4 col-sm-4 col-xs-4">
-							<img class="img-responsive" src="assets/demo/images/1.jpg" alt="">
-						</div>
-						<div class="gallery-image col-md-4 col-sm-4 col-xs-4">
-							<img class="img-responsive" src="assets/demo/images/2.jpg" alt="">
-						</div>
-						<div class="gallery-image col-md-4 col-sm-4 col-xs-4">
-							<img class="img-responsive" src="assets/demo/images/3.jpg" alt="">
-						</div>
-						<div class="gallery-image col-md-4 col-sm-4 col-xs-4">
-							<img class="img-responsive" src="assets/demo/images/4.jpg" alt="">
-						</div>
-						<div class="gallery-image col-md-4 col-sm-4 col-xs-4">
-							<img class="img-responsive" src="assets/demo/images/5.jpg" alt="">
-						</div>
-						<div class="gallery-image col-md-4 col-sm-4 col-xs-4">
-							<img class="img-responsive" src="assets/demo/images/6.jpg" alt="">
-						</div>
-					</div>
-					<a href="" class="pull-left">View all <i class="material-icons">arrow_forward</i></a>
-			  	</div>
-			</div>
+			
 		</div><!-- col-sm-3 -->
 
 		<div class="col-md-9">
@@ -447,10 +439,7 @@
 									</blockquote>
 				
 					
-									<p>Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.</p>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.</p> 
-									<p>Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.</p>
-									<p>Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.</p>
+									<p>Sankofa Future, better known by my stage name Kofa, I'm a South African rapper, music producer, and performer. I'm is the founder and current director of CapeView Music and Beats Cape.</p>
 							</div>
 							<div class="about-area">
 								<blockquote>
@@ -460,25 +449,18 @@
 								  <table class="table">
 									<tbody>
 									  <tr>
-										<th>C#</th>
+										<th>Beat Marking</th>
 										<td><a href="#">4-6 Years</a></td>
 									  </tr>
 									  <tr>
-										<th>Php</th>
+										<th>Music Producer</th>
 										<td><a href="#">2-3 Years</a></td>
 									  </tr>
 									  <tr>
-										<th>Delphi</th>
+										<th>Rapper</th>
 										<td><a href="#">1-2 Years</a></td>
 									  </tr>
-									  <tr>
-										<th>C++</th>
-										<td><a href="#">0-1 Years</a></td>
-									  </tr>
-									  <tr>
-										<th>Cobal</th>
-										<td><a href="#">10-12 Years</a></td>
-									  </tr>
+									 
 									 
 									
 									 
@@ -492,22 +474,16 @@
 										<p><strong>Skills</strong></p>
 									</blockquote>
 								
-								<button class="btn btn-info btn-raised btn-sm">Software Design</button>
-								<button class="btn btn-info btn-raised btn-sm">Object Oriented Design</button>
-								<button class="btn btn-info btn-raised btn-sm">System Design</button>
-								<button class="btn btn-info btn-raised btn-sm">JEE2</button>
-								<button class="btn btn-info btn-raised btn-sm">GIT</button>
-								<button class="btn btn-info btn-raised btn-sm">Software Engineering</button>
-								<button class="btn btn-info btn-raised btn-sm">Legacy Systems</button>
-								<button class="btn btn-info btn-raised btn-sm">Transaction Sytems Architect</button>
-								<button class="btn btn-info btn-raised btn-sm">Bank Systems</button>
-								<button class="btn btn-info btn-raised btn-sm">Data Strusctures</button>
-								<button class="btn btn-info btn-raised btn-sm">Trees</button>
-								<button class="btn btn-info btn-raised btn-sm">Design Patterns</button>
-								<button class="btn btn-info btn-raised btn-sm">Game Development</button>
-								<button class="btn btn-info btn-raised btn-sm">Agile Design</button>
-								<button class="btn btn-info btn-raised btn-sm">Java Network Development</button>
-								<button class="btn btn-info btn-raised btn-sm">Delphi 7</button>
+								<button class="btn btn-info btn-raised btn-sm">Sound Design</button>
+								<button class="btn btn-info btn-raised btn-sm">Rapper</button>
+								<button class="btn btn-info btn-raised btn-sm">Mixer</button>
+								<button class="btn btn-info btn-raised btn-sm">FL Studio</button>
+								<button class="btn btn-info btn-raised btn-sm">Beat Marker</button>
+								<button class="btn btn-info btn-raised btn-sm">Hip Hop Artist</button>
+								<button class="btn btn-info btn-raised btn-sm">Garage Band</button>
+								<button class="btn btn-info btn-raised btn-sm">Sound Systems</button>
+								<button class="btn btn-info btn-raised btn-sm">Music Producer</button>
+								
 							</div>
 						</div>
 						<div class="tab-pane active" id="tab-8-2">								
@@ -522,198 +498,312 @@
 									<div class="pull-right"><a class="btn btn-raised btn-primary m-n" href="#">POST</a></div>
 								</div>
 							</div>
-							<div class="profile-tab">
+							
+								<div class="panel profile-tab like-comment">
 								<div class="media">
+								<div class="panel-controls dropdown">
+                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="">Edit</a></li>
+					<li class="divider"></li>
+                    <li><a href="">Bookmark</a></li>
+					 <li class="divider"></li>
+                    <li><a href="">Delete</a></li>
+                   
+                </ul>
+            </div>
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
+										<h5 class="media-heading">Sankofa Future</h5>
+										1 Hour ago
 									</div>
+									
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-									</div>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
-								</div>
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="profile-tab">
-								<div class="media">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
-									</div>
-									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-									</div>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
-								</div>
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="profile-tab">
-								<div class="media">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
-									</div>
-									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-									</div>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
-								</div>
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="profile-tab">
-								<div class="media">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
-									</div>
-									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-									</div>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
-								</div>
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="profile-tab like-comment">
-								<div class="media">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
-									</div>
-									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-									</div>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
-								</div>
-								<div class="media m-n pl-xl comment-profile">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_02.png" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Martha Riss</h5>
-										18 min ago
-									</div>
-									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-									</div>
-								</div>
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="profile-tab">
-								<div class="media">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
-									</div>
-									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Yo Yo guys!!! Listen to my music!!! #STAYFRESH
 									</div>
 								</div>
 								<div class="col-md-12 pt-sm pb-md">
-									<img class="img-responsive" src="assets/demo/images/post-image-1.png" alt="" />
+									<iframe width="100%" height="450" scrolling="no" frameborder="yes" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/248956309&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 								</div>
 								<div class="like-info">
 									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
 										<i class="material-icons">favorite</i>
 										Like
 									</a>
-									<p class="m-n like-amount"><a href="">Juan Flower</a><a href="">,Negab Rose </a> and <a href="">11 others</a> like this</p>
+									<p class="m-n like-amount"><a href="">455 others</a> like this</p>
 								</div>
-								<input class="form-control" type="text" placeholder="What's on your mind..."/>
-							</div>	
-							<div class="profile-tab like-comment">
-								<div class="media">
+								<div class="media m-n pl-xl comment-profile">
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/c5.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
+										<h5 class="media-heading">Gee Ross</h5>
+										30 min ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Good music my man...keep it up!!! 
 									</div>
+								</div>
+								<input class="form-control" type="text" placeholder="What's on your mind...">
+							</div>
+							<div class="panel profile-tab like-comment">
+								<div class="media">
+								<div class="panel-controls dropdown">
+                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
+                <ul class="dropdown-menu" role="menu">
+                   <li><a href="">Edit</a></li>
+					<li class="divider"></li>
+                    <li><a href="">Bookmark</a></li>
+					 <li class="divider"></li>
+                    <li><a href="">Delete</a></li>
+                </ul>
+            </div>
+									<a class="media-left" href="#">
+										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
+									</a>
+									<div class="media-body pb-md">
+										<h5 class="media-heading">Sankofa Future</h5>
+										2 Hour ago
+									</div>
+									
+									<div class="pb-md pt-md media-desc">
+										I produce fresh stuff y'all...#STAYFRESH
+									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/301822104&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 								</div>
 								<div class="like-info">
 									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">done</i>
-										Liked
+										<i class="material-icons">favorite</i>
+										Like
 									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
+									<p class="m-n like-amount"><a href="">321 others</a> like this</p>
+								</div>
+								<
+								<input class="form-control" type="text" placeholder="What's on your mind...">
+							</div>
+							<div class="panel profile-tab like-comment">
+								<div class="media">
+								<div class="panel-controls dropdown">
+                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
+                <ul class="dropdown-menu" role="menu">
+                   <li><a href="">Edit</a></li>
+					<li class="divider"></li>
+                    <li><a href="">Bookmark</a></li>
+					 <li class="divider"></li>
+                    <li><a href="">Delete</a></li>
+                </ul>
+            </div>
+									<a class="media-left" href="#">
+										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
+									</a>
+									<div class="media-body pb-md">
+										<h5 class="media-heading">Sankofa Future</h5>
+										4 Hour ago
+									</div>
+									
+									<div class="pb-md pt-md media-desc">
+										I never disapoint...another one guys #STAYFRESH
+									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/304539742&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+								</div>
+								<div class="like-info">
+									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
+										<i class="material-icons">favorite</i>
+										Like
+									</a>
+									<p class="m-n like-amount"><a href="">222 others</a> like this</p>
 								</div>
 								<div class="media m-n pl-xl comment-profile">
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_02.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/user.png" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Martha Riss</h5>
-										18 min ago
+										<h5 class="media-heading">Lil' Jim</h5>
+										2 Hours ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										You killing it my man!!!!  
 									</div>
 								</div>
 								<div class="media m-n pl-xl comment-profile">
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_02.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/c5.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Martha Riss</h5>
-										18 min ago
+										<h5 class="media-heading">Gee Ross</h5>
+										2 Hours ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										This is what I call real music...you the best! 
 									</div>
 								</div>
-								<input class="form-control" type="text" placeholder="What's on your mind..."/>
+								<div class="media m-n pl-xl comment-profile">
+									<a class="media-left" href="#">
+										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
+									</a>
+									<div class="media-body pb-md">
+										<h5 class="media-heading">Sankofa Future</h5>
+										1 Hour ago
+									</div>
+									<div class="pb-md pt-md media-desc">
+										Thanks hommies!!! 
+									</div>
+								</div>
+								<input class="form-control" type="text" placeholder="What's on your mind...">
+							</div>
+							<div class="panel profile-tab like-comment">
+								<div class="media">
+								<div class="panel-controls dropdown">
+                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
+                <ul class="dropdown-menu" role="menu">
+                   <li><a href="">Edit</a></li>
+					<li class="divider"></li>
+                    <li><a href="">Bookmark</a></li>
+					 <li class="divider"></li>
+                    <li><a href="">Delete</a></li>
+                </ul>
+            </div>
+									<a class="media-left" href="#">
+										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
+									</a>
+									<div class="media-body pb-md">
+										<h5 class="media-heading">Sankofa Future</h5>
+										1 Day ago
+									</div>
+									
+									<div class="pb-md pt-md media-desc">
+										Another one...be fresh hommies #STAYFRESH
+									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/300967569&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+								</div>
+								<div class="like-info">
+									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
+										<i class="material-icons">favorite</i>
+										Like
+									</a>
+									<p class="m-n like-amount"><a href="">1277 others</a> like this</p>
+								</div>
+								
+								<input class="form-control" type="text" placeholder="What's on your mind...">
+							</div>
+							<div class="panel profile-tab like-comment">
+								<div class="media">
+								<div class="panel-controls dropdown">
+                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
+                <ul class="dropdown-menu" role="menu">
+                   <li><a href="">Edit</a></li>
+					<li class="divider"></li>
+                    <li><a href="">Bookmark</a></li>
+					 <li class="divider"></li>
+                    <li><a href="">Delete</a></li>
+                </ul>
+            </div>
+									<a class="media-left" href="#">
+										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
+									</a>
+									<div class="media-body pb-md">
+										<h5 class="media-heading">Sankofa Future</h5>
+										2 Days ago
+									</div>
+									
+									<div class="pb-md pt-md media-desc">
+										I always deliver good music to my fans #STAYFRESH
+									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/313439624&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+								</div>
+								<div class="like-info">
+									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
+										<i class="material-icons">favorite</i>
+										Like
+									</a>
+									<p class="m-n like-amount"><a href="">1332 others</a> like this</p>
+								</div>
+								
+								<input class="form-control" type="text" placeholder="What's on your mind...">
+							</div>
+							<div class="panel profile-tab like-comment">
+								<div class="media">
+								<div class="panel-controls dropdown">
+                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
+                <ul class="dropdown-menu" role="menu">
+                   <li><a href="">Edit</a></li>
+					<li class="divider"></li>
+                    <li><a href="">Bookmark</a></li>
+					 <li class="divider"></li>
+                    <li><a href="">Delete</a></li>
+                </ul>
+            </div>
+									<a class="media-left" href="#">
+										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
+									</a>
+									<div class="media-body pb-md">
+										<h5 class="media-heading">Sankofa Future</h5>
+										4 Days ago
+									</div>
+									
+									<div class="pb-md pt-md media-desc">
+										 Produced this killa song by Trey Songz  #STAYFRESH
+									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/235065191&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+								</div>
+								<div class="like-info">
+									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
+										<i class="material-icons">favorite</i>
+										Like
+									</a>
+									<p class="m-n like-amount"><a href="">1500 others</a> like this</p>
+								</div>
+								
+								<input class="form-control" type="text" placeholder="What's on your mind...">
+							</div>
+							<div class="panel profile-tab like-comment">
+								<div class="media">
+								<div class="panel-controls dropdown">
+                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
+                <ul class="dropdown-menu" role="menu">
+                   <li><a href="">Edit</a></li>
+					<li class="divider"></li>
+                    <li><a href="">Bookmark</a></li>
+					 <li class="divider"></li>
+                    <li><a href="">Delete</a></li>
+                </ul>
+            </div>
+									<a class="media-left" href="#">
+										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
+									</a>
+									<div class="media-body pb-md">
+										<h5 class="media-heading">Sankofa Future</h5>
+										7 Days ago
+									</div>
+									
+									<div class="pb-md pt-md media-desc">
+										Produced This!!! #STAYFRESH  #STAYFRESH  #STAYFRESH  #STAYFRESH
+									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/275611424&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+								</div>
+								<div class="like-info">
+									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
+										<i class="material-icons">favorite</i>
+										Like
+									</a>
+									<p class="m-n like-amount"><a href="">155 others</a> like this</p>
+								</div>
+								
+								<input class="form-control" type="text" placeholder="What's on your mind...">
 							</div>	
 								
 						</div>
@@ -1208,111 +1298,95 @@
         </div>
         <div class="tab-pane active" id="tab-7-2">
 
-            <div class="widget">
-                <div class="widget-heading">Recent Activities</div>
-                <div class="widget-body">
-                    <ul class="timeline">
-                        <li class="timeline-purple">
-                            <div class="timeline-icon"><i class="material-icons">add</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Jana Pena is now Follwing you</span>
-                                    <span class="date">2 min ago</span>
+            <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="accordion">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <div class="btn-group pull-left">
+                        <a type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                    </div>
+                </div>
+            <div class="panel-collapse collapse" id="collapseOne">
+                <div class="panel-body">
+                    <ul class="chat">
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
                                 </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
                             </div>
                         </li>
-                        <li class="timeline-primary">
-                            <div class="timeline-icon"><i class="material-icons">textsms</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Percy liaye Like your picture</span>
-                                    <span class="date">6 min ago</span>
+                        <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
                                 </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
                             </div>
                         </li>
-                        <li class="timeline-green">
-                            <div class="timeline-icon"><i class="material-icons">done</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Leon miles make your presentation for new project</span>
-                                    <span class="date">2 hours ago</span>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
                                 </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
                             </div>
                         </li>
-                        <li class="timeline-danger">
-                            <div class="timeline-icon"><i class="material-icons">favorite</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Lake wile like your comment</span>
-                                    <span class="date">5 hours ago</span>
+                        <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="timeline-sky">
-                            <div class="timeline-icon"><i class="material-icons">attach_money</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">The Mountain Ambience paid your payment</span>
-                                    <span class="date">9 hours ago</span>
-                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
                             </div>
                         </li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="widget">
-                <div class="widget-heading">Contacts</div>
-                <div class="widget-body">
-                    <ul class="media-list contacts">
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Jon Owens</span>
-                                <span class="contact-status text-success">Online</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Nina Huges</span>
-                                <span class="contact-status text-muted">Offline</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_03.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Austin Lee</span>
-                                <span class="contact-status text-danger">Busy</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Grady Hines</span>
-                                <span class="contact-status text-warning">Away</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_06.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Adrian Barton</span>
-                                <span class="contact-status text-success">Online</span>
-                            </div>
-                        </li>
-                    </ul>                                
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                                Send</button>
+                        </span>
+                    </div>
                 </div>
             </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
 
 
             </div>
@@ -1445,7 +1519,8 @@
 <script src="assets/js/jquery-1.10.2.min.js"></script> 							<!-- Load jQuery -->
 <script src="assets/js/jqueryui-1.10.3.min.js"></script> 							<!-- Load jQueryUI -->
 <script src="assets/js/bootstrap.min.js"></script> 								<!-- Load Bootstrap -->
-<script src="assets/js/enquire.min.js"></script> 									<!-- Load Enquire -->
+<script src="assets/js/enquire.min.js"></script> 
+<script src="assets/js/chat.js"></script> 									<!-- Load Enquire -->
 
 <script src="assets/plugins/velocityjs/velocity.min.js"></script>					<!-- Load Velocity for Animated Content -->
 <script src="assets/plugins/velocityjs/velocity.ui.min.js"></script>

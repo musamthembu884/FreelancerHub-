@@ -25290,8 +25290,8 @@ span[data-style="panel-brown"] {
 }
 .card-moviecard img {
   border-radius: 50%;
-  height: 32px;
-  width: 32px;
+  height: 50px;
+  width: 50px;
 }
 .card-moviecard .movie-img {
   min-width: 200px;
@@ -25308,7 +25308,7 @@ span[data-style="panel-brown"] {
   display: block;
 }
 .card-moviecard .movie-info {
-  background: #ffffff;
+  background: #00bcd4;
   padding: 16px;
 }
 .card-moviecard .movie-info .time {
@@ -25319,7 +25319,7 @@ span[data-style="panel-brown"] {
   font-size: inherit;
 }
 .card-moviecard .movie-info .row-friends {
-  padding-bottom: 56px!important;
+  padding-bottom: 20px!important;
 }
 .card-moviecard .movie-info .action-buttons {
   position: absolute;

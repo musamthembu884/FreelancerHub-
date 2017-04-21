@@ -268,12 +268,12 @@
         <div class="widget-body">
             <div class="userinfo ">
                 <div class="avatar pull-left">
-                    <img src="assets/demo/avatar/avatar_15.png" class="img-responsive img-circle"> 
+                    <img src="assets/img/propic/p1.jpg" class="img-responsive img-circle"> 
                 </div>
                 <div class="info">
-                    <span class="username">Jonathan Smith</span>
+                    <span class="username">Lefa Mashele</span>
 					
-                    <span class="useremail">jon@paperadmin.com</span>
+                    <span class="useremail">lefakie@gmail.com</span>
                 </div>
 
                 <div class="acct-dropdown clearfix dropdown">
@@ -439,7 +439,7 @@
 						</div>
 						<div class="tab-pane active" id="tab-8-2">								
 							
-							<div class="panel profile-tab">
+							<div class="panel profile-tab like-comment">
 							
 							
        
@@ -460,32 +460,32 @@
             </div>
            
            
-									<a class="media-left" href="freelancerprofile.php">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
+									<a class="media-left" href="#">
+										<img class="media-object" src="assets/img/propic/t2.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md" >
 										<h5 class="media-heading">Marry Jones</h5>
-										1 day ago
+										5 min ago
 									</div>
 									
 									<div class="pb-md pt-md media-desc">
-										We customise weddings by combining everything from the widest range of wedding décor ideas right down to the flowers and stationery – every little detail counts and turns a standard affair into a wedding with flair.
+										Want to learn how to play a Piano? I create taylor made music lessons. Each lesson is customized to the students desire! Whether you want to be a classical maestro or want to jam some chords for fun it’s all here! From musical toddlers to fulfilling a life long dream when you’ve retired! I cater for all!
 									</div>
 								</div>
 								<div class="col-md-12 pt-sm pb-md">
-									<img class="img-responsive" src="assets/demo/images/post-image-1.png" alt="" />
+									<img class="img-responsive" src="assets/img/timeline/t2.jpg" alt="" />
 								</div>
 								<div class="like-info">
 									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
 										<i class="material-icons">favorite</i>
 										Like
 									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
+									<p class="m-n like-amount"><a href="">92 others</a> like this</p>
 								</div>
 								<input class="form-control" type="text" placeholder="What's on your mind...">
 							</div>
 							
-							<div class="panel profile-tab">
+							<div class="panel profile-tab like-comment">
 								<div class="media">
 								 <div class="panel-controls dropdown">
                 <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
@@ -500,26 +500,29 @@
                 </ul>
             </div>
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
+										<h5 class="media-heading">Sibusiso Khoza</h5>
 										18 min ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Too busy to mow the lawn? I provide a professional horticultural service for residential, schools, business and commercial properties. Whether it be lawn mowing,irrigation,tree felling, garden makeovers, compost and lawn dressing, pruning or straight forward garden care,we will formulate a service to meet your needs. Our staff are screened,operators are certified and the company is registered with all required authorities.
 									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<img class="img-responsive" src="assets/img/timeline/t1.jpg" alt="" />
 								</div>
 								<div class="like-info">
 									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
 										<i class="material-icons">favorite</i>
 										Like
 									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
+									<p class="m-n like-amount"><a href="">232 others</a> like this</p>
 								</div>
 								<input class="form-control" type="text" placeholder="What's on your mind...">
 							</div>
-							<div class="panel profile-tab">
+							<div class="panel profile-tab like-comment">
 								<div class="media">
 								<div class="panel-controls dropdown">
                 <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
@@ -534,26 +537,33 @@
                 </ul>
             </div>
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/t3.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
+										<h5 class="media-heading">Michael Real</h5>
+										35 min ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Our style is natural, timeless and classy, capturing spontaneous moments and not making a film set out of your wedding day with a big crew. We are unobtrusive as we capture natural moments as they happen throughout the day.
 									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<video width= "100%" height="400px" controls autoplay muted>
+									  <source src="assets/img/timeline/t3.mp4" type="video/mp4">
+									  
+									  Your browser does not support the video tag.
+									</video>
 								</div>
 								<div class="like-info">
 									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
 										<i class="material-icons">favorite</i>
 										Like
 									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
+									<p class="m-n like-amount"><a href="">985 others</a> like this</p>
 								</div>
 								<input class="form-control" type="text" placeholder="What's on your mind...">
 							</div>
-							<div class="panel profile-tab">
+							<div class="panel profile-tab like-comment">
 								<div class="media">
 								<div class="panel-controls dropdown">
                 <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
@@ -568,22 +578,25 @@
                 </ul>
             </div>
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/t4.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
+										<h5 class="media-heading">Lesedi Selai</h5>
+										1 Hour ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Each client is treated as a unique masterpiece in our boutique salon. We keep up with the latest hair trends, expert cutting techniques and colour technology, specialising in colour correction.
 									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<img class="img-responsive" src="assets/img/timeline/t4.jpg" alt="" />
 								</div>
 								<div class="like-info">
 									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
 										<i class="material-icons">favorite</i>
 										Like
 									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
+									<p class="m-n like-amount"><a href="">45 others</a> like this</p>
 								</div>
 								<input class="form-control" type="text" placeholder="What's on your mind...">
 							</div>
@@ -606,39 +619,43 @@
                     <li><a href="">Report</a></li>
                 </ul>
             </div>
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
+									<a class="media-left" href="freelancerprofile.php">
+										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
+										<h5 class="media-heading">Sankofa Future</h5>
+										1 Hour ago
 									</div>
+									
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Yo Yo guys!!! Listen to my music!!! #STAYFRESH
 									</div>
+								</div>
+								<div class="col-md-12 pt-sm pb-md">
+									<iframe width="100%" height="450" scrolling="no" frameborder="yes" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/248956309&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 								</div>
 								<div class="like-info">
 									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
 										<i class="material-icons">favorite</i>
 										Like
 									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
+									<p class="m-n like-amount"><a href="">455 others</a> like this</p>
 								</div>
 								<div class="media m-n pl-xl comment-profile">
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_02.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/c5.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Martha Riss</h5>
-										18 min ago
+										<h5 class="media-heading">Gee Ross</h5>
+										30 min ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Good music my man...keep it up!!! 
 									</div>
 								</div>
 								<input class="form-control" type="text" placeholder="What's on your mind...">
 							</div>
-							<div class="panel profile-tab">
+							<div class="panel profile-tab like-comment">
 								<div class="media">
 								<div class="panel-controls dropdown">
                 <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
@@ -653,25 +670,25 @@
                 </ul>
             </div>
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/t6.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
+										<h5 class="media-heading">Nelson Dube</h5>
+										2 Hour ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Atchaar or chakalaka, chips, polony, cheese, vienna, russian, egg & secret sauce. Add. R43.90. 
 									</div>
 								</div>
 								<div class="col-md-12 pt-sm pb-md">
-									<img class="img-responsive" src="assets/demo/images/post-image-1.png" alt="" />
+									<img class="img-responsive" src="assets/img/timeline/t6.jpg" alt="" />
 								</div>
 								<div class="like-info">
 									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
 										<i class="material-icons">favorite</i>
 										Like
 									</a>
-									<p class="m-n like-amount"><a href="">Juan Flower</a><a href="">,Negab Rose </a> and <a href="">11 others</a> like this</p>
+									<p class="m-n like-amount"><a href="">Juan Flower</a><a href="">,Negab Rose </a> and <a href="">111 others</a> like this</p>
 								</div>
 								<input class="form-control" type="text" placeholder="What's on your mind..."/>
 							</div>	
@@ -690,14 +707,14 @@
                 </ul>
             </div>
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_15.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/t7.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Jonathan Smith</h5>
-										18 min ago
+										<h5 class="media-heading">Graig Hall</h5>
+										3 Hour ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Improve your marks in Maths with our Result Driven Passionate Maths Tutors. Our math tutors teach in the comfort of your own home or on campus.
 									</div>
 								</div>
 								<div class="like-info">
@@ -705,30 +722,30 @@
 										<i class="material-icons">done</i>
 										Liked
 									</a>
-									<p class="m-n like-amount"><a href="">9 others</a> like this</p>
+									<p class="m-n like-amount"><a href="">17 others</a> like this</p>
 								</div>
 								<div class="media m-n pl-xl comment-profile">
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_02.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/c7.jpeg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Martha Riss</h5>
+										<h5 class="media-heading">John San</h5>
 										18 min ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Seems very interesting...How much is it?
 									</div>
 								</div>
 								<div class="media m-n pl-xl comment-profile">
 									<a class="media-left" href="#">
-										<img class="media-object" src="assets/demo/avatar/avatar_02.png" alt="Generic placeholder image">
+										<img class="media-object" src="assets/img/propic/t7.jpg" alt="Generic placeholder image">
 									</a>
 									<div class="media-body pb-md">
-										<h5 class="media-heading">Martha Riss</h5>
-										18 min ago
+										<h5 class="media-heading">Graig Hall</h5>
+										19 min ago
 									</div>
 									<div class="pb-md pt-md media-desc">
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+										Let's talk via Chat;)
 									</div>
 								</div>
 								<input class="form-control" type="text" placeholder="What's on your mind..."/>
@@ -1148,80 +1165,91 @@
 			
 			
 			<div class="col-md-3">
-<div class="profile-tab">
+<div class="profile-tab panel">
 <div class="widget">
+<div class="panel-controls dropdown">
+                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="">Recommended Freelancers</a></li>
+					<li class="divider"></li>
+                    <li><a href="">Top Ranked Freelancers</a></li>
+					 <li class="divider"></li>
+                    <li><a href="">Random Freelancers</a></li>
+                  
+                </ul>
+            </div>
                 <div class="widget-heading" style="text-align:center; font-size: 15px; margin-top: 10px"><strong>Recommended Freelancers</strong></div>
                 <div class="widget-body">
                     <ul class="media-list contacts">
                         <li class="media notification-message">
                             <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                                <a href="#" ><img class="img-circle avatar" src="assets/img/propic/r1.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
-                              <span class="text-gray">Russel Owel</span>
-                                <span class="contact-status text-success">Butcher</span>
+                              <span class="text-gray">Lindi Dassie</span>
+                                <span class="contact-status text-success">Song Writter</span>
                             </div>
                         </li>
 						<li class="media notification-message">
                             <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                               <a href="#" ><img class="img-circle avatar" src="assets/img/propic/r2.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
-                              <span class="text-gray">Phil Nel</span>
-                                <span class="contact-status text-success">Gardener</span>
+                              <span class="text-gray">Pindie Maseko</span>
+                                <span class="contact-status text-success">Nail Stylist</span>
                             </div>
                         </li>
 						<li class="media notification-message">
                             <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                                <a href="#" ><img class="img-circle avatar" src="assets/img/propic/r3.jpeg" alt=""></a>
                             </div>
                             <div class="media-body">
-                              <span class="text-gray">Jon Owens</span>
-                                <span class="contact-status text-success">Plumber</span>
+                              <span class="text-gray">Allen Rashel</span>
+                                <span class="contact-status text-success">Math Tutor</span>
                             </div>
                         </li>
 						<li class="media notification-message">
                             <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                                <a href="#"><img class="img-circle avatar" src="assets/img/propic/r4.jpeg" alt=""></a>
                             </div>
                             <div class="media-body">
                               <span class="text-gray">Hamen Sal</span>
-                                <span class="contact-status text-success">Fashion Designer</span>
+                                <span class="contact-status text-success">PC Technician</span>
                             </div>
                         </li>
 						<li class="media notification-message">
                             <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                                  <a href="#"><img class="img-circle avatar" src="assets/img/propic/r5.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
-                              <span class="text-gray">Kim Hu</span>
-                                <span class="contact-status text-success">Piano Teacher</span>
+                              <span class="text-gray">Khothatso Walala</span>
+                                <span class="contact-status text-success">Nail Polisher</span>
                             </div>
                         </li>
 						<li class="media notification-message">
                             <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                                  <a href="#"><img class="img-circle avatar" src="assets/img/propic/r6.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
-                              <span class="text-gray">George Maps</span>
-                                <span class="contact-status text-success">Barber</span>
+                              <span class="text-gray">Rae Rails</span>
+                                <span class="contact-status text-success">Concert Singer</span>
                             </div>
                         </li>
                         <li class="media notification-message">
                             <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="">
+                                <a href="#"><img class="img-circle avatar" src="assets/img/propic/r7.jpeg" alt=""></a>
                             </div>
                             <div class="media-body">
-                                <span class="text-gray">Ien Fall</span>
-                                <span class="contact-status text-success">Web Designer</span>
+                                <span class="text-gray">Jessica More</span>
+                                <span class="contact-status text-success">Dentist</span>
                             </div>
                         </li>
                         <li class="media notification-message">
                             <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_03.png" alt="">
+                                 <a href="#"><img class="img-circle avatar" src="assets/img/propic/r8.jpg" alt=""></a>
                             </div>
                             <div class="media-body">
-                                <span class="text-gray">Mawala Ous</span>
+                                <span class="text-gray">Nina Bee</span>
                                 <span class="contact-status text-success">Graphic Designer</span>
                             </div>
                         </li>
@@ -1250,89 +1278,89 @@
 			</div>
 			
 			<div class="col-md-3">
-<div class="profile-tab">
+<div class="profile-tab panel">
 <div class="widget" >
                 <div class="widget-heading" style="text-align:center; font-size: 15px; margin-top: 10px"><strong>Recent Activities</strong></div>
                 <div class="widget-body">
                     <ul class="timeline" style="padding:10px 15px 10px 15px">
-                        <li class="timeline-purple">
-                            <div class="timeline-icon">  <img class="img-circle avatar" src="assets/demo/avatar/avatar_06.png" alt=""></div>
+                        <li class="timeline-purplehh">
+                            <div class="timeline-icon">  <img class="img-circle avatar" src="assets/img/propic/t1.jpg" alt=""></div>
                             <div class="timeline-body">
                                 <div class="timeline-header">
-                                    <span class="author">Jana Pena is now Follwing you</span>
-                                    <span class="date">2 min ago</span>
+                                    <span class="author">Sibusiso Khoza updated his <a href = "#" >profile description</a></span>
+                                    <span class="date">10 min ago</span>
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-primary">
-                            <div class="timeline-icon">  <img class="img-circle avatar" src="assets/demo/avatar/avatar_06.png" alt=""></div>
+                        <li class="timeline-primaryyy">
+                            <div class="timeline-icon">  <img class="img-circle avatar" src="assets/img/propic/t3.jpg" alt=""></div>
                             <div class="timeline-body">
                                 <div class="timeline-header">
-                                    <span class="author">Percy liaye Like your picture</span>
+                                    <span class="author">Michael Real added more <a href = "#" >skills</a></span>
                                     <span class="date">6 min ago</span>
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-green">
-                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt=""></div>
+                        <li class="timeline-greennnn">
+                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/img/propic/t4.jpg" alt=""></div>
                             <div class="timeline-body">
                                 <div class="timeline-header">
-                                    <span class="author">Leon miles make your presentation for new project</span>
-                                    <span class="date">2 hours ago</span>
+                                    <span class="author">Lesedi Selai commented on a <a href = "#" >post</a> you liked</span>
+                                    <span class="date">15 min ago</span>
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-danger">
-                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt=""></div>
+                        <li class="timeline-dangerrr">
+                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/img/propic/t5.jpg" alt=""></div>
                             <div class="timeline-body">
                                 <div class="timeline-header">
-                                    <span class="author">Lake wile like your comment</span>
+                                    <span class="author">Sankofa Future commented on a <a href = "#" >post</a> you liked</span>
                                     <span class="date">5 hours ago</span>
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-sky">
-                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt=""></div>
+                        <li class="timeline-purpleeee">
+                            <div class="timeline-icon">  <img class="img-circle avatar" src="assets/img/propic/t1.jpg" alt=""></div>
                             <div class="timeline-body">
                                 <div class="timeline-header">
-                                    <span class="author">The Mountain Ambience paid your payment</span>
+                                    <span class="author">Sibusiso Khoza posted a <a href = "#" >post</a></span>
+                                    <span class="date">7 hours ago</span>
+                                </div>
+                            </div>
+                        </li>
+						<li class="timeline-dangerrrr">
+                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/img/user.png" alt=""></div>
+                            <div class="timeline-body">
+                                <div class="timeline-header">
+                                    <span class="author">Lake wile commented on a <a href = "#" >post</a></span>
+                                    <span class="date">7 hours ago</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-skyyyy">
+                            <div class="timeline-icon">  <img class="img-circle avatar" src="assets/img/propic/t1.jpg" alt=""></div>
+                            <div class="timeline-body">
+                                <div class="timeline-header">
+                                    <span class="author">Sibusiso Khoza sent you a <a href = "#" >message</a></span>
                                     <span class="date">9 hours ago</span>
                                 </div>
                             </div>
                         </li>
-						<li class="timeline-danger">
-                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt=""></div>
+						 <li class="timeline-dangerrrr">
+                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/img/propic/t5.jpg" alt=""></div>
                             <div class="timeline-body">
                                 <div class="timeline-header">
-                                    <span class="author">Lake wile like your comment</span>
-                                    <span class="date">5 hours ago</span>
+                                    <span class="author">Sankofa Future posted an <a href = "#" >audio post</a></span>
+                                    <span class="date">16 hours ago</span>
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-sky">
-                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt=""></div>
+                       <li class="timeline-dangerrrr">
+                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/img/user.png" alt=""></div>
                             <div class="timeline-body">
                                 <div class="timeline-header">
-                                    <span class="author">The Mountain Ambience paid your payment</span>
-                                    <span class="date">9 hours ago</span>
-                                </div>
-                            </div>
-                        </li>
-						<li class="timeline-danger">
-                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt=""></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Lake wile like your comment</span>
-                                    <span class="date">5 hours ago</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-sky">
-                            <div class="timeline-icon"> <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt=""></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">The Mountain Ambience paid your payment</span>
-                                    <span class="date">9 hours ago</span>
+                                    <span class="author">Jason Lee commented on a <a href = "#" >post</a></span>
+                                    <span class="date">18 hours ago</span>
                                 </div>
                             </div>
                         </li>

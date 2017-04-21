@@ -72,9 +72,24 @@
 											<div class="col-sm-8 tabular-border"><select name="selector1" id="selector1" class="form-control">
 												
 												<option value="Western_Sahara">Select Province</option>
-												<option value="Yemen">Gauteng</option>
-												<option value="Zambia">Eastern Cape</option>
+												<option value="Yemen">The Eastern Cape</option>
+												<option value="Zambia">The Free State</option>
+												<option value="Zimbabwe">Gauteng</option>
+												<option value="Yemen">KwaZulu-Natal</option>
+												<option value="Zambia">Limpopo</option>
 												<option value="Zimbabwe">Mpumalanga</option>
+												<option value="Yemen">The Northern Cape</option>
+												<option value="Zambia">Eastern Cape</option>
+												<option value="Zimbabwe">North West</option>
+												
+												
+
+
+
+
+
+
+
 											</select></div>
 										</div>
 						</fieldset>
@@ -105,7 +120,7 @@
 							<div class="form-group">
 								<label for="" class="col-md-3 control-label">Terms and Conditions</label>
 								<div class="col-md-9">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, nemo, atque consequuntur officiis asperiores consectetur porro labore commodi esse error quisquam nihil illum sunt facere inventore possimus autem ab voluptates quibusdam non voluptatum suscipit architecto. Illo, facilis, corporis, veritatis dolores minus quasi iure cupiditate quis autem ducimus nisi obcaecati tenetur sed ea excepturi pariatur consequatur enim labore officia mollitia. Rerum, voluptatem numquam molestiae recusandae iusto ipsum inventore unde accusantium labore delectus? Doloremque, fugit, sunt libero laboriosam cupiditate sed sequi nostrum saepe. Mollitia, alias, expedita accusantium porro error autem dolore veniam commodi nesciunt provident vitae neque. Nostrum, sed, molestias itaque provident inventore natus animi quasi laborum laboriosam facere ratione aperiam iusto. Non ducimus facere sunt doloribus? Asperiores, natus distinctio quis iure!</p>
+									<p>Welcome to the registration to FreeLancerHub website and its related services. You may access many areas of our website when registering your details with us. Certain areas are only open to you if you register. The terms and conditions which govern material submitted by you to us and your use of the FreeLancerHub website are governed by our general "Terms and Conditions of Reading". These Terms and Conditions of Registration are in addition to the general Terms and Conditions of Reading.</p>
 								</div>
 							</div>
 						</fieldset>
