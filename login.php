@@ -65,7 +65,7 @@
 							<div class="panel-footer">
 						<div class="clearfix">
 							
-							<a href="newsfeed.php" class="btn btn-primary btn-raised pull-left">Login</a>
+							<a href="customerhome.php" class="btn btn-primary btn-raised pull-left">Login</a>
 							<a href="registration.php" class="btn btn-default pull-right">Register</a>
 						</div>
 						
