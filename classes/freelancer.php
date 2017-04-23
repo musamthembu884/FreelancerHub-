@@ -31,7 +31,7 @@ class Freelancer
 		$this->propic = $propic;
 		$this->num_connections = $num_connections;
 	}
-}
+
 	
 	//GETTERS
 	public function get_ID()
@@ -109,6 +109,6 @@ class Freelancer
 		return $this->location;
 	}
 	
-	
+}
 
 ?>
