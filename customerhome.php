@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -371,18 +374,28 @@
 								</style>
 								
                                 <ul id="horizontal-list" class="avatar">
-                                    <li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									<li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									<li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									 <li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									<li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									<li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									 <li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									<li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									<li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									 <li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									<li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
-									<li><a href="#"><img style="height:64px; width: 64px; border: 2px solid #212121" src="http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg" alt=""></a></li>
+                                   <?php
+								  
+								   include("classes/customerhome.php");
+								   $CoolPeople = new CustomerHome();
+								  $arrCoolPeople = array();
+								  $arrCoolPeople = $CoolPeople->InterestingFreelancers(12);
+								 // echo "R: " . count($arrCoolPeople);
+								 
+								  
+								   for($k=0; $k<count($arrCoolPeople);$k++)
+								   {
+									  // echo"'assets\img\'".$arrCoolPeople[$k]->get_propic()."";
+									   echo"
+									   <li><a href='".$arrCoolPeople[$k]->get_ID()."'><img style='height:64px; width: 64px; border: 2px solid #212121' src='"; echo "assets/img"; echo "/". $arrCoolPeople[$k]->get_propic();echo"'"; echo" alt=''></a></li>
+									   ";
+								   }
+								   
+								   
+								   ?>
+
+								   
+									
 									
                                     
 								   
@@ -517,43 +530,53 @@
 }
 		   
 		   </style>
-           <div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
+		   <?php
+			$arrMostRanked = array();
+			//$arrMostRanked = $CoolPeople->MostRankedFreeLancer(2);
+			//echo "R: ".count($arrMostRanked);
+			// loadFreelancerConnect
+		   for($k=0; $k<count($arrMostRanked);$k++)
+		   {
+			echo"
+			<div class='col-md-4'>
+<div class='profile-tab panel'>
+<div class='widget'>
+<div class='panel-controls dropdown'>
+                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href=''>Hire Me</a></li>
+					<li class='divider'></li>
+                    <li><a href=''>Chat</a></li>
+                    <li class='divider'></li>
+                    <li><a href=''>Connect</a></li>
                 </ul>
             </div>
 
                 
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
+                <div class='widget-body'>
+                           <a class='media-left' href='#'>
+										<img class='media-object' src='#' alt=''>
 										
 									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
+									<div class='media-body pb-md'>
+										<h5 class='media-heading'>Aaron</h5>
 										562 Connections
 										
-										<hr class="style14">
+										<hr class='style14'>
 										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
+										<h5 style='font-style: italic' class='media-heading'>Wedding</h5>
+										<span style='font-style: italic'>Cauteng</span>
 									</div>
-									
-
-
-						   
+		   
                 </div>
             </div>
 			</div>
 			</div>
+
+			"; 
+		   }
+		   ?>
+           
 			<div class="col-md-4">
 <div class="profile-tab panel">
 <div class="widget">
@@ -858,7 +881,22 @@
                 </ul>
             </div>
 			<div class="media-body pb-md">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Freelancers In Gauteng</h5>
+										<h5 class="media-heading" style="font-size:28px; font-weight:900" > 
+								<?php
+								$customers ="select * from customerprofile WHERE Cust_ID='".$_SESSION['user']."'";
+								$customers_query=mysql_query($customers);
+
+								while($customers_row=mysql_fetch_array($customers_query))
+								{
+									$C_location= $customers_row['Province'];
+								}
+								
+								echo"Freelancers In ".$C_location;
+								?>
+								
+								
+										
+										</h5>
 										
 									</div>
            <style>
@@ -872,323 +910,61 @@
 }
 		   
 		   </style>
-           <div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
+           
+			<?php
+			$arrInLocation = array();
+			//$_SESSION["user"] = 666;
+			//echo "R ". $_SESSION['user'];
+			$arrInLocation = $CoolPeople->FreelancersInLocation(9,$_SESSION['user']);
+			//echo "R: ".count($arrMostRanked);
+			// loadFreelancerConnect
+			
+			//echo "R ". $arrInLocation[1]->get_fullname();
+			//echo "M ". $CoolPeople->loadFreelancerConnect(16);
+		   for($k=0; $k<count($arrInLocation);$k++)
+		   {
+			echo"
+			<div class='col-md-4'>
+<div class='profile-tab panel'>
+<div class='widget'>
+<div class='panel-controls dropdown'>
+                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href=''>Hire Me</a></li>
+					<li class='divider'></li>
+                    <li><a href=''>Chat</a></li>
+                    <li class='divider'></li>
+                    <li><a href=''>Connect</a></li>
                 </ul>
             </div>
 
                 
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
+                <div class='widget-body'>
+                           <a class='media-left' href='#'>
+										<img class='media-object' src='"; echo "assets/img"; echo "/". $arrInLocation[$k]->get_propic();echo"'"; echo" alt=''>
 										
 									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
+									<div class='media-body pb-md'>
+										<h5 class='media-heading'>".$arrInLocation[$k]->get_fullname()."</h5>
+										".$CoolPeople->loadFreelancerConnect($arrInLocation[$k]->get_ID())." Connections
 										
-										<hr class="style14">
+										<hr class='style14'>
 										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
+										<h5 style='font-style: italic' class='media-heading'>".$arrInLocation[$k]->get_worktype()."</h5>
+										<span style='font-style: italic'>".$arrInLocation[$k]->get_province()."</span>
 									</div>
-									
-
-
-						   
+		   
                 </div>
             </div>
 			</div>
 			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
 
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
+			"; 
+		   }
+		   ?>
+			
+			
+			
 									
 									
 									
@@ -1226,323 +1002,54 @@
 }
 		   
 		   </style>
-           <div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
+           <?php
+			$arrDiscoverNew = array();
+			$arrDiscoverNew = $CoolPeople->DiscoverNewFreelancers(9);
+			
+		   for($k=0; $k<count($arrDiscoverNew);$k++)
+		   {
+			echo"
+			<div class='col-md-4'>
+<div class='profile-tab panel'>
+<div class='widget'>
+<div class='panel-controls dropdown'>
+                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href=''>Hire Me</a></li>
+					<li class='divider'></li>
+                    <li><a href=''>Chat</a></li>
+                    <li class='divider'></li>
+                    <li><a href=''>Connect</a></li>
                 </ul>
             </div>
 
                 
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
+                <div class='widget-body'>
+                           <a class='media-left' href='#'>
+										<img class='media-object' src='"; echo "assets/img"; echo "/". $arrDiscoverNew[$k]->get_propic();echo"'"; echo" alt=''>
 										
 									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
+									<div class='media-body pb-md'>
+										<h5 class='media-heading'>".$arrDiscoverNew[$k]->get_fullname()."</h5>
+										".$CoolPeople->loadFreelancerConnect($arrDiscoverNew[$k]->get_ID())." Connections
 										
-										<hr class="style14">
+										<hr class='style14'>
 										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
+										<h5 style='font-style: italic' class='media-heading'>".$arrDiscoverNew[$k]->get_worktype()."</h5>
+										<span style='font-style: italic'>".$arrDiscoverNew[$k]->get_province()."</span>
 									</div>
-									
-
-
-						   
+		   
                 </div>
             </div>
 			</div>
 			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
 
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
-			<div class="col-md-4">
-<div class="profile-tab panel">
-<div class="widget">
-<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Hire Me</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Chat</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Connect</a></li>
-                </ul>
-            </div>
-                
-                <div class="widget-body">
-                           <a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t1.jpg" alt="Generic placeholder image">
-										
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sibusiso Khoza</h5>
-										562 Connections
-										
-										<hr class="style14">
-										
-										<h5 style="font-style: italic" class="media-heading">Wedding Decor</h5>
-										<span style="font-style: italic">Cauteng</span>
-									</div>
-
-
-						   
-                </div>
-            </div>
-			</div>
-			</div>
+			"; 
+		   }
+		   ?>
+			
+			
+			
 									
 									
 									
@@ -1982,85 +1489,28 @@
                             </div>
                 <div class="widget-body">
                     <ul class="media-list contacts">
-                        <li class="media notification-message">
-                            <div class="media-left">
-                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
+                        <?php
+						$cats = array();
+						$cats = $CoolPeople->loadCategories();
+						
+						for($k=0; $k<count($cats); $k++)
+						{
+							echo
+							"
+							<li class='media notification-message'>
+                            <div class='media-left'>
+                               <a href='#' ><img class='media-object avatar' src='assets/img/propic/r2.jpg' alt=''></a>
                             </div>
-                            <div class="media-body">
-                              <h5 style="font-size:14px" class="media-heading">Fashion</h5>
+                            <div class='media-body'>
+                              <h5 style='font-size:14px' class='media-heading'>".$cats[$k]."</h5>
                                 
                             </div>
                         </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <h5 style="font-size:14px" class="media-heading">Fashion</h5>
-                                
-                            </div>
-                        </li><li class="media notification-message">
-                            <div class="media-left">
-                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <h5 style="font-size:14px" class="media-heading">Fashion</h5>
-                                
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <h5 style="font-size:14px" class="media-heading">Fashion</h5>
-                                
-                            </div>
-                        </li><li class="media notification-message">
-                            <div class="media-left">
-                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <h5 style="font-size:14px" class="media-heading">Fashion</h5>
-                                
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <h5 style="font-size:14px" class="media-heading">Fashion</h5>
-                                
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <h5 style="font-size:14px" class="media-heading">Fashion</h5>
-                                
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <h5 style="font-size:14px" class="media-heading">Fashion</h5>
-                                
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <h5 style="font-size:14px" class="media-heading">Fashion</h5>
-                                
-                            </div>
-                        </li>
+							";
+						}
+						?>
+						
+						
 						
                     </ul>                                
                 </div>
@@ -2079,132 +1529,27 @@
                             </div>
                 <div class="widget-body">
                     <ul class="media-list contacts">
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <a href="#" ><img class="img-circle avatar" src="assets/img/propic/r1.jpg" alt=""></a>
+                        <?php
+						$RecommendedF = array();
+						$RecommendedF = $CoolPeople->RecommendedFreelancers(13);
+						
+						for($k=0; $k<count($RecommendedF); $k++)
+						{
+							echo"
+							<li class='media notification-message'>
+                            <div class='media-left'>
+                                <img class='img-circle avatar' src='"; echo "assets/img"; echo "/". $RecommendedF[$k]->get_propic();echo"'"; echo" alt=''>
                             </div>
-                            <div class="media-body">
-                              <span class="text-gray">Lindi Dassie</span>
-                                <span class="contact-status text-success">Song Writter</span>
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                               <a href="#" ><img class="img-circle avatar" src="assets/img/propic/r2.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Pindie Maseko</span>
-                                <span class="contact-status text-success">Nail Stylist</span>
+                            <div class='media-body'>
+                                <span class='text-gray'>".$RecommendedF[$k]->get_fullname()."</span>
+                                <span class='contact-status text-success'>".$RecommendedF[$k]->get_worktype()."</span>
                             </div>
                         </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                                <a href="#" ><img class="img-circle avatar" src="assets/img/propic/r3.jpeg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Allen Rashel</span>
-                                <span class="contact-status text-success">Math Tutor</span>
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                                <a href="#"><img class="img-circle avatar" src="assets/img/propic/r4.jpeg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Hamen Sal</span>
-                                <span class="contact-status text-success">PC Technician</span>
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                                <a href="#" ><img class="img-circle avatar" src="assets/img/propic/r3.jpeg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Allen Rashel</span>
-                                <span class="contact-status text-success">Math Tutor</span>
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                                <a href="#"><img class="img-circle avatar" src="assets/img/propic/r4.jpeg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Hamen Sal</span>
-                                <span class="contact-status text-success">PC Technician</span>
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                                <a href="#" ><img class="img-circle avatar" src="assets/img/propic/r3.jpeg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Allen Rashel</span>
-                                <span class="contact-status text-success">Math Tutor</span>
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                                <a href="#"><img class="img-circle avatar" src="assets/img/propic/r4.jpeg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Hamen Sal</span>
-                                <span class="contact-status text-success">PC Technician</span>
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                                  <a href="#"><img class="img-circle avatar" src="assets/img/propic/r5.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Khothatso Walala</span>
-                                <span class="contact-status text-success">Nail Polisher</span>
-                            </div>
-                        </li>
-						<li class="media notification-message">
-                            <div class="media-left">
-                                  <a href="#"><img class="img-circle avatar" src="assets/img/propic/r6.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Rae Rails</span>
-                                <span class="contact-status text-success">Concert Singer</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <a href="#"><img class="img-circle avatar" src="assets/img/propic/r7.jpeg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Jessica More</span>
-                                <span class="contact-status text-success">Dentist</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                 <a href="#"><img class="img-circle avatar" src="assets/img/propic/r8.jpg" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Nina Bee</span>
-                                <span class="contact-status text-success">Graphic Designer</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Grady Hines</span>
-                                <span class="contact-status text-success">Machanic</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_06.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Adrian Barton</span>
-                                <span class="contact-status text-success">PC Technician</span>
-                            </div>
-                        </li>
+							";
+						}
+						
+						?>
+                        
                     </ul>                                
                 </div>
             </div>

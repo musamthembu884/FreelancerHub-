@@ -18,7 +18,7 @@ elseif($auth->login($username,$password) == "Customer")
 {
 	echo"
 	<script>
-	
+		
 		window.location.replace('../customerhome.php');
 
 	</script>";

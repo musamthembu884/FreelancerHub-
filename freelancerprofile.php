@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -483,56 +486,74 @@
 							</div>
 						</div>
 						<div class="tab-pane active" id="tab-8-2">								
+							<?php
+							include("classes/Timeline.php");
 							
-							<div class="panel profile-tab like-comment">
-								<div class="media">
-								<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Edit</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Bookmark</a></li>
-					 <li class="divider"></li>
-                    <li><a href="">Delete</a></li>
+							$mytimeline = new Timeline();
+							
+							$myposts = $mytimeline->loadposts(7,$_SESSION['user']);
+							echo"R: ". count($myposts);
+							echo"S: ". $_SESSION['user'];
+							for($k=0; $k<count($myposts); $k++)
+							{
+								echo"
+								<div class='panel profile-tab like-comment'>
+								<div class='media'>
+								<div class='panel-controls dropdown'>
+                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href=''>Edit</a></li>
+					<li class='divider'></li>
+                    <li><a href=''>Bookmark</a></li>
+					 <li class='divider'></li>
+                    <li><a href=''>Delete</a></li>
                    
                 </ul>
             </div>
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
+									<a class='media-left' href='#'>
+										<img class='media-object' src='assets/img/propic/t5.jpg' alt='Generic placeholder image'>
 									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sankofa Future</h5>
+									<div class='media-body pb-md'>
+										<h5 class='media-heading'>".$myposts[$k]->get_author()."</h5>
 										1 Hour ago
 									</div>
 									
-									<div class="pb-md pt-md media-desc">
+									<div class='pb-md pt-md media-desc'>
 										Yo Yo guys!!! Listen to my music!!! #STAYFRESH
 									</div>
 								</div>
-								<div class="col-md-12 pt-sm pb-md">
-									<iframe width="100%" height="450" scrolling="no" frameborder="yes" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/248956309&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+								<div class='col-md-12 pt-sm pb-md'>
+									<iframe width='100%' height='450' scrolling='no' frameborder='yes' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/248956309&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe>
 								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
+								<div class='like-info'>
+									<a class='btn btn-xs btn-info btn-label ml-md' href='#'>
+										<i class='material-icons'>favorite</i>
 										Like
 									</a>
-									<p class="m-n like-amount"><a href="">455 others</a> like this</p>
+									<p class='m-n like-amount'><a href=''>455 others</a> like this</p>
 								</div>
-								<div class="media m-n pl-xl comment-profile">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/c5.jpg" alt="Generic placeholder image">
+								<div class='media m-n pl-xl comment-profile'>
+									<a class='media-left' href='#'>
+										<img class='media-object' src='assets/img/propic/c5.jpg' alt='Generic placeholder image'>
 									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Gee Ross</h5>
+									<div class='media-body pb-md'>
+										<h5 class='media-heading'>Gee Ross</h5>
 										30 min ago
 									</div>
-									<div class="pb-md pt-md media-desc">
+									<div class='pb-md pt-md media-desc'>
 										Good music my man...keep it up!!! 
 									</div>
 								</div>
-								<input class="form-control" type="text" placeholder="What's on your mind...">
+								<input class='form-control' type='text' placeholder='What's on your mind...'>
 							</div>
+								
+								";
+							}
+							
+							?>
+							
+							
+							
 							<div class="panel profile-tab like-comment">
 								<div class="media">
 								<div class="panel-controls dropdown">

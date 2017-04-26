@@ -3,7 +3,7 @@ include("freelancer.php");
 include("notification.php");
 include("database/database.php");
 
-class CustomerHome
+ class CustomerHome
 {
 	//REAL STUFF:(
 	
@@ -47,7 +47,7 @@ class CustomerHome
 	
 		$get_Free= "select freelancerprofile.Free_id,freelancerprofile.FullName,freelancerprofile.ProfilePic,
 	   freelancerprofile.Province,freelancerprofile.WorkType,postwork.Free_ID from freelancerprofile,postwork where      
-	   postwork.Free_ID =freelancerprofile.Free_ID order by Rand() limit $num_freelancers"; 
+	   postwork.Free_ID =freelancerprofile.Free_ID order by Rand() limit $num_freelancers";
 		$Most_Query = mysql_query($get_Free);
 		while($row_Most = mysql_fetch_array($Most_Query)){
 			
@@ -98,21 +98,19 @@ class CustomerHome
 	}
 	
 	//@return: Categories array
-	public function loadCategories($Cat_ID)
+	public function loadCategories()
 	{
 		$Categories = array(); //Fill this array with Categories
 		
-		$get_category = "select freelancerprofile.FullName,freelancerprofile.Cat_ID,category.Cat_ID,category.Name from  
-		freelancerprofile,category where freelancerprofile.Cat_ID = '".$Cat_ID."'  AND '".$Cat_ID."' = category.Cat_ID "  ;
+		 $Query_category= mysql_query("select * from category"); 
+		  
+		  while($row_category = mysql_fetch_array($Query_category))
+		  {
+			  $Categories[] = $row_category["Name"];
+		  }
 		
-		$run_category = mysql_query($get_category);
 		
-		while($row_category = mysql_fetch_array($run_category))
-		{
-		  /* $Categories [] = $row_category['category.Name'];
-		   echo " Category: ".$row_category['category.Name'].""; */  	
-		}
-				
+		
 		//Code here
 		
 		return $Categories;
@@ -123,24 +121,15 @@ class CustomerHome
 	public function RecommendedFreelancers($num_freelancers)
 	{
 		$Recommended_Freelancers = array(); //Fill this array with Recommended Freelancers
-	   	
+		
 		$getRecommended = "select * from freelancerprofile,customerprofile where freelancerprofile.WorkType =              
 		customerprofile.Interests ";
 		
 		$run_query= mysql_query($getRecommended);
-	  $counter=0;	
+		
 		while($Recommended_row = mysql_fetch_array($run_query))
 		{
-			/*$get_int = "select customerprofile.Interests from customerprofile";
-			$run_int= mysql_query($get_int);
-	
-			while($row_int = mysql_fetch_array($run_int))
 			
-	           $customer_interest[] = $row_int;
-			   echo "$customer_interest[$counter]";             		
-     			$counter++;
-			}*/
-	
 	        $Recommended_Freelancers[] = new Freelancer($Recommended_row['Free_ID'],$Recommended_row['FullName'],null,null,              null,null,null,null,null,$Recommended_row['WorkType'],null,
 		      $Recommended_row['ProfilePic'],null);	     
 		}
@@ -154,31 +143,72 @@ class CustomerHome
 	public function Notifications($customerID)
 	{
 		$Notify = array(); //Fill this array with Customer's Notifications
-		$counter = 0;
-		$get_not = "select * Notifications";
-		$run_not = mysql_query($get_not);
 		
-		while($not_row = mysql_fetch_array($run_not)){
-			
 		//Code here
 		
-		$not_ID = $not_row["Notify_ID"];
-		$not_title = $not_row["Title"];
-		$not_msg = $not_row["Message"];
+		$NotifyQuery="SELECT * FROM requestmessage WHERE Cust_ID=$customerID";
 		
-		$Notify[$counter] = new Notification($not_title,$not_msg);
-		$counter++;
+		$query=mysql_query($NotifyQuery) or die(mysql_error());
 		
-		}
+         while($read=mysql_fetch_assoc($query))
+		 {
+			 $Notify=new Notification();
+		 }
 		return $Notify;
 	}
+	
+	
 	
 	//@par 'customerID': this is the customer who's following/connecting a freelancer
 	//@par 'freelancerID': this is the freelancer being followed/connected by a customer
 	//@return: void
-	public function ConnectWithFreelacer($customerID,$freelancerID)
+	public function loadCustomerConnect($user)
 	{
-		
+		$num_result = mysql_query("SELECT count(*) as total_count from connect 
+	    WHERE $user=Cust_ID") or exit(mysql_error());
+        $row = mysql_fetch_object($num_result);
+        return  $row->total_count;
+	}
+	
+	public function loadFreelancerConnect($user)
+	{
+		$num_result = mysql_query("SELECT count(*) as total_count from connect 
+	    WHERE $user=Free_ID") or exit(mysql_error());
+        $row = mysql_fetch_object($num_result);
+        return  $row->total_count;
+	}
+	
+	public function doConnections($cust,$free)
+	{
+		 $status= $this->doCheck($cust,$free);
+		 
+		 if($status==false){
+		  $InsertQuery="INSERT INTO connect (Cust_ID,Free_ID)                           values('$cust','$free')";				
+		$ExecuteQuery=mysql_query($InsertQuery)or exit(mysql_error());
+		 }
+		 else{
+			return "Already Connected"; 
+		 }
+	}
+	
+	private function doCheck($cust,$free)
+	{
+	  $check="SELECT * FROM connect";
+	  $query= mysql_query($check);
+	  $status=false;
+	  	
+			
+		  while($read=mysql_fetch_assoc($query))
+		 {
+			 
+			if(($read["Free_ID"]==$free && $read["Cust_ID"]==$cust))
+			{
+			 $status = true;
+			 break;
+			 	
+			}
+		}
+		return $status;
 	}
 }
 

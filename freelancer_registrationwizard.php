@@ -96,6 +96,12 @@
 						</fieldset>
 						<fieldset title="Step 2">
 							<legend>Personal Description</legend>
+							<div class="form-group is-empty">
+											<label for="form-confirmpass" class="col-sm-2 control-label">Contact Number</label>
+											<div class="col-sm-8 tabular-border">
+												<input type="text" id="ContactNO" name="ContactNO" class="form-control"  placeholder="(e.g) 081 250 6541">
+											</div>
+										<span class="material-input"></span></div>
 							<div class="form-group">
 											<label class="col-sm-2 control-label">Biography</label>
 											<div class="col-sm-8">
@@ -169,12 +175,13 @@
 									$Biography = $_POST['Biography'];
 									$Work = $_POST['Work'];
 									$Category = $_POST['Category'];
+									$ContactNO = $_POST['ContactNO'];
 									
 									echo"
 									
 									<script>
 									
-										window.location.replace('bridge/register.php?Name=$FullName&Email=$Email&Cat=$Cat&Street=$Street&City=$City&Province=$Province&Biography=$Biography&Work=$Work&Category=$Category&Gender=Male');
+										window.location.replace('bridge/register.php?Name=$FullName&Email=$Email&Cat=$Cat&Street=$Street&City=$City&Province=$Province&Biography=$Biography&Work=$Work&Category=$Category&Gender=Male&ContactNO=$ContactNO');
 
 									</script>";
 									//echo "Street: ".$Street." Name: ".$FullName;

@@ -93,18 +93,10 @@ class Authentication
 		}
 		elseif($Type == "Customer")
 		{
-			//insert to customer
-			$G_FullName = $_GET['FullName'];
-			$G_Email = $_GET['Email'];
-			$G_Password = $_SESSION['Password'];
-			$G_StreetAddress = $_GET['StreetAddress'];
-			$G_Town = $_GET['Town'];
-			$G_Province = $_GET['Province'];
-			$G_ContactNo = $_GET['ContactNo'];
-			$G_Interests = $_GET['Interests'];
-			$G_ProfilePic = "default.jpg";
 			
-			$run_query = mysql_query("insert into customerprofile(FullName,Email,Password,StreetAddress,Town,Province,ContactNo,Interests,ProPicture) values ('$G_FullName','$G_Email','$G_Password','$G_StreetAddress','$G_Town','$G_Province','$G_ContactNo','$G_Interests','$G_ProfilePic'");
+			/*$run_query = mysql_query("insert into customerprofile(FullName,Email,Password,StreetAddress,Town,Province,ContactNo,Interests,ProPicture) values ('$G_FullName','$G_Email','$G_Password','$G_StreetAddress','$G_Town','$G_Province','$G_ContactNo','$G_Interests','$G_ProfilePic'");*/
+			
+			$run_query = mysql_query("insert into customerprofile(FullName,Email,Password,StreetAddress,Town,Province,ContactNo,Interests,ProPicture) values ('$G_FullName','$G_Email','$G_Password','$G_StreetAddress','$G_Town','$G_Province','$G_ContactNo','$G_Interests','$G_ProfilePic')") or exit(mysql_error());
 			
 			$this->Drive($G_Email,"Customer");
 			$flag="True";

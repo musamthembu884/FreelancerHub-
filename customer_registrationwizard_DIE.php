@@ -51,64 +51,48 @@
 				
 				</div>
 				<div class="panel-body">
-					<?php
-					if(isset($_GET['Name']))
-						{
-							$FullName = $_GET['Name'];
-							$Email = $_GET['Email'];
-							$Cat = $_GET['Cat'];
-						}
-							
-					?>
-					<form action="freelancer_registrationwizard.php?<?php echo"Name=".$FullName."&Email=".$Email."&Cat=".$Cat ?>" method="post" id="wizard" class="form-horizontal">
+					
+					<form action="login.php" id="wizard" class="form-horizontal">
 						<fieldset title="Step 1">
 							<legend>Personal Address</legend>
 							<div class="form-group">
 											<label for="form-password" class="col-sm-2 control-label">Street</label>
 											<div class="col-sm-8 tabular-border">
-												<input type="text" id="Street" name="Street" class="form-control" id="form-password" placeholder="Street">
+												<input type="text" class="form-control" id="form-password" placeholder="Street">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="form-confirmpass" class="col-sm-2 control-label">City</label>
 											<div class="col-sm-8 tabular-border">
-												<input type="text" id="City" name="City" class="form-control" id="form-confirmpass" placeholder="City">
+												<input type="text" class="form-control" id="form-confirmpass" placeholder="City">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="selector1" class="col-sm-2 control-label">Province</label>
 											<div class="col-sm-8 tabular-border"><select name="selector1" id="selector1" class="form-control">
 												
-												<option value="null">Select Province</option>
-												<option value="Eastern Cape">Eastern Cape</option>
-												<option value="Free State">Free State</option>
-												<option value="Gauteng">Gauteng</option>
-												<option value="KwaZulu-Natal">KwaZulu-Natal</option>
-												<option value="Limpopo">Limpopo</option>
-												<option value="Mpumalanga">Mpumalanga</option>
-												<option value="Northern Cape">Northern Cape</option>
-												<option value="Western Cape">Western Cape</option>
-												<option value="North West">North West</option>
-												
-								
+												<option value="Western_Sahara">Select Province</option>
+												<option value="Yemen">The Eastern Cape</option>
+												<option value="Zambia">The Free State</option>
+												<option value="Zimbabwe">Gauteng</option>
+												<option value="Yemen">KwaZulu-Natal</option>
+												<option value="Zambia">Limpopo</option>
+												<option value="Zimbabwe">Mpumalanga</option>
+												<option value="Yemen">The Northern Cape</option>
+												<option value="Zambia">Eastern Cape</option>
+												<option value="Zimbabwe">North West</option>
 											</select></div>
 										</div>
 						</fieldset>
 						<fieldset title="Step 2">
 							<legend>Personal Description</legend>
-							<div class="form-group is-empty">
-											<label for="form-confirmpass" class="col-sm-2 control-label">Contact Number</label>
-											<div class="col-sm-8 tabular-border">
-												<input type="text" id="ContactNO" name="ContactNO" class="form-control"  placeholder="(e.g) 081 250 6541">
-											</div>
-										<span class="material-input"></span></div>
-							<div class="form-group is-empty">
+							
+							<div class="form-group">
 											<label for="form-confirmpass" class="col-sm-2 control-label">Interests</label>
 											<div class="col-sm-8 tabular-border">
-												<input type="text" class="form-control" id="Interests" name="Interests" placeholder="(e.g) Garden, Carpentry, Tutor">
+												<input type="text" class="form-control" id="form-confirmpass" placeholder="(e.g) Garden, Carpentry, Tutor">
 											</div>
-										<span class="material-input"></span></div>
-										
+										</div>
 										<div class="form-group">
 											<label for="radio" class="col-sm-2 control-label">Gender</label>
 											<div class="col-sm-8 tabular-border">
@@ -126,42 +110,8 @@
 								</div>
 							</div>
 						</fieldset>
-						<input type="submit" class="finish btn-success btn" value="Submit" />
+						<input type="submit" class="finish btn-success btn" onclick="extras-profile.html" value="Submit" />
 					</form>
-					
-					<?php
-		
-						
-								if(isset($_POST['Street']))
-								{
-									if(isset($_GET['Name']))
-									{
-										$FullName = $_GET['Name'];
-										$Email = $_GET['Email'];
-										$Cat = $_GET['Cat'];
-									}
-									
-									$Street = $_POST['Street'];
-									$City = $_POST['City'];
-									$Province = $_POST['selector1'];
-									$ContactNO = $_POST['ContactNO'];
-									$Interests = $_POST['Interests'];
-									
-									echo"
-									
-									<script>
-									
-										window.location.replace('bridge/registerC.php?Name=$FullName&Email=$Email&Cat=$Cat&Street=$Street&City=$City&Province=$Province&ContactNO=$ContactNO&Interests=$Interests');
-
-									</script>";
-									//echo "Street: ".$Street." Name: ".$FullName;
-								}
-							
-							
-						//}
-					?>
-					
-					
 				</div>
 			</div>
 

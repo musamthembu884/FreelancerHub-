@@ -150,7 +150,7 @@ session_start();
 								echo"
 								<script>
 								
-									window.location.replace('customer_registrationwizard.php?Name=$FullName&Email=$Email');
+									window.location.replace('customer_registrationwizard.php?Name=$FullName&Email=$Email&Cat=$cat');
 
 								</script>";
 							}
