@@ -47,7 +47,7 @@ class CustomerHome
 	
 		$get_Free= "select freelancerprofile.Free_id,freelancerprofile.FullName,freelancerprofile.ProfilePic,
 	   freelancerprofile.Province,freelancerprofile.WorkType,postwork.Free_ID from freelancerprofile,postwork where      
-	   postwork.Free_ID =freelancerprofile.Free_ID order by Rand() limit $num_freelancers";
+	   postwork.Free_ID =freelancerprofile.Free_ID order by Rand() limit $num_freelancers"; 
 		$Most_Query = mysql_query($get_Free);
 		while($row_Most = mysql_fetch_array($Most_Query)){
 			
@@ -98,14 +98,21 @@ class CustomerHome
 	}
 	
 	//@return: Categories array
-	public function loadCategories()
+	public function loadCategories($Cat_ID)
 	{
 		$Categories = array(); //Fill this array with Categories
 		
-		$get_category = "";
+		$get_category = "select freelancerprofile.FullName,freelancerprofile.Cat_ID,category.Cat_ID,category.Name from  
+		freelancerprofile,category where freelancerprofile.Cat_ID = '".$Cat_ID."'  AND '".$Cat_ID."' = category.Cat_ID "  ;
 		
+		$run_category = mysql_query($get_category);
 		
-		
+		while($row_category = mysql_fetch_array($run_category))
+		{
+		  /* $Categories [] = $row_category['category.Name'];
+		   echo " Category: ".$row_category['category.Name'].""; */  	
+		}
+				
 		//Code here
 		
 		return $Categories;
@@ -116,15 +123,24 @@ class CustomerHome
 	public function RecommendedFreelancers($num_freelancers)
 	{
 		$Recommended_Freelancers = array(); //Fill this array with Recommended Freelancers
-		
+	   	
 		$getRecommended = "select * from freelancerprofile,customerprofile where freelancerprofile.WorkType =              
 		customerprofile.Interests ";
 		
 		$run_query= mysql_query($getRecommended);
-		
+	  $counter=0;	
 		while($Recommended_row = mysql_fetch_array($run_query))
 		{
+			/*$get_int = "select customerprofile.Interests from customerprofile";
+			$run_int= mysql_query($get_int);
+	
+			while($row_int = mysql_fetch_array($run_int))
 			
+	           $customer_interest[] = $row_int;
+			   echo "$customer_interest[$counter]";             		
+     			$counter++;
+			}*/
+	
 	        $Recommended_Freelancers[] = new Freelancer($Recommended_row['Free_ID'],$Recommended_row['FullName'],null,null,              null,null,null,null,null,$Recommended_row['WorkType'],null,
 		      $Recommended_row['ProfilePic'],null);	     
 		}
@@ -138,10 +154,22 @@ class CustomerHome
 	public function Notifications($customerID)
 	{
 		$Notify = array(); //Fill this array with Customer's Notifications
+		$counter = 0;
+		$get_not = "select * Notifications";
+		$run_not = mysql_query($get_not);
 		
+		while($not_row = mysql_fetch_array($run_not)){
+			
 		//Code here
 		
+		$not_ID = $not_row["Notify_ID"];
+		$not_title = $not_row["Title"];
+		$not_msg = $not_row["Message"];
 		
+		$Notify[$counter] = new Notification($not_title,$not_msg);
+		$counter++;
+		
+		}
 		return $Notify;
 	}
 	
