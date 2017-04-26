@@ -1,10 +1,11 @@
 <?php
 include("freelancer.php");
 include("notification.php");
+include("database/database.php");
 
 class CustomerHome
 {
-	//REAL STUFF:)
+	//REAL STUFF:(
 	
 	//@par 'num_freelancers': Number of freelancers retrieved from DB
 	//@return: Interesting_Freelancers Array
@@ -12,9 +13,28 @@ class CustomerHome
 	{
 		$Interesting_Freelancers = array(); //Fill this array with interesting freelancers
 		
-		//Code here
+		$freelancers ="select * from freelancerprofile order by RAND() limit $num_freelancers";
+		$freelancer_query=mysql_query($freelancers);
 		
-		
+		while($freelancer_row=mysql_fetch_array($freelancer_query))
+		{
+		//	$counter=0;
+			$F_ID= $freelancer_row['Free_ID'];
+			$F_FullName = $freelancer_row['FullName'];
+			$F_Province = $freelancer_row['Province'];
+			$F_email= $freelancer_row['Email'];
+			$F_Password= $freelancer_row['Password'];
+			$F_Street= $freelancer_row['StreetAddress'];
+			$F_Town= $freelancer_row['Town'];
+			$F_worktype= $freelancer_row['WorkType'];
+			$F_Descrip= $freelancer_row['Description'];
+			$F_ContactNo= $freelancer_row['ContactNo'];
+			$F_proPic= $freelancer_row['ProfilePic'];
+			$F_Status= $freelancer_row['VerifyStatus'];
+			
+	 	   $Interesting_Freelancers[] = new Freelancer($F_ID,$F_FullName,null,null,null,null,null,null,null,
+		   null,null,$F_proPic,null);    		
+ 		}	
 		return $Interesting_Freelancers;
 	}
 	
@@ -22,11 +42,18 @@ class CustomerHome
 	//@return: MostRanked_Freelancers Array
 	public function MostRankedFreelancers($num_freelancers)
 	{
-		$MostRanked_Freelancers = array(); //Fill this array with Most Ranked Freelancers
-		
-		//Code here
-		
-		
+	
+	$MostRanked_Freelancers = array(); //Fill this array with Most Ranked Freelancers	
+	
+		$get_Free= "select freelancerprofile.Free_id,freelancerprofile.FullName,freelancerprofile.ProfilePic,
+	   freelancerprofile.Province,freelancerprofile.WorkType,postwork.Free_ID from freelancerprofile,postwork where      
+	   postwork.Free_ID =freelancerprofile.Free_ID order by Rand() limit $num_freelancers";
+		$Most_Query = mysql_query($get_Free);
+		while($row_Most = mysql_fetch_array($Most_Query)){
+			
+		$MostRanked_Freelancers[] = new Freelancer($row_Most['Free_ID'],$row_Most['FullName'],null,null,null,null,
+		$row_Most['Province'],null,null,$row_Most['WorkType'],null,$row_Most['ProfilePic'],null);
+	   }
 		return $MostRanked_Freelancers;
 	}
 	
@@ -37,9 +64,18 @@ class CustomerHome
 	{
 		$FreelancersIn_Location = array(); //Fill this array with Freelancers In my current Location
 		
-		//Code here
-		
-		
+		$locate_Freelancer = "select freelancerprofile.Free_ID, freelancerprofile.FullName, freelancerprofile.Province ,
+		  freelancerprofile.WorkType,freelancerprofile.Province, freelancerprofile.ProfilePic,customerprofile.Cust_ID,
+		  customerprofile.Province from freelancerprofile,customerprofile where 
+		  freelancerprofile.Province = customerprofile.Province AND '". $customerID."' = customerprofile.Cust_ID  
+		  limit 0,$num_freelancers";
+		 
+		  $Locate_query = mysql_query($locate_Freelancer);
+		  
+		  while($row_Location=mysql_fetch_array($Locate_query))
+		  {
+               $FreelancersIn_Location[] = new Freelancer($row_Location['Free_ID'],$row_Location['FullName'],null,null,null,
+			   null,$row_Location['Province'],null,null,$row_Location['WorkType'],null,$row_Location['ProfilePic'],null);			  	  }
 		return $FreelancersIn_Location;
 	}
 	
@@ -48,18 +84,27 @@ class CustomerHome
 	//@return: DiscoverNewFreelancers Array
 	public function DiscoverNewFreelancers($num_freelancers)
 	{
-		$DiscoverNew_Freelancers = array(); //Fill this array with New Freelancers
-		
-		//Code here
-		
-		
-		return $Discover_NewFreelancers;
+		  $DiscoverNew_Freelancers = array(); //Fill this array with New Freelancers
+		  $NewFreeLancer = "SELECT * FROM freelancerprofile ORDER BY freelancerprofile.Free_ID DESC limit 0,$num_freelancers";
+		  $Query_newFreelancer= mysql_query($NewFreeLancer); 
+		  
+		  while($row_NewFreelancer = mysql_fetch_array($Query_newFreelancer))
+		  {
+              $DiscoverNew_Freelancers[] = new Freelancer($row_NewFreelancer['Free_ID'],$row_NewFreelancer['FullName'],null,null,              null,null,$row_NewFreelancer['Province'],null,null,$row_NewFreelancer['WorkType'],null,
+		      $row_NewFreelancer['ProfilePic'],null);     			  
+		  }
+			
+		return $DiscoverNew_Freelancers;
 	}
 	
 	//@return: Categories array
 	public function loadCategories()
 	{
 		$Categories = array(); //Fill this array with Categories
+		
+		$get_category = "";
+		
+		
 		
 		//Code here
 		
@@ -72,8 +117,17 @@ class CustomerHome
 	{
 		$Recommended_Freelancers = array(); //Fill this array with Recommended Freelancers
 		
-		//Code here
+		$getRecommended = "select * from freelancerprofile,customerprofile where freelancerprofile.WorkType =              
+		customerprofile.Interests ";
 		
+		$run_query= mysql_query($getRecommended);
+		
+		while($Recommended_row = mysql_fetch_array($run_query))
+		{
+			
+	        $Recommended_Freelancers[] = new Freelancer($Recommended_row['Free_ID'],$Recommended_row['FullName'],null,null,              null,null,null,null,null,$Recommended_row['WorkType'],null,
+		      $Recommended_row['ProfilePic'],null);	     
+		}
 		
 		return $Recommended_Freelancers;
 	}
