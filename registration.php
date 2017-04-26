@@ -1,4 +1,8 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
+
 <html lang="en" >
 <head>
     <meta charset="utf-8">
@@ -27,10 +31,36 @@
     </head>
 
     <body class="focused-form animated-content">
-        
+        <?php
+		
+		if(isset($_GET['FieldError']))
+		{
+			echo
+			"
+				<div class='alert alert-dismissable alert-danger' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
+						<i class='fa fa-close'></i>&nbsp; <strong>Oh snap!</strong> Please Select Type of User!
+						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+					</div>
+			
+			";
+		}
+		
+		if(isset($_GET['PasswordNotMatch']))
+		{
+			echo
+			"
+				<div class='alert alert-dismissable alert-danger' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
+						<i class='fa fa-close'></i>&nbsp; <strong>Oh snap!</strong> Password not matching!
+						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+					</div>
+			
+			";
+		}
+		
+	?>
         
 <div class="container" id="registration-form">
-	<a href="index.html" class="login-logo"><img src="assets/img/logo-dark.png"></a>
+	<a href="#" class="login-logo"><img src="assets/img/logo-dark.png"></a>
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<div class="panel panel-default">
@@ -38,10 +68,10 @@
 					<h2 style="color:white" >Registration Form</h2>
 				</div>
 				<div class="panel-body">
-					<form action="" class="form-horizontal">
+					<form action="registration.php" method="post" class="form-horizontal">
 						<div class="form-group mb-md">
 	                        <div class="col-xs-8 col-xs-offset-2">
-	                        	<input type="text" class="form-control" name="FullName" id="FulltName" placeholder="Full Name" required>
+	                        	<input type="text" class="form-control" name="FullName" id="FullName" placeholder="Full Name" required>
 	                        </div>
 	                       
 						</div>
@@ -65,7 +95,7 @@
 											 <div class="col-xs-8 col-xs-offset-2">
 											<select name="selector1" id="selector1" class="form-control">
 												
-												<option value="Western_Sahara">Register As:</option>
+												<option value="null">Register As:</option>
 												<option value="FreeLancer">Freelancer</option>
 												<option value="Customer">Customer</option>
 												
@@ -81,16 +111,74 @@
 						      </div>
 							</div>
 						</div>
-						
-					</form>
-					
-				</div>
-				<div class="panel-footer">
+						<div class="panel-footer">
 					<div class="clearfix">
 						<a href="login.php" class="btn btn-default pull-left">Already Registered? Login</a>
-						<a href="freelancer_registrationwizard.php" class="btn btn-primary btn-raised pull-right">Register</a>
+						<button id="submit" name="submit" class="btn-raised btn-primary btn pull-right">Register</button>
 					</div>
 				</div>
+					</form>
+					
+					
+					<?php
+					
+					if(isset($_POST['FullName']))
+					{
+						$FullName = $_POST['FullName'];	
+						$Email = $_POST['Email'];
+						$Password = $_POST['Password'];
+						$ConfirmPassword = $_POST['ConfirmPassword'];
+						$cat = $_POST['selector1'];	
+						
+						//Validation
+						if($Password == $ConfirmPassword)
+						{
+							if($cat == "FreeLancer")
+							{
+								$_SESSION["Password"] = $Password;
+								echo"
+								
+								<script>
+								
+									window.location.replace('freelancer_registrationwizard.php?Name=$FullName&Email=$Email&Cat=$cat');
+
+								</script>";
+							}
+							elseif($cat == "Customer")
+							{
+								$_SESSION["Password"] = $Password;
+								echo"
+								<script>
+								
+									window.location.replace('customer_registrationwizard.php?Name=$FullName&Email=$Email');
+
+								</script>";
+							}
+							else
+							{
+								echo"
+								<script>
+								
+									window.location.replace('registration.php?FieldError');
+
+								</script>";
+							}
+						}
+						else
+						{
+							echo"
+								<script>
+								
+									window.location.replace('registration.php?PasswordNotMatch');
+
+								</script>";
+						}
+					}
+					
+					?>
+					
+				</div>
+				
 			</div>
 		</div>
 	</div>

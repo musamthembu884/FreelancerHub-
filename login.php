@@ -27,6 +27,21 @@
     </head>
 
     <body class="focused-form animated-content">
+	
+	<?php
+		if(isset($_GET['CredError']))
+		{
+			echo
+			"
+				<div class='alert alert-dismissable alert-danger' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
+						<i class='fa fa-close'></i>&nbsp; <strong>Oh snap!</strong> Incorrect Username or Password!
+						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+					</div>
+			
+			";
+		}
+		
+	?>
         
         
 <div class="container" id="login-form">
@@ -39,14 +54,14 @@
 					</div>
 					<div class="panel-body">
 						
-						<form action="" class="form-horizontal" id="validate-form">
+						<form action="bridge/login.php" method="post" class="form-horizontal" id="validate-form">
 							<div class="form-group mb-md">
 		                        <div class="col-xs-12">
 		                        	<div class="input-group">							
 										<span class="input-group-addon">
 											<i class="ti ti-user"></i>
 										</span>
-										<input type="text" class="form-control" placeholder="Username" data-parsley-minlength="6" placeholder="At least 6 characters" required>
+										<input type="text" id="username" name="username" class="form-control" placeholder="Username" data-parsley-minlength="6" placeholder="At least 6 characters" required>
 									</div>
 		                        </div>
 							</div>
@@ -57,7 +72,7 @@
 										<span class="input-group-addon">
 											<i class="ti ti-key"></i>
 										</span>
-										<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+										<input type="password" id="password" name="password" class="form-control" placeholder="Password">
 									</div>
 		                        </div>
 							</div>
@@ -65,7 +80,8 @@
 							<div class="panel-footer">
 						<div class="clearfix">
 							
-							<a href="customerhome.php" class="btn btn-primary btn-raised pull-left">Login</a>
+							<button id="submit" name="submit" class="btn-raised btn-primary btn">Log In</button>
+							
 							<a href="registration.php" class="btn btn-default pull-right">Register</a>
 						</div>
 						

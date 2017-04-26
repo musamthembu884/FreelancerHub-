@@ -51,45 +51,46 @@
 				
 				</div>
 				<div class="panel-body">
-					
-					<form action="login.php" id="wizard" class="form-horizontal">
+					<?php
+					if(isset($_GET['Name']))
+						{
+							$FullName = $_GET['Name'];
+							$Email = $_GET['Email'];
+							$Cat = $_GET['Cat'];
+						}
+							
+					?>
+					<form action="freelancer_registrationwizard.php?<?php echo"Name=".$FullName."&Email=".$Email."&Cat=".$Cat ?>" method="post" id="wizard" class="form-horizontal">
 						<fieldset title="Step 1">
 							<legend>Personal Address</legend>
 							<div class="form-group">
 											<label for="form-password" class="col-sm-2 control-label">Street</label>
 											<div class="col-sm-8 tabular-border">
-												<input type="text" class="form-control" id="form-password" placeholder="Street">
+												<input type="text" id="Street" name="Street" class="form-control" id="form-password" placeholder="Street">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="form-confirmpass" class="col-sm-2 control-label">City</label>
 											<div class="col-sm-8 tabular-border">
-												<input type="text" class="form-control" id="form-confirmpass" placeholder="City">
+												<input type="text" id="City" name="City" class="form-control" id="form-confirmpass" placeholder="City">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="selector1" class="col-sm-2 control-label">Province</label>
 											<div class="col-sm-8 tabular-border"><select name="selector1" id="selector1" class="form-control">
 												
-												<option value="Western_Sahara">Select Province</option>
-												<option value="Yemen">The Eastern Cape</option>
-												<option value="Zambia">The Free State</option>
-												<option value="Zimbabwe">Gauteng</option>
-												<option value="Yemen">KwaZulu-Natal</option>
-												<option value="Zambia">Limpopo</option>
-												<option value="Zimbabwe">Mpumalanga</option>
-												<option value="Yemen">The Northern Cape</option>
-												<option value="Zambia">Eastern Cape</option>
-												<option value="Zimbabwe">North West</option>
+												<option value="null">Select Province</option>
+												<option value="Eastern Cape">Eastern Cape</option>
+												<option value="Free State">Free State</option>
+												<option value="Gauteng">Gauteng</option>
+												<option value="KwaZulu-Natal">KwaZulu-Natal</option>
+												<option value="Limpopo">Limpopo</option>
+												<option value="Mpumalanga">Mpumalanga</option>
+												<option value="Northern Cape">Northern Cape</option>
+												<option value="Western Cape">Western Cape</option>
+												<option value="North West">North West</option>
 												
-												
-
-
-
-
-
-
-
+								
 											</select></div>
 										</div>
 						</fieldset>
@@ -98,14 +99,37 @@
 							<div class="form-group">
 											<label class="col-sm-2 control-label">Biography</label>
 											<div class="col-sm-8">
-												<textarea class="form-control fullscreen"></textarea>
+												<textarea class="form-control fullscreen" id="Biography" name="Biography"></textarea>
 											</div>
 										</div>
 							<div class="form-group">
 											<label for="form-confirmpass" class="col-sm-2 control-label">Services/Work</label>
 											<div class="col-sm-8 tabular-border">
-												<input type="text" class="form-control" id="form-confirmpass" placeholder="Services/Work">
+												<input type="text" class="form-control" id="Work" name="Work" placeholder="Services/Work">
 											</div>
+										</div>
+										<div class="form-group">
+											<label for="selector1" class="col-sm-2 control-label">Services Category</label>
+											<div class="col-sm-8 tabular-border"><select name="Category" id="Category" class="form-control">
+												
+												<option value='null'>Select Category</option>
+												<option value='IT'>IT</option>
+												<?php
+												include("classes/customerhome.php");
+												
+												$category = new CustomerHome();
+												$cats = array();
+												$cats = $category->loadCategories();
+												
+												
+												for($k=0; $k<count($cats); $k++)
+												{
+													echo"<option value='$cats[$k]'>$cats[$k]</option>";
+												}
+												?>
+												
+										
+											</select></div>
 										</div>
 										<div class="form-group">
 											<label for="radio" class="col-sm-2 control-label">Gender</label>
@@ -124,8 +148,43 @@
 								</div>
 							</div>
 						</fieldset>
-						<input type="submit" class="finish btn-success btn" onclick="extras-profile.html" value="Submit" />
+						<input type="submit" class="finish btn-success btn" value="Submit" />
 					</form>
+					
+					<?php
+		
+						
+								if(isset($_POST['Street']))
+								{
+									if(isset($_GET['Name']))
+									{
+										$FullName = $_GET['Name'];
+										$Email = $_GET['Email'];
+										$Cat = $_GET['Cat'];
+									}
+									
+									$Street = $_POST['Street'];
+									$City = $_POST['City'];
+									$Province = $_POST['selector1'];
+									$Biography = $_POST['Biography'];
+									$Work = $_POST['Work'];
+									$Category = $_POST['Category'];
+									
+									echo"
+									
+									<script>
+									
+										window.location.replace('bridge/register.php?Name=$FullName&Email=$Email&Cat=$Cat&Street=$Street&City=$City&Province=$Province&Biography=$Biography&Work=$Work&Category=$Category&Gender=Male');
+
+									</script>";
+									//echo "Street: ".$Street." Name: ".$FullName;
+								}
+							
+							
+						//}
+					?>
+					
+					
 				</div>
 			</div>
 

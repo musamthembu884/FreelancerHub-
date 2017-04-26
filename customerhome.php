@@ -2237,10 +2237,10 @@
 
     
         <ul class="nav nav-tabs material-nav-tabs stretch-tabs icon-tabs">
-            <li ><a href="#tab-7-1" data-toggle="tab">
-                <i class="material-icons">settings</i>
+            <li class="active"><a href="#tab-7-1" data-toggle="tab">
+                <i class="material-icons">contacts</i>
             </a></li>
-            <li class="active "><a href="#tab-7-2" data-toggle="tab"><span class="step size-64">
+            <li ><a href="#tab-7-2" data-toggle="tab"><span class="step size-64">
                   <i class="material-icons">textsms</i>
                 </span></a>
             </li>
@@ -2248,115 +2248,19 @@
     
 
     <div class="tab-content">
-        <div class="tab-pane" id="tab-7-1">
-
-            <table class="table table-settings">
-                <tbdody>
-                    <tr>
-                        <td>
-                            <h5>Alerts</h5>
-                            <p>Sets alerts to get notified when changes occur to get new alerming items</p>
-                        </td>
-                        <td><span class="togglebutton toggle-info"><label><input type="checkbox"> </label></span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5>Notifications</h5>
-                            <p>You will receive notification email for any notifications if you set notification</p>
-                        </td>
-                        <td><span class="togglebutton toggle-primary"><label><input type="checkbox" class="toggle"  checked=""> </label></span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5>Messages</h5>
-                            <p>You will receive notification on email after setting messages notifications</p>                            
-                        </td>
-                        <td>
-                            <span class="togglebutton toggle-danger"><label><input type="checkbox" > </label></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5>Warnings</h5>
-                            <p>You will get warnning only some specific setttings or alert system</p>
-                        </td>
-                        <td>
-                            <span class="togglebutton toggle-warning"><label><input type="checkbox" checked=""> </label></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5>Sidebar</h5>
-                            <p>You can hide/show use with sidebar collapsw settings</p>
-                        </td>
-                        <td><span class="togglebutton toggle-success"><label><input type="checkbox" checked=""> </label></span></td>
-                    </tr>
-                </tbdody>
-            </table>
-
-        </div>
-        <div class="tab-pane active" id="tab-7-2">
-
+        <div class="tab-pane active" id="tab-7-1">
+ <div class="profile-tab panel">
             <div class="widget">
-                <div class="widget-heading">Recent Activities</div>
+                <div class="media-body" style="text-align:center;">
+                              <h5 style="text-align:center; font-size: 20px; margin-left:28px; margin-top: 10px" class="media-heading">Contacts</h5>
+                                
+                            </div>
                 <div class="widget-body">
-                    <ul class="timeline">
-                        <li class="timeline-purple">
-                            <div class="timeline-icon"><i class="material-icons">add</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Jana Pena is now Follwing you</span>
-                                    <span class="date">2 min ago</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-primary">
-                            <div class="timeline-icon"><i class="material-icons">textsms</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Percy liaye Like your picture</span>
-                                    <span class="date">6 min ago</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-green">
-                            <div class="timeline-icon"><i class="material-icons">done</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Leon miles make your presentation for new project</span>
-                                    <span class="date">2 hours ago</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-danger">
-                            <div class="timeline-icon"><i class="material-icons">favorite</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Lake wile like your comment</span>
-                                    <span class="date">5 hours ago</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-sky">
-                            <div class="timeline-icon"><i class="material-icons">attach_money</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">The Mountain Ambience paid your payment</span>
-                                    <span class="date">9 hours ago</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="widget">
-                <div class="widget-heading">Contacts</div>
-                <div class="widget-body">
+				
                     <ul class="media-list contacts">
                         <li class="media notification-message">
                             <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="" />
+                                <a href="#tab-7-2" data-toggle="tab"><img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="" /></a>
                             </div>
                             <div class="media-body">
                               <span class="text-gray">Jon Owens</span>
@@ -2364,6 +2268,42 @@
                             </div>
                         </li>
                         <li class="media notification-message">
+                            <div class="media-left">
+                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="" />
+                            </div>
+                            <div class="media-body">
+                                <span class="text-gray">Nina Huges</span>
+                                <span class="contact-status text-muted">Offline</span>
+                            </div>
+                        </li>
+						<li class="media notification-message">
+                            <div class="media-left">
+                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="" />
+                            </div>
+                            <div class="media-body">
+                                <span class="text-gray">Nina Huges</span>
+                                <span class="contact-status text-muted">Offline</span>
+                            </div>
+                        </li>
+						<li class="media notification-message">
+                            <div class="media-left">
+                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="" />
+                            </div>
+                            <div class="media-body">
+                                <span class="text-gray">Nina Huges</span>
+                                <span class="contact-status text-muted">Offline</span>
+                            </div>
+                        </li>
+						<li class="media notification-message">
+                            <div class="media-left">
+                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="" />
+                            </div>
+                            <div class="media-body">
+                                <span class="text-gray">Nina Huges</span>
+                                <span class="contact-status text-muted">Offline</span>
+                            </div>
+                        </li>
+						<li class="media notification-message">
                             <div class="media-left">
                                 <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="" />
                             </div>
@@ -2399,12 +2339,112 @@
                                 <span class="contact-status text-success">Online</span>
                             </div>
                         </li>
+						<br><br>
                     </ul>                                
                 </div>
             </div>
+			</div>
 
+        </div>
+        <div class="tab-pane " id="tab-7-2">
+	<div class="">
+<div class="profile-tab panel">
+<div class="widget">
 
-            </div>
+               
+				<div class="media-body" style="text-align:center;">
+                              <h5 style="text-align:center; font-size: 20px; margin-left:28px; margin-top: 10px" class="media-heading">Chat</h5>
+                                
+                            </div>
+<div class="widget-body sidebar-scroll">
+                    <ul class="media-list contacts">
+                        <li class="media notification-message">
+                            <div class="media-left">
+                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                              <span class="text-success">Hey there adhdjs hsadvshaD sd hasnDGb sdh shanDGsd bashdbas dszfdsfsdz
+							  sdzxfsdzfsdzxfsdzf dsdsds ldsd sds dszd szdsdszdszdsz dsdsds dszds dsds zdszdsd dsdsd </span>
+                                <br><span class="text-success" style="font-style:italic;color:black;"><strong>30 min ago</strong></span>
+                            </div>
+                        </li>
+						
+						<li class="media notification-message">
+                            <div class="media-left">
+                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                              <span class="text-gray">Hey there adhdjs hsadvshaD sd hasnDGb sdh shanDGsd bashdbas dszfdsfsdz
+							  sdzxfsdzfsdzxfsdzf dsdsds ldsd sds dszd szdsdszdszdsz dsdsds dszds dsds zdszdsd dsdsd </span>
+                                <br><span class="text-success" style="font-style:italic;color:black;"><strong>18 min ago</strong></span>
+                            </div>
+                        </li>
+						<li class="media notification-message">
+                            <div class="media-left">
+                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                              <span class="text-success">Hey there adhdjs hsadvshaD sd hasnDGb sdh shanDGsd bashdbas dszfdsfsdz
+							  sdzxfsdzfsdzxfsdzf dsdsds ldsd sds dszd szdsdszdszdsz dsdsds dszds dsds zdszdsd dsdsd </span>
+<br><span class="text-success" style="font-style:italic;color:black;"><strong>15 min ago</strong></span>
+                                
+                            </div>
+                        </li>
+						
+						<li class="media notification-message">
+                            <div class="media-left">
+                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                              <span class="text-gray">Hey there adhdjs hsadvshaD sd hasnDGb sdh shanDGsd bashdbas dszfdsfsdz
+							  sdzxfsdzfsdzxfsdzf dsdsds ldsd sds dszd szdsdszdszdsz dsdsds dszds dsds zdszdsd dsdsd </span>
+                                <br><span class="text-success" style="font-style:italic;color:black;"><strong>11 min ago</strong></span>
+                            </div>
+                        </li>
+						<li class="media notification-message">
+                            <div class="media-left">
+                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                              <span class="text-success">Hey there adhdjs hsadvshaD sd hasnDGb sdh shanDGsd bashdbas dszfdsfsdz
+							  sdzxfsdzfsdzxfsdzf dsdsds ldsd sds dszd szdsdszdszdsz dsdsds dszds dsds zdszdsd dsdsd </span>
+                                <br><span class="text-success" style="font-style:italic;color:black;"><strong>8 min ago</strong></span>
+                            </div>
+                        </li>
+						
+						<li class="media notification-message">
+                            <div class="media-left">
+                               <a href="#" ><img class="media-object avatar" src="assets/img/propic/r2.jpg" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                              <span class="text-gray">Hey there adhdjs hsadvshaD sd hasnDGb sdh shanDGsd bashdbas dszfdsfsdz
+							  sdzxfsdzfsdzxfsdzf dsdsds ldsd sds dszd szdsdszdszdsz dsdsds dszds dsds zdszdsd dsdsd </span>
+                                <br><span class="text-success" style="font-style:italic;color:black;"><strong>5 min ago</strong></span>
+                            </div>
+                        </li>
+						<br>
+						
+						
+				
+						
+						</ul>
+						<div class="form-group is-empty">
+					
+					
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Say something...">
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-info btn-raised">Send!<div class="ripple-container"></div></button>
+							</div>
+						</div>
+					
+				<span class="material-input"></span></div>
+				<br>
+				<br>
+						</div>
+						</div>
+		</div>
+		</div>
         </div>
 
     </div>
