@@ -79,14 +79,14 @@ class Authentication
 		}
 	}
 	
-	public function Register($Type,$G_FullName,$G_Email,$G_Password,$G_StreetAddress,$G_Town,$G_Province,$G_ContactNo,$G_WorkType,$G_Description,$G_VerifyStatus,$G_ProfilePic,$G_Interests)
+	public function Register($Type,$G_FullName,$G_Email,$G_Password,$G_StreetAddress,$G_Town,$G_Province,$G_ContactNo,$G_WorkType,$G_Description,$G_VerifyStatus,$G_ProfilePic,$G_Interests,$G_Specialty)
 	{
 		$flag = "False"; //Boolean
 		
 		if($Type == "FreeLancer")
 		{
 			
-			$run_query = mysql_query("insert into freelancerprofile(FullName,Email,Password,StreetAddress,Town,Province,ContactNo,WorkType,Description,VerifyStatus,ProfilePic) values ('$G_FullName','$G_Email','$G_Password','$G_StreetAddress','$G_Town','$G_Province','$G_ContactNo','$G_WorkType','$G_Description','$G_VerifyStatus','$G_ProfilePic')") or exit(mysql_error());
+			$run_query = mysql_query("insert into freelancerprofile(FullName,Email,Password,StreetAddress,Town,Province,ContactNo,WorkType,Description,VerifyStatus,ProfilePic,specialty) values ('$G_FullName','$G_Email','$G_Password','$G_StreetAddress','$G_Town','$G_Province','$G_ContactNo','$G_WorkType','$G_Description','$G_VerifyStatus','$G_ProfilePic','$G_Specialty')") or exit(mysql_error());
 			
 			$this->Drive($G_Email,"FreeLancer");
 			$flag="True";

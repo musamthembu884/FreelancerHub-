@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -486,327 +489,144 @@
 								
 							</div>
 						</div>
+					
 						<div class="tab-pane active" id="tab-8-2">								
 							<div class="profile-tab">
-								<input class="form-control m-n" type="text" placeholder="What's on your mind...">
+								<form action="myfreelancerprofile.php" method="post" enctype="multipart/form-data">
+								<input class="form-control m-n" type="text" name="text" id="text" placeholder="What's on your mind...">
 								<div class="clearfix ">
 									<div class="pull-left pt-sm">
 										<span class="icon"><i class="material-icons">photo_camera</i></span>
 										<span class="icon"><i class="material-icons">sentiment_satisfied</i></span>
 										<span class="icon"><i class="material-icons">place</i></span>
 									</div>
-									<div class="pull-right"><a class="btn btn-raised btn-primary m-n" href="#">POST</a></div>
+									<div class="pull-right"><button id="submit" name="submit" class="btn-raised btn-primary btn">POST</button></div>
 								</div>
+								</form>
 							</div>
 							
-								<div class="panel profile-tab like-comment">
-								<div class="media">
-								<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">Edit</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Bookmark</a></li>
-					 <li class="divider"></li>
-                    <li><a href="">Delete</a></li>
+							<?php
+							include('classes/timeline.php');
+							include("database/database.php");
+							if(isset($_POST['text']))
+							{
+								$Post_caption = $_POST['text'];
+								
+								
+								$Timeline = new Timeline();
+								$Timeline->uploadpost(null,$Post_caption, null,$_SESSION['user']);
+							}
+							
+							?>
+						
+							
+								
+								
+							<?php
+							$Timeline = new Timeline();
+							$myposts = array();
+							$myposts = $Timeline-> loadposts(10, $_SESSION['user']);
+							//echo "R: ". count($myposts);
+							
+							for($k=0;$k<count($myposts);$k++)
+							{
+								
+							
+							echo"
+							
+							<div class='panel profile-tab like-comment'>
+								<div class='media'>
+								<div class='panel-controls dropdown'>
+                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href=''>Edit</a></li>
+					
+					 <li class='divider'></li>
+                    <li><a href='bridge/deletepost.php?PostID=".$myposts[$k]->get_ID()."'>Delete</a></li>
                    
                 </ul>
             </div>
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
+									<a class='media-left' href='#'>
+										<img class='media-object' src='"; echo "assets/img"; echo "/". $myposts[$k]->get_thumbnailURL();echo"'"; echo" alt=''>
 									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sankofa Future</h5>
-										1 Hour ago
+									<div class='media-body pb-md'>
+										<h5 class='media-heading'>".$myposts[$k]->get_author()."</h5>
+										".$myposts[$k]->get_date()."
 									</div>
 									
-									<div class="pb-md pt-md media-desc">
-										Yo Yo guys!!! Listen to my music!!! #STAYFRESH
+									<div class='pb-md pt-md media-desc'>
+										".$myposts[$k]->get_title()."
 									</div>
 								</div>
-								<div class="col-md-12 pt-sm pb-md">
-									<iframe width="100%" height="450" scrolling="no" frameborder="yes" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/248956309&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+								<div class='col-md-12 pt-sm pb-md'>
+									
+									
+									
+									
 								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
+								<div class='like-info'>
+									<a class='btn btn-xs btn-info btn-label ml-md' href='#'>
+										<i class='material-icons'>favorite</i>
 										Like
 									</a>
-									<p class="m-n like-amount"><a href="">455 others</a> like this</p>
+									<p class='m-n like-amount'><a href=''>".$myposts[$k]->get_likes()."</a> likes</p>
 								</div>
-								<div class="media m-n pl-xl comment-profile">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/c5.jpg" alt="Generic placeholder image">
+								
+								";
+								
+								$arrComments = array();
+								$arrComments = $Timeline->loadcomments(13);
+								//echo "CCCCCC".count($arrComments);
+								
+								for($i=0; $i<count($arrComments);$i++)
+								{
+									echo"<div class='media m-n pl-xl comment-profile'>
+									<a class='media-left' href='#'>
+										<img class='media-object' src='assets/img/propic/c5.jpg' alt='Generic placeholder image'>
 									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Gee Ross</h5>
+									<div class='media-body pb-md'>
+										<h5 class='media-heading'>Gee Ross</h5>
 										30 min ago
 									</div>
-									<div class="pb-md pt-md media-desc">
+									<div class='pb-md pt-md media-desc'>
 										Good music my man...keep it up!!! 
 									</div>
 								</div>
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="panel profile-tab like-comment">
-								<div class="media">
-								<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                   <li><a href="">Edit</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Bookmark</a></li>
-					 <li class="divider"></li>
-                    <li><a href="">Delete</a></li>
-                </ul>
-            </div>
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sankofa Future</h5>
-										2 Hour ago
-									</div>
-									
-									<div class="pb-md pt-md media-desc">
-										I produce fresh stuff y'all...#STAYFRESH
-									</div>
-								</div>
-								<div class="col-md-12 pt-sm pb-md">
-									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/301822104&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">321 others</a> like this</p>
-								</div>
-								<
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="panel profile-tab like-comment">
-								<div class="media">
-								<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                   <li><a href="">Edit</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Bookmark</a></li>
-					 <li class="divider"></li>
-                    <li><a href="">Delete</a></li>
-                </ul>
-            </div>
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sankofa Future</h5>
-										4 Hour ago
-									</div>
-									
-									<div class="pb-md pt-md media-desc">
-										I never disapoint...another one guys #STAYFRESH
-									</div>
-								</div>
-								<div class="col-md-12 pt-sm pb-md">
-									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/304539742&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">222 others</a> like this</p>
-								</div>
-								<div class="media m-n pl-xl comment-profile">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/user.png" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Lil' Jim</h5>
-										2 Hours ago
-									</div>
-									<div class="pb-md pt-md media-desc">
-										You killing it my man!!!!  
-									</div>
-								</div>
-								<div class="media m-n pl-xl comment-profile">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/c5.jpg" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Gee Ross</h5>
-										2 Hours ago
-									</div>
-									<div class="pb-md pt-md media-desc">
-										This is what I call real music...you the best! 
-									</div>
-								</div>
-								<div class="media m-n pl-xl comment-profile">
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sankofa Future</h5>
-										1 Hour ago
-									</div>
-									<div class="pb-md pt-md media-desc">
-										Thanks hommies!!! 
-									</div>
-								</div>
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="panel profile-tab like-comment">
-								<div class="media">
-								<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                   <li><a href="">Edit</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Bookmark</a></li>
-					 <li class="divider"></li>
-                    <li><a href="">Delete</a></li>
-                </ul>
-            </div>
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sankofa Future</h5>
-										1 Day ago
-									</div>
-									
-									<div class="pb-md pt-md media-desc">
-										Another one...be fresh hommies #STAYFRESH
-									</div>
-								</div>
-								<div class="col-md-12 pt-sm pb-md">
-									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/300967569&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">1277 others</a> like this</p>
-								</div>
+									";
+								}
+								echo"
+								<form action='myfreelancerprofile.php?PostID=".$myposts[$k]->get_ID()."' method='post' enctype='multipart/form-data'>
+								<input class='form-control' name='thecomment' id='thecomment' type='text' placeholder='What's on your mind...'>
 								
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="panel profile-tab like-comment">
-								<div class="media">
-								<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                   <li><a href="">Edit</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Bookmark</a></li>
-					 <li class="divider"></li>
-                    <li><a href="">Delete</a></li>
-                </ul>
-            </div>
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sankofa Future</h5>
-										2 Days ago
-									</div>
-									
-									<div class="pb-md pt-md media-desc">
-										I always deliver good music to my fans #STAYFRESH
-									</div>
-								</div>
-								<div class="col-md-12 pt-sm pb-md">
-									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/313439624&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">1332 others</a> like this</p>
-								</div>
+								</form>
 								
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="panel profile-tab like-comment">
-								<div class="media">
-								<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                   <li><a href="">Edit</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Bookmark</a></li>
-					 <li class="divider"></li>
-                    <li><a href="">Delete</a></li>
-                </ul>
-            </div>
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sankofa Future</h5>
-										4 Days ago
-									</div>
-									
-									<div class="pb-md pt-md media-desc">
-										 Produced this killa song by Trey Songz  #STAYFRESH
-									</div>
-								</div>
-								<div class="col-md-12 pt-sm pb-md">
-									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/235065191&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">1500 others</a> like this</p>
-								</div>
+							</div>";
+							
+							}
+
+							?>	
+
+														
+							
 								
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>
-							<div class="panel profile-tab like-comment">
-								<div class="media">
-								<div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                   <li><a href="">Edit</a></li>
-					<li class="divider"></li>
-                    <li><a href="">Bookmark</a></li>
-					 <li class="divider"></li>
-                    <li><a href="">Delete</a></li>
-                </ul>
-            </div>
-									<a class="media-left" href="#">
-										<img class="media-object" src="assets/img/propic/t5.jpg" alt="Generic placeholder image">
-									</a>
-									<div class="media-body pb-md">
-										<h5 class="media-heading">Sankofa Future</h5>
-										7 Days ago
-									</div>
-									
-									<div class="pb-md pt-md media-desc">
-										Produced This!!! #STAYFRESH  #STAYFRESH  #STAYFRESH  #STAYFRESH
-									</div>
-								</div>
-								<div class="col-md-12 pt-sm pb-md">
-									<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/275611424&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-								</div>
-								<div class="like-info">
-									<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-										<i class="material-icons">favorite</i>
-										Like
-									</a>
-									<p class="m-n like-amount"><a href="">155 others</a> like this</p>
-								</div>
-								
-								<input class="form-control" type="text" placeholder="What's on your mind...">
-							</div>	
 								
 						</div>
+						<?php
+							
+							if(isset($_POST['thecomment']))
+							{
+								$mycomment = $_POST['thecomment'];
+								echo "YES" . $mycomment;
+								
+								$ID = $_GET['PostID'];
+								
+								//echo "ID: ".$ID;
+								
+								$Timeline->comment($_SESSION['user'], $ID, $mycomment);
+							}
+							
+							
+							?>
 						<div class="tab-pane p-md" id="tab-8-3">
 							<div class="table-responsive">
 								<table class="table m-n">

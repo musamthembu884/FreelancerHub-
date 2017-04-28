@@ -92,26 +92,34 @@
 												
 								
 											</select></div>
+											
 										</div>
-						</fieldset>
-						<fieldset title="Step 2">
-							<legend>Personal Description</legend>
-							<div class="form-group is-empty">
+										<div class="form-group is-empty">
 											<label for="form-confirmpass" class="col-sm-2 control-label">Contact Number</label>
 											<div class="col-sm-8 tabular-border">
 												<input type="text" id="ContactNO" name="ContactNO" class="form-control"  placeholder="(e.g) 081 250 6541">
 											</div>
 										<span class="material-input"></span></div>
+						</fieldset>
+						<fieldset title="Step 2">
+							<legend>Personal Description</legend>
+							
 							<div class="form-group">
 											<label class="col-sm-2 control-label">Biography</label>
 											<div class="col-sm-8">
 												<textarea class="form-control fullscreen" id="Biography" name="Biography"></textarea>
 											</div>
 										</div>
-							<div class="form-group">
-											<label for="form-confirmpass" class="col-sm-2 control-label">Services/Work</label>
+										<div class="form-group">
+											<label for="form-confirmpass" class="col-sm-2 control-label">Specialty</label>
 											<div class="col-sm-8 tabular-border">
-												<input type="text" class="form-control" id="Work" name="Work" placeholder="Services/Work">
+												<input type="text" class="form-control" id="Specialty" name="Specialty" placeholder="(e.g) Back-End Developer">
+											</div>
+										</div>
+							<div class="form-group">
+											<label for="form-confirmpass" class="col-sm-2 control-label">Skills</label>
+											<div class="col-sm-8 tabular-border">
+												<input type="text" class="form-control" id="Work" name="Work" placeholder="(e.g) Ruby Rails, C#, Php, VB, Software Engineering">
 											</div>
 										</div>
 										<div class="form-group">
@@ -119,7 +127,7 @@
 											<div class="col-sm-8 tabular-border"><select name="Category" id="Category" class="form-control">
 												
 												<option value='null'>Select Category</option>
-												<option value='IT'>IT</option>
+												
 												<?php
 												include("classes/customerhome.php");
 												
@@ -137,15 +145,22 @@
 										
 											</select></div>
 										</div>
-										<div class="form-group">
-											<label for="radio" class="col-sm-2 control-label">Gender</label>
-											<div class="col-sm-8 tabular-border">
-												<div class="radio"><label><input type="radio" name="gender"> Male</label></div>
-												<div class="radio"><label><input type="radio" name="gender"> Female</label></div>
-											</div>
-										</div>
+										
 						</fieldset>
 						<fieldset title="Step 3">
+							<legend>Upload Profile Picture</legend>
+							<div class="form-group">
+								<label for="" class="col-md-3 control-label">Upload Profile Picture</label>
+								<div class="col-md-9">
+									<form action="upload.php" method="post" enctype="multipart/form-data">
+    
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset title="Step 4">
 							<legend>Terms and Conditions</legend>
 							<div class="form-group">
 								<label for="" class="col-md-3 control-label">Terms and Conditions</label>
@@ -176,12 +191,14 @@
 									$Work = $_POST['Work'];
 									$Category = $_POST['Category'];
 									$ContactNO = $_POST['ContactNO'];
+									$Specialty = $_POST['Specialty'];
+									
 									
 									echo"
 									
 									<script>
 									
-										window.location.replace('bridge/register.php?Name=$FullName&Email=$Email&Cat=$Cat&Street=$Street&City=$City&Province=$Province&Biography=$Biography&Work=$Work&Category=$Category&Gender=Male&ContactNO=$ContactNO');
+										window.location.replace('bridge/register.php?Name=$FullName&Email=$Email&Cat=$Cat&Street=$Street&City=$City&Province=$Province&Biography=$Biography&Work=$Work&Category=$Category&Gender=Male&ContactNO=$ContactNO&Specialty=$Specialty');
 
 									</script>";
 									//echo "Street: ".$Street." Name: ".$FullName;

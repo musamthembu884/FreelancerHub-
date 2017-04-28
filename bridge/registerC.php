@@ -16,7 +16,7 @@ if(isset($_GET['Name']))
 	
 	$auth = new Authentication();
 	
-	if($auth->Register($Cat,$FullName,$Email,$_SESSION['Password'],$Street,$City,$Province,$ContactNo,null,null,null,"default.png",$Interests) == "True")
+	if($auth->Register($Cat,$FullName,$Email,$_SESSION['Password'],$Street,$City,$Province,$ContactNo,null,null,null,"default.png",$Interests,null) == "True")
 	{
 	
 		echo"

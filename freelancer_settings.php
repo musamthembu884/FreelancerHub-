@@ -450,17 +450,77 @@
 											</div>
 										</div>
 										
+										<form action="freelancer_settings.php" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+										
 										<div class="form-group">
 					<label class="col-sm-2 control-label">Profile Picture</label>
+					<!--<form action="freelancer_settings.php" method="post" enctype="multipart/form-data">
 					<div class="col-sm-5">
 						<div class="fileinput fileinput-new" style="width: 100%;" data-provides="fileinput">
 							<div class="fileinput-preview thumbnail mb20" data-trigger="fileinput" style="width: 100%; height: 150px;"></div>
 							<div>
 								<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-								<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+								<span class="btn btn-default btn-file"><span class="fileinput-new"><input id="img" name="img" type="file"/>Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+								
+								
 							</div>
 						</div>
+					
+						<input type="submit"  value="Upload File" />
 					</div>
+					
+					
+					</form>-->
+					
+					
+					<?php
+$target_dir = "images/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+?>
 					<div class="col-sm-4">
 						<div class="alert alert-info" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">Image preview only works in IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and Opera11.1+. In older browsers the filename is shown instead.</div>
 					</div>

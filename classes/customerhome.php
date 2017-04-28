@@ -1,7 +1,7 @@
 <?php
 include("freelancer.php");
 include("notification.php");
-include("database/database.php");
+
 
  class CustomerHome
 {

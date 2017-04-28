@@ -3,6 +3,7 @@
 
 class Post
 {
+ private $post_ID;
  private $post_thumbnailURL;
  private $post_author;
  private $post_date;
@@ -12,6 +13,12 @@ class Post
  private $post_comments = array();
  
  //<GETTERS AND SETTERS>
+ 
+ 
+ public function get_ID()
+  {
+	  return $this->post_ID;
+  }
  
  //ThumbnailURL
   public function set_thumbnailURL($value)
@@ -89,7 +96,7 @@ class Post
  
   //</GETTERS AND SETTERS>
  
-  public function __construct($thumbnailURL,$author,$date,$title,$mediaURL,$likes,$comments)
+  public function __construct($thumbnailURL,$author,$date,$title,$mediaURL,$likes,$comments,$post_ID)
   {
 	  $this->post_thumbnailURL = $thumbnailURL;
 	  $this->post_author = $author;
@@ -98,6 +105,7 @@ class Post
 	  $this->post_mediaURL = $mediaURL;
 	  $this->post_likes = $likes;
 	  $this->post_comments = $comments;
+	  $this->post_ID = $post_ID;
   }
 	
 	

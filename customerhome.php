@@ -377,6 +377,7 @@ session_start();
                                    <?php
 								  
 								   include("classes/customerhome.php");
+								   include("database/database.php");
 								   $CoolPeople = new CustomerHome();
 								  $arrCoolPeople = array();
 								  $arrCoolPeople = $CoolPeople->InterestingFreelancers(12);
@@ -934,7 +935,7 @@ session_start();
 					<li class='divider'></li>
                     <li><a href=''>Chat</a></li>
                     <li class='divider'></li>
-                    <li><a href=''>Connect</a></li>
+                    <li><a href='bridge/connect.php?FreeID=".$arrInLocation[$k]->get_ID()."'>Connect</a></li>
                 </ul>
             </div>
 
@@ -1019,7 +1020,7 @@ session_start();
 					<li class='divider'></li>
                     <li><a href=''>Chat</a></li>
                     <li class='divider'></li>
-                    <li><a href=''>Connect</a></li>
+                    <li><a href='bridge/connect.php?FreeID=".$arrDiscoverNew[$k]->get_ID()."'>Connect</a></li>
                 </ul>
             </div>
 

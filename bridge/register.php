@@ -15,11 +15,13 @@ if(isset($_GET['Name']))
 	$Work = $_GET['Work'];
 	$Category = $_GET['Category'];
 	$ContactNO = $_GET['ContactNO'];
+	$Specialty = $_GET['Specialty'];
+	
 	
 	
 	$auth = new Authentication();
 	
-	if($auth->Register($Cat,$FullName,$Email,$_SESSION['Password'],$Street,$City,$Province,$ContactNO,$Work,$Biography,"False","default.jpg",null) == "True")
+	if($auth->Register($Cat,$FullName,$Email,$_SESSION['Password'],$Street,$City,$Province,$ContactNO,$Work,$Biography,"False","default.jpg",$Specialty) == "True")
 	{
 	
 		echo"
