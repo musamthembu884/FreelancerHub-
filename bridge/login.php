@@ -7,15 +7,17 @@ $password = $_POST['password'];
 $auth = new Authentication();
 if($auth->login($username,$password) == "FreeLancer")
 {
+	$_SESSION["Email"] = $username;
 	echo"
 	<script>
 	
-		window.location.replace('../myfreelancerprofile.php');
+		window.location.replace('../fhome.php');
 
 	</script>";
 }
 elseif($auth->login($username,$password) == "Customer")
 {
+	$_SESSION["Email"] = $username;
 	echo"
 	<script>
 		

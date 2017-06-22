@@ -96,13 +96,13 @@
 						
 						
 					</div>
-					<a href="#"><div style="background-color:#0d47a1" class="panel-heading">
+					<!--<a href="#"><div style="background-color:#0d47a1" class="panel-heading">
 						<h2 style="color:white">Sign In Via <i class="fa fa-facebook"></i>Facebook</h2>
 						
 					</div></a>
 					<a href="#"><div style="background-color:#c62828" class="panel-heading">
 						<h2 style="color:white">Sign In Via <i class="fa fa-google"></i>Google</h2>
-					</div></a>
+					</div></a>-->
 					
 					
 					

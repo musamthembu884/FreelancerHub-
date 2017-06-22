@@ -353,20 +353,12 @@ include("classes/customerhome.php");
    
 								<div class="media">
 								 
-            
-							<div class="media-body pb-md" style="height:115px">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Interesting Freelancers
-										
-									
-									
-									
-                                
-								<style>
+            <style>
 								#horizontal-list{
 									list-style:none;
  width:100%;
- text-align:left;
- float:left;
+ text-align:center;
+ margin-left:50px;
 
  margin-top: -10px;
  
@@ -375,29 +367,41 @@ include("classes/customerhome.php");
 								 
  display:inline-block;
  text-align:center;
- padding-right: 10px;
+ padding-right: 30px;
  padding-top:18px;
  
 								}
 								</style>
+							<div class="media-body pb-md" style="height:200px">
+										<h5 class="media-heading" style="font-size:28px; font-weight:900" >How it works
 								
-                                <ul id="horizontal-list" class="avatar">
+								
+                                <ul id="horizontal-list" class="avatar" style="">
+								
                                    <?php
 								  
+									   
 								  // include("classes/customerhome.php");
 								  // include("database/database.php");
 								   $CoolPeople = new CustomerHome();
 								  $arrCoolPeople = array();
 								  $arrCoolPeople = $CoolPeople->InterestingFreelancers(12);
 								 // echo "R: " . count($arrCoolPeople);
-								 
+								 $counter=0;
 								  
-								   for($k=0; $k<count($arrCoolPeople);$k++)
-								   {
+								   for($k=0; $k<4;$k++)
+								   {$counter++;
 									  // echo"'assets\img\'".$arrCoolPeople[$k]->get_propic()."";
 									   echo"
-									   <li><a href=viewprofile.php?id=".$arrCoolPeople[$k]->get_ID()."><img style='height:64px; width: 64px; border: 2px solid #212121' src='"; echo "classes/freelancer"; echo "/". $arrCoolPeople[$k]->get_email(); echo"/propic";echo "/".$arrCoolPeople[$k]->get_propic(); echo"'"; echo" alt=''></a></li>
+									   <li style='radius:10%; padding-top:25px;'><a href=''><img style='height:128px; width: 128px; border: 2px solid #212121' src='' alt=''></a></li>
 									   ";
+									   if($counter<=3)
+									   {
+									   echo"
+									   <li style=' '><a href=''><img style='height:32px; width: 32px; border: 2px solid #212121' src='' alt=''></a></li>
+									   ";
+									   }
+									   
 								   }
 								   
 								   
@@ -517,15 +521,369 @@ include("classes/customerhome.php");
    
 								<div class="media">
 								 
-            <div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">View More</a></li>
+           
+			<div class="media-body pb-md">
+										<h5 class="media-heading" style="font-size:28px; font-weight:900" >What do you want to get done?</h5>
+										
+									</div>
+           <style>
+		   hr.style14 { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+		   
+		   </style>
+		  
+		  <h5 class="media-heading" style="font-size:18px; font-weight:900">Name your job posting</h5>
+		  <div class="col-sm-12 input-group">
+			<div class="form-group"><input type="text" name="JobTitle" placeholder="EXAMPLE: I need a web developer to update my website" id="addon3a" class="form-control" value=""><span class="material-input"></span></div>
+									<br><br>
+						
+				</div>
+				
+				<style>
+					.DisplayJobPost{
+						display:none;
+					}
+				</style>
+				
+				<div class="DisplayJobPost" id="JobP" >
+				<h5 class="media-heading" style="font-size:18px; font-weight:900">Describe the work to be done</h5>
+				<div class="form-group"><textarea name="JobDescription" placeholder="EXAMPLE: Looking for an experienced front end developer for a 3-6 month project. You will work with a team of international experts for this project. This contract includes multiple sub-projects. Must be experienced with Javascript, AngularJS, Bootstrap, and Kendo UI. Please note we are creating a Rich Internet Application, not a website/blog/etc. We have specifications available for applicants to review upon request." style="height:140px" class="form-control fullscreen"></textarea><span class="material-input"></span></div>
+				
+				<br><br>
+				
+				<h5 class="media-heading" style="font-size:18px; font-weight:900" >Services you offer clients</h5>
+			
+						<select name="Services" class="col-sm-8 select form-control" placeholder="This is a placeholder" style="display: none;">
+						
+							<?php 
+							
+							
+								$myservices = array("Web Development", "Graphics Design", "Video Production");
+								$index = -1;
+								
+								
+								if($index>-1)
+								{
+									echo
+									"
+									<option value='".$myservices[$index]."' selected='' class='selected'>".$myservices[$index]."</option>
+									";
+									
+									for($k=0;$k<count($myservices);$k++)
+									{
+										if($myservices[$k] != $myservices[$index])
+										{
+											echo
+											"
+												<option value='".$myservices[$k]."' class='selected'>".$myservices[$k]."</option>
+												
+											";
+										}
+										
+									}
+								}
+								elseif($index == -1)
+								{
+									echo
+									"
+									<option value='null' selected='' class='selected'>Choose a service</option>
+									";
+									for($k=0;$k<count($myservices);$k++)
+									{
+										
+										echo
+										"
+											<option value='".$myservices[$k]."' class='selected'>".$myservices[$k]."</option>
+											
+										";
+										
+									}
+								}
+								
+								
+							
+							?>
+							
+							
+						</select>
+						<br><br>
+						<h5 class="media-heading" style="font-size:18px; font-weight:900" >Project time span</h5>
+			
+						<select name="Services" class="col-sm-8 select form-control" placeholder="This is a placeholder" style="display: none;">
+						
+							<?php 
+							
+							
+								$myservices = array("0-1 week", "2-4 weeks", "1-2 months", "2-3 months", "4-8 months", "1 year", "other");
+								$index = -1;
+								
+								
+								if($index>-1)
+								{
+									echo
+									"
+									<option value='".$myservices[$index]."' selected='' class='selected'>".$myservices[$index]."</option>
+									";
+									
+									for($k=0;$k<count($myservices);$k++)
+									{
+										if($myservices[$k] != $myservices[$index])
+										{
+											echo
+											"
+												<option value='".$myservices[$k]."' class='selected'>".$myservices[$k]."</option>
+												
+											";
+										}
+										
+									}
+								}
+								elseif($index == -1)
+								{
+									echo
+									"
+									<option value='null' selected='' class='selected'>Choose a service</option>
+									";
+									for($k=0;$k<count($myservices);$k++)
+									{
+										
+										echo
+										"
+											<option value='".$myservices[$k]."' class='selected'>".$myservices[$k]."</option>
+											
+										";
+										
+									}
+								}
+								
+								
+							
+							?>
+							
+							
+						</select>
+						<br><br>
+				</div>
+				
+				
+				
+           <button id="submit" name="submit" onclick="javascript:JPDisplay()" class="btn-raised btn-primary btn">Continue Job Post</button>
+			
+
+			<script>
+			function JPDisplay()
+			{
+				var JobPost = document.getElementById("JobP").classList;
+ 
+ 
+				if (JobPost.contains("DisplayJobPost")) 
+				{
+
+					JobPost.remove("DisplayJobPost");
+					document.getElementById('submit').innerText = 'Post Job';
+				
+				}
+ 
+			}
+			</script>
+									
+									
+									
+									
+								</div>
+								
+							</div>
+							
+							
+							
+							
+							<div class="panel profile-tab" >
+							<div class="media">
+								 
+            
+			<div class="media-body pb-md">
+										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Bookedmarked Freelancers</h5>
+										
+									</div>
+									</div>
+							<div style=""> <!--overflow: scroll-->
+       
+   
+								<div class="media" style="margin-top:-25px">
+								 
+            
+			<div class="media-body pb-md">
+										<h5 class="media-heading" style="display:none;font-size:28px; font-weight:900" ></h5>
+										
+									</div>
+           <style>
+		   hr.style14 { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+		   
+		   </style>
+		   <div class='col-md-12'>
+<div class='profile-tab panel'>
+<div class='widget'>
+<div class='panel-controls dropdown'>
+                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href=''>Remove</a></li>
+					<li class="divider"></li>
+					<li><a href=''>Hire</a></li>
+					<li class="divider"></li>
+					<li><a href=''>View Profile</a></li>
+					
 					
                 </ul>
             </div>
+
+                
+                <div class='widget-body '>
+                           <a class='media-left' href="">
+										<img class='media-object' src='assets\img\default.png' alt=''>
+										
+									</a>
+									<div class='media-body pb-md' style="">
+										<h5 class='media-heading'>Lefa Mashele</h5>
+										Software Engineer &ensp; R75 - R150 / Hour &ensp; <i class="fa fa-map-marker"></i> Gauteng
+										
+										<hr class='style14'>
+										
+										<h5 style='font-style: italic; color:grey' class='media-heading'>I am full stack developer, specializing in the asp.net web development and android application development. 
+It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects... </h5>
+									</div>
+		   
+                </div>
+            </div>
+			</div>
+			</div>
+		   
+           <div class='col-md-12'>
+<div class='profile-tab panel'>
+<div class='widget'>
+<div class='panel-controls dropdown'>
+                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href=''>Remove</a></li>
+					<li class="divider"></li>
+					<li><a href=''>Hire</a></li>
+					<li class="divider"></li>
+					<li><a href=''>View Profile</a></li>
+					
+					
+                </ul>
+            </div>
+
+                
+                <div class='widget-body '>
+                           <a class='media-left' href="">
+										<img class='media-object' src='assets\img\default.png' alt=''>
+										
+									</a>
+									<div class='media-body pb-md' style="">
+										<h5 class='media-heading'>Lefa Mashele</h5>
+										Software Engineer &ensp; R75 - R150 / Hour &ensp; <i class="fa fa-map-marker"></i> Gauteng
+										
+										<hr class='style14'>
+										
+										<h5 style='font-style: italic; color:grey' class='media-heading'>I am full stack developer, specializing in the asp.net web development and android application development. 
+It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects... </h5>
+									</div>
+		   
+                </div>
+            </div>
+			</div>
+			</div>
+			
+			<div class='col-md-12'>
+<div class='profile-tab panel'>
+<div class='widget'>
+<div class='panel-controls dropdown'>
+                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href=''>Remove</a></li>
+					<li class="divider"></li>
+					<li><a href=''>Hire</a></li>
+					<li class="divider"></li>
+					<li><a href=''>View Profile</a></li>
+					
+					
+                </ul>
+            </div>
+
+                
+                <div class='widget-body '>
+                           <a class='media-left' href="">
+										<img class='media-object' src='assets\img\default.png' alt=''>
+										
+									</a>
+									<div class='media-body pb-md' style="">
+										<h5 class='media-heading'>Lefa Mashele</h5>
+										Software Engineer &ensp; R75 - R150 / Hour &ensp; <i class="fa fa-map-marker"></i> Gauteng
+										
+										<hr class='style14'>
+										
+										<h5 style='font-style: italic; color:grey' class='media-heading'>I am full stack developer, specializing in the asp.net web development and android application development. 
+It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects... </h5>
+									</div>
+		   
+                </div>
+            </div>
+			</div>
+			</div>
+
+			
+			
+			
+			
+									
+									
+									
+									
+								</div>
+								</div>
+							</div>
+							
+							<div class="panel profile-tab" >
+							<div class="media">
+								 <div class='panel-controls dropdown'>
+                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href=''>Active Jobs</a></li>
+					<li class="divider"></li>
+					<li><a href=''>Pending Jobs</a></li>
+					
+					
+					
+                </ul>
+            </div>
+            
 			<div class="media-body pb-md">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Most Ranked Freelancers</h5>
+										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Active Jobs</h5>
+										
+										
+									</div>
+									</div>
+							<div style=""> <!--overflow: scroll-->
+       
+   
+								<div class="media" style="margin-top:-25px">
+								 
+            
+			<div class="media-body pb-md">
+										<h5 class="media-heading" style="display:none;font-size:28px; font-weight:900" ></h5>
 										
 									</div>
            <style>
@@ -540,154 +898,99 @@ include("classes/customerhome.php");
 		   
 		   </style>
 		   <?php
-			$arrMostRanked = array();
-			$arrMostRanked = $CoolPeople->MostRankedFreelancers(9);
-			//echo "R: ".count($arrMostRanked);
-			// loadFreelancerConnect
-		   for($k=0; $k<count($arrMostRanked);$k++)
-		   {
-			echo"
-			<div class='col-md-4'>
+			$Title = "Active Jobs";
+			
+			for($k=0;$k<3;$k++)
+			{
+				if($Title == "Active Jobs")
+				{
+				echo"
+				
+				 <div class='col-md-12'>
 <div class='profile-tab panel'>
 <div class='widget'>
 <div class='panel-controls dropdown'>
                 <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
                 <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Hire Me</a></li>
+                   
+					<li><a href=''>View Job</a></li>
+					
 					
                 </ul>
             </div>
 
                 
-                <div class='widget-body'>
-                           <a class='media-left' href=viewprofile.php?id=".$arrMostRanked[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrMostRanked[$k]->get_email(); echo"/propic";echo "/".$arrMostRanked[$k]->get_propic(); echo"'"; echo" alt=''>
+                <div class='widget-body '>
+                           
+									<div class='media-body pb-md' style=''>
+										<h5 class='media-heading' style='font-size:20px; font-weight:900'>I need a video editor for my wedding</h5><br>
+										<h5 style='font-style: italic; color:grey' class='media-heading'>'I am full stack developer, specializing in the asp.net web development and android application development. 
+It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects...' </h5>
+<hr class='style14'>
+										Due 23 September 2017&ensp; Budget: R850 &ensp; Status: Active &ensp; Progress: 65% &ensp; Freelancer: <a href=''>Dan Daniels</a>
+										<br>
+										<br>
+										<div class='progress'>    
+                                    <div class='progress-bar progress-bar-primary' style='width: 65%'></div>
+                                  </div>
 										
-									</a>
-									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrMostRanked[$k]->get_fullname()."</h5>
-										".$arrMostRanked[$k]->get_views()." Profile Views
 										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic' class='media-heading'>".$arrMostRanked[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrMostRanked[$k]->get_province()."</span>
 									</div>
 		   
                 </div>
             </div>
 			</div>
 			</div>
+				
+				";
+				}
+				else if($Title == "Pending Jobs")
+				{
+					echo"
+					<div class='col-md-12'>
+<div class='profile-tab panel'>
+<div class='widget'>
+<div class='panel-controls dropdown'>
+                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href=''>View Job</a></li>
+					<li class='divider'></li>
+					<li><a href=''>Delete Job</a></li>
+                </ul>
+            </div>
 
-			";  
-		   }
+                
+                <div class='widget-body '>
+                           
+									<div class='media-body pb-md' style=''>
+										<h5 class='media-heading' style='font-size:20px; font-weight:900'>I need a video editor for my wedding</h5><br>
+										<h5 style='font-style: italic; color:grey' class='media-heading'>'I am full stack developer, specializing in the asp.net web development and android application development. 
+It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects...' </h5>
+<hr class='style14'>
+										Posted on: 23 May 2017&ensp; Proposals: <a href=''>5</a> &ensp; Status: Pending
+										<br>
+										
+									</div>
+		   
+                </div>
+            </div>
+			</div>
+			</div>
+			
+					";
+					
+				}
+			}
+			
 		   ?>
+		   
+		  
+		   
            
 			
+			
 
 			
-									
-									
-									
-									
-								</div>
-								
-							</div>
-							
-							
-							<div class="panel profile-tab">
-							
-							
-       
-   
-								<div class="media">
-								 
-            <div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">View More</a></li>
-					
-                </ul>
-            </div>
-			<div class="media-body pb-md">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" > 
-								<?php
-								$customers ="select * from customerprofile WHERE Cust_ID='".$_SESSION['user']."'";
-								$customers_query=mysql_query($customers);
-
-								while($customers_row=mysql_fetch_array($customers_query))
-								{
-									$C_location= $customers_row['Province'];
-								}
-								
-								echo"Freelancers In ".$C_location;
-								?>
-								
-								
-										
-										</h5>
-										
-									</div>
-           <style>
-		   hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-		   
-		   </style>
-           
-			<?php
-			$arrInLocation = array();
-			//$_SESSION["user"] = 666;
-			//echo "R ". $_SESSION['user'];
-			$arrInLocation = $CoolPeople->FreelancersInLocation(9,$_SESSION['user']);
-			//echo "R: ".count($arrMostRanked);
-			// loadFreelancerConnect
-			
-			//echo "R ". $arrInLocation[1]->get_fullname();
-			//echo "M ". $CoolPeople->loadFreelancerConnect(16);
-		   for($k=0; $k<count($arrInLocation);$k++)
-		   {
-			echo"
-			<div class='col-md-4'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Hire Me</a></li>
-					
-                </ul>
-            </div>
-
-                
-                <div class='widget-body'>
-                          <a class='media-left' href=viewprofile.php?id=".$arrInLocation[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrInLocation[$k]->get_email(); echo"/propic";echo "/".$arrInLocation[$k]->get_propic(); echo"'"; echo" alt=''>
-										
-									</a>
-									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrInLocation[$k]->get_fullname()."</h5>
-										".$arrInLocation[$k]->get_views()." Profile Views
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic' class='media-heading'>".$arrInLocation[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrInLocation[$k]->get_province()."</span>
-									</div>
-		   
-                </div>
-            </div>
-			</div>
-			</div>
-
-			"; 
-		   }
-		   ?>
 			
 			
 			
@@ -696,92 +999,8 @@ include("classes/customerhome.php");
 									
 									
 								</div>
-								
-							</div>
-							
-							<div class="panel profile-tab">
-							
-							
-       
-   
-								<div class="media">
-								 
-            <div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">View More</a></li>
-					
-                </ul>
-            </div>
-			<div class="media-body pb-md">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Discover New Freelancers</h5>
-										
-									</div>
-           <style>
-		   hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-		   
-		   </style>
-           <?php
-			$arrDiscoverNew = array();
-			$arrDiscoverNew = $CoolPeople->DiscoverNewFreelancers(9);
-			
-		   for($k=0; $k<count($arrDiscoverNew);$k++)
-		   {
-			echo"
-			<div class='col-md-4'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Hire Me</a></li>
-					
-                </ul>
-            </div>
-
-                
-                <div class='widget-body'>
-                           <a class='media-left' href=viewprofile.php?id=".$arrDiscoverNew[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrDiscoverNew[$k]->get_email(); echo"/propic";echo "/".$arrDiscoverNew[$k]->get_propic(); echo"'"; echo" alt=''>
-										
-									</a>
-									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrDiscoverNew[$k]->get_fullname()."</h5>
-										".$arrDiscoverNew[$k]->get_views()." Profile Views
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic' class='media-heading'>".$arrDiscoverNew[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrDiscoverNew[$k]->get_province()."</span>
-									</div>
-		   
-                </div>
-            </div>
-			</div>
-			</div>
-
-			"; 
-		   }
-		   ?>
-			
-			
-			
-									
-									
-									
-									
 								</div>
-								
 							</div>
-							
-							
 							
 							
 							
@@ -1254,7 +1473,7 @@ include("classes/customerhome.php");
                     <ul class="media-list contacts">
                         <?php
 						$RecommendedF = array();
-						$RecommendedF = $CoolPeople->RecommendedFreelancers(14);
+						$RecommendedF = $CoolPeople->RecommendedFreelancers(11);
 						
 						for($k=0; $k<count($RecommendedF); $k++)
 						{

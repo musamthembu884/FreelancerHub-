@@ -17,6 +17,26 @@ session_start();
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link type='text/css' href='http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500' rel='stylesheet'>
     <link type='text/css'  href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet"> 
+<link href="assets/plugins/dropdown.js/jquery.dropdown.css" type="text/css" rel="stylesheet">   
+    <link href="assets/fonts/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">        <!-- Font Awesome -->
+    <link href="assets/css/styles.css" type="text/css" rel="stylesheet">                                     <!-- Core CSS with all styles -->
+<link href="assets/plugins/form-select2/select2.css" type="text/css" rel="stylesheet"> 
+    <link href="assets/plugins/codeprettifier/prettify.css" type="text/css" rel="stylesheet">                <!-- Code Prettifier -->
+
+    <link href="assets/plugins/dropdown.js/jquery.dropdown.css" type="text/css" rel="stylesheet">            <!-- iCheck -->
+    <link href="assets/plugins/progress-skylo/skylo.css" type="text/css" rel="stylesheet">                   <!-- Skylo -->
+
+    <!--[if lt IE 10]>
+        <script src="assets/js/media.match.min.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+        <script src="assets/js/placeholder.min.js"></script>
+    <![endif]-->
+    <!-- The following CSS are included as plugins and can be removed if unused-->
+    
+<link href="assets/plugins/form-fseditor/fseditor.css" type="text/css" rel="stylesheet">                      		<!-- FullScreen Editor -->
+
+<link type='text/css' href='http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500' rel='stylesheet'>
+    <link type='text/css'  href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet"> 
 
     <link href="assets/fonts/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">        <!-- Font Awesome -->
     <link href="assets/css/styles.css" type="text/css" rel="stylesheet">                                     <!-- Core CSS with all styles -->
@@ -33,7 +53,13 @@ session_start();
     <![endif]-->
     <!-- The following CSS are included as plugins and can be removed if unused-->
     
-<link href="assets/plugins/form-fseditor/fseditor.css" type="text/css" rel="stylesheet">                      		<!-- FullScreen Editor -->
+<link href="assets/plugins/form-select2/select2.css" type="text/css" rel="stylesheet">                        <!-- Select2 -->
+<link href="assets/plugins/form-fseditor/fseditor.css" type="text/css" rel="stylesheet">                      <!-- FullScreen Editor -->
+<link href="assets/plugins/bootstrap-tokenfield/css/bootstrap-tokenfield.css" type="text/css" rel="stylesheet">   <!-- Tokenfield -->
+
+<link href="assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" type="text/css" rel="stylesheet"> <!-- Touchspin -->
+
+<link href="assets/plugins/card/lib/css/card.css" type="text/css" rel="stylesheet"> 		
 
     </head>
 
@@ -261,15 +287,19 @@ session_start();
 	</ul>
 
 </header>
-<?php
-include("classes/customerhome.php");
+
+		<?php
+			include("classes/customerhome.php");
 			include("database/database.php");
 		
 		
-			$CEmail = $_SESSION['Email'];
-			$CustProfile = new CustomerHome();
-			$mycust = $CustProfile->CProfile($CEmail);
-?>
+			$FEmail = $_SESSION['Email'];
+			$FreeProfile = new CustomerHome();
+			$myfreelancer = $FreeProfile->FProfile($FEmail);
+
+			
+		?>
+
         <div id="wrapper">
             <div id="layout-static">
                 <div class="static-sidebar-wrapper sidebar-cyan">
@@ -279,13 +309,13 @@ include("classes/customerhome.php");
         <div class="widget-body">
             <div class="userinfo ">
                 <div class="avatar pull-left">
-                   <img src="classes/freelancer/<?php echo"".$mycust[1]; ?>/propic/<?php echo"".$mycust[2]; ?>" class="img-responsive img-circle"> 
+                    <img src="classes/freelancer/<?php echo"".$myfreelancer->get_email(); ?>/propic/<?php echo"".$myfreelancer->get_propic(); ?>" class="img-responsive img-circle"> 
                 </div>
                 <div class="info">
 
-                    <span class="username"><?php echo"".$mycust[0]; ?></span>
+                    <span class="username"><?php echo"".$myfreelancer->get_fullname(); ?></span>
 					
-                    <span class="useremail"><?php echo"".$mycust[1]; ?></span>
+                    <span class="useremail"><?php echo"".$myfreelancer->get_email(); ?></span>
                 </div>
 
                 <div class="acct-dropdown clearfix dropdown">
@@ -305,10 +335,11 @@ include("classes/customerhome.php");
         <nav role="navigation" class="widget-body">
 	<ul class="acc-menu">
 		<li class="nav-separator"><span>Navigation</span></li>
-		<li><a  class="withripple" href="#"><span class="icon">
+		<li><a  class="withripple" href="fhome.php"><span class="icon">
 		<i class="material-icons">home</i></span><span>Home</span></a></li>
 		
-		
+		<li><a  class="withripple active" href="#"><span class="icon">
+		<i class="material-icons">format_align_justify</i></span><span>Settings</span></a></li>
 		
 		<li><a  class="withripple" href="login.php"><span class="icon">
 		<i class="material-icons">subdirectory_arrow_left</i></span><span>Log Out</span></a></li>
@@ -339,94 +370,38 @@ include("classes/customerhome.php");
 <div data-widget-group="group1">
 	<div class="row">
 		
-		<div class="col-md-12 pl-n pr-n">
-			<ul class="nav nav-tabs material-nav-tabs mb-lg">
+		
+		<?php
+		
+			if(isset($_GET['CompleteR']))
+			{
+				echo
+				"
+				 <div class='alert alert-dismissable alert-warning' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
+						<i class='fa fa-exclamation-triangle'></i>&nbsp; <strong>Alert!</strong> Please complete your registration below.
+						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+				</div>
+				
+				
+				";
+			}
+			else
+			{
+				echo
+				"
+				<div class='col-md-12 pl-n pr-n'>
+			<ul class='nav nav-tabs material-nav-tabs mb-lg'>
 				
 			</ul>
 		</div>
+				
+				";
+			}
+			
+		?>
 		
-       <div class="col-md-12">
-	  <div class="panel profile-tab card-moviecard">
-							
-							
+		
        
-   
-								<div class="media">
-								 
-            
-							<div class="media-body pb-md" style="height:115px">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Interesting Freelancers
-										
-									
-									
-									
-                                
-								<style>
-								#horizontal-list{
-									list-style:none;
- width:100%;
- text-align:left;
- float:left;
-
- margin-top: -10px;
- 
-								}
-								#horizontal-list li {
-								 
- display:inline-block;
- text-align:center;
- padding-right: 10px;
- padding-top:18px;
- 
-								}
-								</style>
-								
-                                <ul id="horizontal-list" class="avatar">
-                                   <?php
-								  
-								  // include("classes/customerhome.php");
-								  // include("database/database.php");
-								   $CoolPeople = new CustomerHome();
-								  $arrCoolPeople = array();
-								  $arrCoolPeople = $CoolPeople->InterestingFreelancers(12);
-								 // echo "R: " . count($arrCoolPeople);
-								 
-								  
-								   for($k=0; $k<count($arrCoolPeople);$k++)
-								   {
-									  // echo"'assets\img\'".$arrCoolPeople[$k]->get_propic()."";
-									   echo"
-									   <li><a href=viewprofile.php?id=".$arrCoolPeople[$k]->get_ID()."><img style='height:64px; width: 64px; border: 2px solid #212121' src='"; echo "classes/freelancer"; echo "/". $arrCoolPeople[$k]->get_email(); echo"/propic";echo "/".$arrCoolPeople[$k]->get_propic(); echo"'"; echo" alt=''></a></li>
-									   ";
-								   }
-								   
-								   
-								   ?>
-
-								   
-									
-									
-                                    
-								   
-                                </ul>
-                           </div>
-									</div>
-           
-           
-			
-                            
-                           
-                        
-			
-									
-									
-									
-									
-								
-								
-							</div>
-        
-    </div>
 	
 							
 	
@@ -434,7 +409,7 @@ include("classes/customerhome.php");
    
 		
 
-		<div class="col-md-9">
+		<div class="col-md-12">
 			<div class="tab-content">
 				<div class="panel-profile">
 					<div class="tab-content">
@@ -508,278 +483,444 @@ include("classes/customerhome.php");
 								<button class="btn btn-info btn-raised btn-sm">Delphi 7</button>
 							</div>
 						</div>
+						<style>
+		   hr.style14 { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
+hr.style1{
+	border-top: 1px dotted #8c8b8b;
+}
+		   
+		   </style>
+		   
 						<div class="tab-pane active" id="tab-8-2">								
 							
-							<div class="panel profile-tab">
+							<div class="panel col-md-12 profile-tab">
+							
 							
 							
        
    
-								<div class="media">
-								 
-            <div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">View More</a></li>
-					
-                </ul>
-            </div>
-			<div class="media-body pb-md">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Most Ranked Freelancers</h5>
-										
-									</div>
-           <style>
-		   hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-		   
-		   </style>
-		   <?php
-			$arrMostRanked = array();
-			$arrMostRanked = $CoolPeople->MostRankedFreelancers(9);
-			//echo "R: ".count($arrMostRanked);
-			// loadFreelancerConnect
-		   for($k=0; $k<count($arrMostRanked);$k++)
-		   {
-			echo"
-			<div class='col-md-4'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Hire Me</a></li>
-					
-                </ul>
-            </div>
-
-                
-                <div class='widget-body'>
-                           <a class='media-left' href=viewprofile.php?id=".$arrMostRanked[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrMostRanked[$k]->get_email(); echo"/propic";echo "/".$arrMostRanked[$k]->get_propic(); echo"'"; echo" alt=''>
-										
-									</a>
-									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrMostRanked[$k]->get_fullname()."</h5>
-										".$arrMostRanked[$k]->get_views()." Profile Views
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic' class='media-heading'>".$arrMostRanked[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrMostRanked[$k]->get_province()."</span>
-									</div>
-		   
-                </div>
-            </div>
-			</div>
-			</div>
-
-			";  
-		   }
-		   ?>
-           
-			
-
-			
-									
-									
-									
-									
-								</div>
 								
-							</div>
-							
-							
-							<div class="panel profile-tab">
-							
-							
-       
-   
-								<div class="media">
-								 
-            <div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">View More</a></li>
+				
+				
+				
+          
+			<div class="media col-md-12 col-sm-12 col-xs-12">
+			 <form action="fsettings.php" method="post" class="" id="validate-form">
+				<a class="media-left pr-n" href="#">
+					<img class="media-object img-resposnive" src="classes/freelancer/<?php echo"".$myfreelancer->get_email(); ?>/propic/<?php echo"".$myfreelancer->get_propic(); ?>" alt="Generic placeholder image" style="height:135px; width:135px;">
+				</a>
+				<div class="media-body pl-xl">
+					<h5 class="media-heading" style="font-size:18px; font-weight:900" ><?php echo"".$myfreelancer->get_fullname(); ?></h5>
+					<h5 style="font-style: italic" class="media-heading"><?php echo"".$myfreelancer->get_email(); ?></h5>
+					<hr class="style14">
+					<span style="font-style: italic">Profile Status: <?php echo"".$myfreelancer->get_verifystatus(); ?></span><br><br>
+					<span class="label label-default"><span style="font-size:12px">upload profile picture</span></span>
 					
-                </ul>
-            </div>
-			<div class="media-body pb-md">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" > 
-								<?php
-								$customers ="select * from customerprofile WHERE Cust_ID='".$_SESSION['user']."'";
-								$customers_query=mysql_query($customers);
-
-								while($customers_row=mysql_fetch_array($customers_query))
+					
+				</div>
+			
+				<hr class="style1">
+				<blockquote>
+										<h5 class="media-heading" style="font-size:24px; font-weight:900" >Profile Description</h5>
+									</blockquote>
+									<h5 class="media-heading" style="font-size:18px; font-weight:900" >Tell your clients about yourself</h5>
+									
+									<?php
+										if($myfreelancer->get_about() == "")
+										{
+											echo
+											"
+											<textarea name='About' style='height:150px' class='form-control fullscreen' placeholder='Im a full-time freelance copywriter in San Francisco, California. In my free time, youll usually find me drinking sweet tea with my nose stuck in a book. When I get the chance, I hop on a plane and travel to new places. Fun Fact: Ive traveled to 30+ countries.Im a full-time freelance copywriter in San Francisco, California. In my free time, youll usually find me drinking sweet tea with my nose stuck in a book. When I get the chance, I hop on a plane and travel to new places. Fun Fact: Ive traveled to 30+ countries. '></textarea>
+											";
+											
+										}
+										else
+										{
+											echo
+											"
+											<textarea name='About' style='height:150px' class='form-control fullscreen' >".$myfreelancer->get_about()."</textarea>
+											";
+										}
+									?>
+									
+									
+									<br>
+									<h5 class="media-heading" style="font-size:18px; font-weight:900" >Why should your clients hire you?</h5>
+									
+									<?php
+										if($myfreelancer->get_about2() == "")
+										{
+											echo
+											"
+											<textarea name='About2' style='height:150px' class='form-control fullscreen' placeholder='Im a full-time freelance copywriter in San Francisco, California. In my free time, youll usually find me drinking sweet tea with my nose stuck in a book. When I get the chance, I hop on a plane and travel to new places. Fun Fact: Ive traveled to 30+ countries.Im a full-time freelance copywriter in San Francisco, California. In my free time, youll usually find me drinking sweet tea with my nose stuck in a book. When I get the chance, I hop on a plane and travel to new places. Fun Fact: Ive traveled to 30+ countries. '></textarea>
+											";
+											
+										}
+										else
+										{
+											echo
+											"
+											<textarea name='About2' style='height:150px' class='form-control fullscreen' >".$myfreelancer->get_about2()."</textarea>
+											";
+										}
+									?>
+									<br>
+									<h5 class="media-heading" style="font-size:18px; font-weight:900" >Provide a brief professional overview</h5>
+									
+									<?php
+										if($myfreelancer->get_about3() == "")
+										{
+											echo
+											"
+											<textarea name='About3' style='height:150px' class='form-control fullscreen' placeholder='Im a full-time freelance copywriter in San Francisco, California. In my free time, youll usually find me drinking sweet tea with my nose stuck in a book. When I get the chance, I hop on a plane and travel to new places. Fun Fact: Ive traveled to 30+ countries.Im a full-time freelance copywriter in San Francisco, California. In my free time, youll usually find me drinking sweet tea with my nose stuck in a book. When I get the chance, I hop on a plane and travel to new places. Fun Fact: Ive traveled to 30+ countries. '></textarea>
+											";
+											
+										}
+										else
+										{
+											echo
+											"
+											<textarea name='About3' style='height:150px' class='form-control fullscreen' >".$myfreelancer->get_about3()."</textarea>
+											";
+										}
+									?>
+									<br>
+			
+			<h5 class="media-heading" style="font-size:18px; font-weight:900" >Services you offer clients</h5>
+			
+						<select name="Services" class="col-sm-8 select form-control" placeholder="This is a placeholder" style="display: none;">
+						
+							<?php 
+							
+								$myservices = $FreeProfile->loadServices();
+								$index = -1;
+								for($k=0;$k<count($myservices);$k++)
 								{
-									$C_location= $customers_row['Province'];
+									
+									
+									if($myfreelancer->get_service() == $myservices[$k])
+									{
+										$index = $k;
+									}
+									
 								}
 								
-								echo"Freelancers In ".$C_location;
-								?>
+								if($index>-1)
+								{
+									echo
+									"
+									<option value='".$myservices[$index]."' selected='' class='selected'>".$myservices[$index]."</option>
+									";
+									
+									for($k=0;$k<count($myservices);$k++)
+									{
+										if($myservices[$k] != $myservices[$index])
+										{
+											echo
+											"
+												<option value='".$myservices[$k]."' class='selected'>".$myservices[$k]."</option>
+												
+											";
+										}
+										
+									}
+								}
+								elseif($index == -1)
+								{
+									echo
+									"
+									<option value='null' selected='' class='selected'>Choose a service</option>
+									";
+									for($k=0;$k<count($myservices);$k++)
+									{
+										
+										echo
+										"
+											<option value='".$myservices[$k]."' class='selected'>".$myservices[$k]."</option>
+											
+										";
+										
+									}
+								}
 								
 								
+							
+							?>
+							
+							
+						</select>
+				<br>
+				<h5 class="media-heading" style="font-size:18px; font-weight:900" >List all your skills</h5>
+				<div class="col-sm-12 input-group">
+						
+						
+						
+						<?php
+										if($myfreelancer->get_skills() == "")
+										{
+											echo
+											"
+											<input type='text' name='Skills' id='addon3a' class='form-control' placeholder='PHP, Ruby Rails, C#'>
+											";
+											
+										}
+										else
+										{
+											echo
+											"
+											<input type='text' name='Skills' id='addon3a' class='form-control' value='".$myfreelancer->get_skills()."'>
+											";
+										}
+						?>
+						
+						
+				</div>
+				
+
+<br>
+				<br>
+				
+				
+				<blockquote>
+										<h5 class="media-heading" style="font-size:24px; font-weight:900" >Availability</h5>
+									</blockquote>
+				<h5 class="media-heading" style="font-size:18px; font-weight:900" >How many hours do you have available for work each week?</h5>
+			
+						<select name="WorkHrs" class="col-sm-8 select form-control" placeholder="This is a placeholder" style="display: none;">
+							<?php 
+									$Time = array("More than 30 Hours","Less than 30 Hours","Always");
+									
+									$index = -1;
+									for($k=0;$k<count($Time);$k++)
+									{
 										
-										</h5>
 										
-									</div>
-           <style>
-		   hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-		   
-		   </style>
-           
+										if($myfreelancer->get_workhrs() == $Time[$k])
+										{
+											$index = $k;
+										}
+										
+									}
+									
+									if($index>-1)
+									{
+										echo
+										"
+										<option value='".$Time[$index]."' selected='' class='selected'>".$Time[$index]."</option>
+										";
+										
+										for($k=0;$k<count($Time);$k++)
+										{
+											if($Time[$k] != $Time[$index])
+											{
+												echo
+												"
+													<option value='".$Time[$k]."' class='selected'>".$Time[$k]."</option>
+													
+												";
+											}
+											
+										}
+									}
+									elseif($index == -1)
+									{
+										echo
+										"
+										<option value='null' selected='' class='selected'>Select hours available</option>
+										";
+										for($k=0;$k<count($Time);$k++)
+										{
+											
+											echo
+											"
+												<option value='".$Time[$k]."' class='selected'>".$Time[$k]."</option>
+												
+											";
+											
+										}
+									}
+									
+								
+							
+									?>
+						</select>
+				<br><h5 class="media-heading" style="font-size:18px; font-weight:900" >Set your hourly rate</h5>
+				<div class="col-sm-2 input-group">
+						<span class="input-group-addon">R</span>
+						
+						
+						<?php
+										if($myfreelancer->get_fee() == "")
+										{
+											echo
+											"
+											<input name='Fee' width='48' type='text' id='addon3a' class='form-control'>
+											";
+											
+										}
+										else
+										{
+											echo
+											"
+											<input name='Fee' width='48' type='text' id='addon3a' value='".$myfreelancer->get_fee()."' class='form-control'>
+											";
+										}
+						?>
+						<span class="input-group-addon">/hour</span>
+						
+				</div>
+					<br><br>
+
+<div class="about-area">
+								<blockquote>
+										<h5 class="media-heading" style="font-size:24px; font-weight:900" >Location</h5>
+									</blockquote>
+									<h5 class="media-heading" style="font-size:18px; font-weight:900" >Province</h5>
+									<select name="Province" class="col-sm-8 select form-control" placeholder="This is a placeholder" style="display: none;">
+									
+									
+									
+							<?php 
+									$Provinces = array("Eastern Cape","Free State","Gauteng","KwaZulu-Natal","Limpopo","Mpumalanga","Northern Cape","Western Cape","North West");
+									
+									$index = -1;
+									for($k=0;$k<count($Provinces);$k++)
+									{
+										
+										
+										if($myfreelancer->get_province() == $Provinces[$k])
+										{
+											$index = $k;
+										}
+										
+									}
+									
+									if($index>-1)
+									{
+										echo
+										"
+										<option value='".$Provinces[$index]."' selected='' class='selected'>".$Provinces[$index]."</option>
+										";
+										
+										for($k=0;$k<count($Provinces);$k++)
+										{
+											if($Provinces[$k] != $Provinces[$index])
+											{
+												echo
+												"
+													<option value='".$Provinces[$k]."' class='selected'>".$Provinces[$k]."</option>
+													
+												";
+											}
+											
+										}
+									}
+									elseif($index == -1)
+									{
+										echo
+										"
+										<option value='null' selected='' class='selected'>Select a Province</option>
+										";
+										for($k=0;$k<count($Provinces);$k++)
+										{
+											
+											echo
+											"
+												<option value='".$Provinces[$k]."' class='selected'>".$Provinces[$k]."</option>
+												
+											";
+											
+										}
+									}
+									
+								
+							
+									?>
+						</select><br>
+									
+									
+									
+								
+							</div>
+							<button id="submit" name="submit" class="btn-raised btn-primary btn">Submit</button>
+							<br>
+			</form>
+			
+			
+			
+			
 			<?php
-			$arrInLocation = array();
-			//$_SESSION["user"] = 666;
-			//echo "R ". $_SESSION['user'];
-			$arrInLocation = $CoolPeople->FreelancersInLocation(9,$_SESSION['user']);
-			//echo "R: ".count($arrMostRanked);
-			// loadFreelancerConnect
 			
-			//echo "R ". $arrInLocation[1]->get_fullname();
-			//echo "M ". $CoolPeople->loadFreelancerConnect(16);
-		   for($k=0; $k<count($arrInLocation);$k++)
-		   {
-			echo"
-			<div class='col-md-4'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Hire Me</a></li>
+				if(isset($_POST['About']))
+				{
 					
-                </ul>
-            </div>
+					$Password = $_SESSION["Password"];	
+					$Name = $myfreelancer->get_fullname();
+					$Email = $myfreelancer->get_email();
+					$Status = "Not Active";
+					$ProfilePicture = $myfreelancer->get_propic();
+					
+					//
+					$About = $_POST['About'];
+					$About2 = $_POST['About2'];
+					$About3 = $_POST['About3'];
+					$Services = $_POST['Services'];
+					$Skills = $_POST['Skills'];
+					$WorkHrs = $_POST['WorkHrs'];
+					$Fee = $_POST['Fee'];
+					$Province = $_POST['Province'];
+					
+					include("classes/authentication.php");
+					$Auth = new Authentication();
+					
+					
+					
+					$Auth->UpdateRegister($Password,$Name,$Email,$Status,$ProfilePicture,$About,$About2,$About3,$Services,$Skills,$WorkHrs,$Fee,$Province);
+					
+					echo"
+								
+					<script>
+					
+						window.location.replace('fhome.php');
 
-                
-                <div class='widget-body'>
-                          <a class='media-left' href=viewprofile.php?id=".$arrInLocation[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrInLocation[$k]->get_email(); echo"/propic";echo "/".$arrInLocation[$k]->get_propic(); echo"'"; echo" alt=''>
-										
-									</a>
-									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrInLocation[$k]->get_fullname()."</h5>
-										".$arrInLocation[$k]->get_views()." Profile Views
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic' class='media-heading'>".$arrInLocation[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrInLocation[$k]->get_province()."</span>
-									</div>
-		   
-                </div>
-            </div>
+					</script>";
+					
+					
+				}
+			?>
+			
+			
 			</div>
-			</div>
+			
+			
+			
+			
+			
+			
+           
+			
 
-			"; 
-		   }
-		   ?>
-			
-			
 			
 									
 									
 									
 									
-								</div>
+								
 								
 							</div>
 							
-							<div class="panel profile-tab">
 							
 							
-       
-   
-								<div class="media">
-								 
-            <div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">View More</a></li>
-					
-                </ul>
-            </div>
-			<div class="media-body pb-md">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Discover New Freelancers</h5>
-										
-									</div>
-           <style>
-		   hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-		   
-		   </style>
-           <?php
-			$arrDiscoverNew = array();
-			$arrDiscoverNew = $CoolPeople->DiscoverNewFreelancers(9);
-			
-		   for($k=0; $k<count($arrDiscoverNew);$k++)
-		   {
-			echo"
-			<div class='col-md-4'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Hire Me</a></li>
-					
-                </ul>
-            </div>
-
-                
-                <div class='widget-body'>
-                           <a class='media-left' href=viewprofile.php?id=".$arrDiscoverNew[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrDiscoverNew[$k]->get_email(); echo"/propic";echo "/".$arrDiscoverNew[$k]->get_propic(); echo"'"; echo" alt=''>
-										
-									</a>
-									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrDiscoverNew[$k]->get_fullname()."</h5>
-										".$arrDiscoverNew[$k]->get_views()." Profile Views
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic' class='media-heading'>".$arrDiscoverNew[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrDiscoverNew[$k]->get_province()."</span>
-									</div>
-		   
-                </div>
-            </div>
-			</div>
-			</div>
-
-			"; 
-		   }
-		   ?>
-			
-			
-			
-									
-									
-									
-									
-								</div>
-								
-							</div>
+							
+							
 							
 							
 							
@@ -1201,83 +1342,9 @@ include("classes/customerhome.php");
 		
 			
 			
-			<div class="col-md-3">
-<div class="profile-tab panel">
-<div class="widget">
-
-                
-				<div class="media-body" style="text-align:center;">
-                              <h5 style="text-align:center; font-size: 20px;margin-left :15px; margin-top: 10px" class="media-heading">Categories</h5>
-                                
-                            </div>
-                <div class="widget-body">
-                    <ul class="media-list contacts">
-                        <?php
-						$cats = array();
-						$cats = $CoolPeople->loadServices();
-						
-						for($k=0; $k<count($cats); $k++)
-						{
-							echo
-							"
-							<li class='media notification-message'>
-                            <div class='media-left'>
-                               <a href='#' ><img class='media-object avatar' src='assets/img/propic/r2.jpg' alt=''></a>
-                            </div>
-                            <div class='media-body'>
-                              <h5 style='font-size:14px' class='media-heading'>".$cats[$k]."</h5>
-                                
-                            </div>
-                        </li>
-							";
-						}
-						?>
-						
-						
-						
-                    </ul>                                
-                </div>
-            </div>
-			</div>
-			</div>
 			
-			<div class="col-md-3">
-<div class="profile-tab panel">
-<div class="widget">
-
-                
-				<div class="media-body" style="text-align:center;">
-                              <h5 style="text-align:center; font-size: 20px; margin-top: 10px" class="media-heading">Recommended Freelancers</h5>
-                                
-                            </div>
-                <div class="widget-body">
-                    <ul class="media-list contacts">
-                        <?php
-						$RecommendedF = array();
-						$RecommendedF = $CoolPeople->RecommendedFreelancers(14);
-						
-						for($k=0; $k<count($RecommendedF); $k++)
-						{
-							echo"
-							<li class='media notification-message'>
-                            <div class='media-left'>
-                               <a href=viewprofile.php?id=".$RecommendedF[$k]->get_ID()."> <img class='img-circle avatar' src='"; echo "classes/freelancer"; echo "/". $RecommendedF[$k]->get_email(); echo"/propic";echo "/".$RecommendedF[$k]->get_propic(); echo"'"; echo" alt=''></a>
-                            </div>
-                            <div class='media-body'>
-                                <span class='text-gray'>".$RecommendedF[$k]->get_fullname()."</span>
-                                <span class='contact-status text-success'>".$RecommendedF[$k]->get_worktype()."</span>
-                            </div>
-                        </li>
-							";
-						}
-						
-						?>
-                        
-                    </ul>                                
-                </div>
-            </div>
-			</div>
-			</div>
+			
+			
 			
 			
 			
@@ -1645,6 +1712,36 @@ include("classes/customerhome.php");
 <script src="assets/js/enquire.min.js"></script> 									<!-- Load Enquire -->
 
 <script src="assets/plugins/velocityjs/velocity.min.js"></script>					<!-- Load Velocity for Animated Content -->
+<script src="assets/plugins/dropdown.js/jquery.dropdown.js"></script> <!-- Fancy Dropdowns -->
+<script src="assets/plugins/velocityjs/velocity.ui.min.js"></script>
+
+<script src="assets/plugins/progress-skylo/skylo.js"></script> 		<!-- Skylo -->
+
+<script src="assets/plugins/wijets/wijets.js"></script>     						<!-- Wijet -->
+<script src="assets/plugins/form-select2/select2.min.js"></script>  
+<script src="assets/plugins/sparklines/jquery.sparklines.min.js"></script> 			 <!-- Sparkline -->
+
+<script src="assets/plugins/codeprettifier/prettify.js"></script> 				<!-- Code Prettifier  -->
+
+<script src="assets/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js"></script>  <!-- Bootstrap Tabdrop -->
+
+<script src="assets/plugins/nanoScroller/js/jquery.nanoscroller.min.js"></script> <!-- nano scroller -->
+
+<script src="assets/plugins/dropdown.js/jquery.dropdown.js"></script> <!-- Fancy Dropdowns -->
+<script src="assets/plugins/bootstrap-material-design/js/material.min.js"></script> <!-- Bootstrap Material -->
+<script src="assets/plugins/bootstrap-material-design/js/ripples.min.js"></script> <!-- Bootstrap Material -->
+
+<script src="assets/js/application.js"></script>
+<script src="assets/demo/demo.js"></script>
+<script src="assets/demo/demo-switcher.js"></script>
+<script src="assets/demo/demo-cards.js"></script> 
+
+<script src="assets/js/jquery-1.10.2.min.js"></script> 							<!-- Load jQuery -->
+<script src="assets/js/jqueryui-1.10.3.min.js"></script> 							<!-- Load jQueryUI -->
+<script src="assets/js/bootstrap.min.js"></script> 								<!-- Load Bootstrap -->
+<script src="assets/js/enquire.min.js"></script> 									<!-- Load Enquire -->
+
+<script src="assets/plugins/velocityjs/velocity.min.js"></script>					<!-- Load Velocity for Animated Content -->
 <script src="assets/plugins/velocityjs/velocity.ui.min.js"></script>
 
 <script src="assets/plugins/progress-skylo/skylo.js"></script> 		<!-- Skylo -->
@@ -1666,7 +1763,30 @@ include("classes/customerhome.php");
 <script src="assets/js/application.js"></script>
 <script src="assets/demo/demo.js"></script>
 <script src="assets/demo/demo-switcher.js"></script>
-<script src="assets/demo/demo-cards.js"></script> 
+
+<!-- End loading site level scripts -->
+    
+    <!-- Load page level scripts-->
+    
+<script src="assets/plugins/quicksearch/jquery.quicksearch.min.js"></script>           			<!-- Quicksearch to go with Multisearch Plugin -->
+<script src="assets/plugins/form-typeahead/typeahead.bundle.min.js"></script>                 	<!-- Typeahead for Autocomplete -->
+<script src="assets/plugins/form-select2/select2.min.js"></script>                     			<!-- Advanced Select Boxes -->
+<script src="assets/plugins/form-autosize/jquery.autosize-min.js"></script>            			<!-- Autogrow Text Area -->
+<script src="assets/plugins/form-colorpicker/js/bootstrap-colorpicker.min.js"></script> 			<!-- Color Picker -->
+
+<script src="assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js"></script>      <!-- Touchspin -->
+
+<script src="assets/plugins/form-fseditor/jquery.fseditor-min.js"></script>            			<!-- Fullscreen Editor -->
+<script src="assets/plugins/form-jasnyupload/fileinput.min.js"></script>               			<!-- File Input -->
+<script src="assets/plugins/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>     		<!-- Tokenfield -->
+
+<script src="assets/plugins/card/lib/js/card.js"></script> 										<!-- Card -->
+
+<script src="assets/plugins/jquery-chained/jquery.chained.min.js"></script> 						<!-- Chained Select Boxes -->
+
+<script src="assets/plugins/jquery-mousewheel/jquery.mousewheel.min.js"></script> <!-- MouseWheel Support -->
+
+<script src="assets/demo/demo-formcomponents.js"></script>
 
 <!-- End loading site level scripts -->
     

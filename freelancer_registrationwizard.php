@@ -129,6 +129,7 @@
 												<option value='null'>Select Category</option>
 												
 												<?php
+												include("database/database.php");
 												include("classes/customerhome.php");
 												
 												$category = new CustomerHome();
@@ -147,20 +148,8 @@
 										</div>
 										
 						</fieldset>
+						
 						<fieldset title="Step 3">
-							<legend>Upload Profile Picture</legend>
-							<div class="form-group">
-								<label for="" class="col-md-3 control-label">Upload Profile Picture</label>
-								<div class="col-md-9">
-									<form action="upload.php" method="post" enctype="multipart/form-data">
-    
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
-								</div>
-							</div>
-						</fieldset>
-						<fieldset title="Step 4">
 							<legend>Terms and Conditions</legend>
 							<div class="form-group">
 								<label for="" class="col-md-3 control-label">Terms and Conditions</label>

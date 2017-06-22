@@ -8,26 +8,22 @@ if(isset($_GET['Name']))
 	$Email = $_GET['Email'];
 	//$Password = $_SESSION['Password'];
 	$Cat = $_GET['Cat'];
-	$Street = $_GET['Street'];
-	$City = $_GET['City'];
-	$Province = $_GET['Province'];
-	$Biography = $_GET['Biography'];
-	$Work = $_GET['Work'];
-	$Category = $_GET['Category'];
-	$ContactNO = $_GET['ContactNO'];
-	$Specialty = $_GET['Specialty'];
+	
+	
 	
 	
 	
 	$auth = new Authentication();
 	
-	if($auth->Register($Cat,$FullName,$Email,$_SESSION['Password'],$Street,$City,$Province,$ContactNO,$Work,$Biography,"False","default.jpg",$Specialty) == "True")
+	$_SESSION['Email'] = $Email;
+	
+	if($auth->Register($Cat,$FullName,$Email,$_SESSION["Password"],"","","","","","","Not Active","default.jpg","","","","","","","","") == "True")
 	{
 	
 		echo"
 		<script>
 		
-			window.location.replace('../login.php');
+			window.location.replace('../fsettings.php?CompleteR');
 
 		</script>";
 	

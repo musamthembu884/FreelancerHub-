@@ -261,7 +261,8 @@ session_start();
 	</ul>
 
 </header>
-<?php
+
+        <?php
 include("classes/customerhome.php");
 			include("database/database.php");
 		
@@ -269,6 +270,7 @@ include("classes/customerhome.php");
 			$CEmail = $_SESSION['Email'];
 			$CustProfile = new CustomerHome();
 			$mycust = $CustProfile->CProfile($CEmail);
+			
 ?>
         <div id="wrapper">
             <div id="layout-static">
@@ -287,7 +289,6 @@ include("classes/customerhome.php");
 					
                     <span class="useremail"><?php echo"".$mycust[1]; ?></span>
                 </div>
-
                 <div class="acct-dropdown clearfix dropdown">
                     <span class="pull-left"><span class="online-status online"></span>Online</span>
                     <!-- <span class="pull-right dropdown-toggle" data-toggle="dropdown"><a href="javascript:void(0)" class="btn btn-fab-caret btn-xs btn-fab"><i class="material-icons">arrow_drop_down</i><div class="ripple-container"></div></a></span>
@@ -305,7 +306,7 @@ include("classes/customerhome.php");
         <nav role="navigation" class="widget-body">
 	<ul class="acc-menu">
 		<li class="nav-separator"><span>Navigation</span></li>
-		<li><a  class="withripple" href="#"><span class="icon">
+		<li><a  class="withripple" href="customerhome.php"><span class="icon">
 		<i class="material-icons">home</i></span><span>Home</span></a></li>
 		
 		
@@ -345,88 +346,7 @@ include("classes/customerhome.php");
 			</ul>
 		</div>
 		
-       <div class="col-md-12">
-	  <div class="panel profile-tab card-moviecard">
-							
-							
        
-   
-								<div class="media">
-								 
-            
-							<div class="media-body pb-md" style="height:115px">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Interesting Freelancers
-										
-									
-									
-									
-                                
-								<style>
-								#horizontal-list{
-									list-style:none;
- width:100%;
- text-align:left;
- float:left;
-
- margin-top: -10px;
- 
-								}
-								#horizontal-list li {
-								 
- display:inline-block;
- text-align:center;
- padding-right: 10px;
- padding-top:18px;
- 
-								}
-								</style>
-								
-                                <ul id="horizontal-list" class="avatar">
-                                   <?php
-								  
-								  // include("classes/customerhome.php");
-								  // include("database/database.php");
-								   $CoolPeople = new CustomerHome();
-								  $arrCoolPeople = array();
-								  $arrCoolPeople = $CoolPeople->InterestingFreelancers(12);
-								 // echo "R: " . count($arrCoolPeople);
-								 
-								  
-								   for($k=0; $k<count($arrCoolPeople);$k++)
-								   {
-									  // echo"'assets\img\'".$arrCoolPeople[$k]->get_propic()."";
-									   echo"
-									   <li><a href=viewprofile.php?id=".$arrCoolPeople[$k]->get_ID()."><img style='height:64px; width: 64px; border: 2px solid #212121' src='"; echo "classes/freelancer"; echo "/". $arrCoolPeople[$k]->get_email(); echo"/propic";echo "/".$arrCoolPeople[$k]->get_propic(); echo"'"; echo" alt=''></a></li>
-									   ";
-								   }
-								   
-								   
-								   ?>
-
-								   
-									
-									
-                                    
-								   
-                                </ul>
-                           </div>
-									</div>
-           
-           
-			
-                            
-                           
-                        
-			
-									
-									
-									
-									
-								
-								
-							</div>
-        
-    </div>
 	
 							
 	
@@ -508,80 +428,108 @@ include("classes/customerhome.php");
 								<button class="btn btn-info btn-raised btn-sm">Delphi 7</button>
 							</div>
 						</div>
+						<style>
+		   hr.style14 { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
+hr.style1{
+	border-top: 1px dotted #8c8b8b;
+}
+		   
+		   </style>
 						<div class="tab-pane active" id="tab-8-2">								
 							
 							<div class="panel profile-tab">
 							
 							
+		<?php
+	
+		
+		if(isset($_GET['id']))
+		{
+			$ID = $_GET['id'];
+			$myfreelancer=$CustProfile->UpdateViews($ID);
+			$myfreelancer=$CustProfile->FreeProfile($ID);
+			
+		}
+		
+		
+		
+		?>		
        
    
-								<div class="media">
-								 
-            <div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">View More</a></li>
+								
+				
+				
+				
+           
+			<div class="media col-md-12 col-sm-12 col-xs-12">
+				<a class="media-left pr-n" href="#">
+					<img class="media-object img-resposnive" src="classes/freelancer/<?php echo"".$myfreelancer->get_email(); ?>/propic/<?php echo"".$myfreelancer->get_propic(); ?>" style="height:135px; width:135px;">
+				</a>
+				<div class="media-body pl-xl">
+					<h5 class="media-heading" style="font-size:18px; font-weight:900" ><?php echo"".$myfreelancer->get_fullname(); ?></h5>
+					<h5 style="font-style: italic" class="media-heading">Specialises in <?php echo"".$myfreelancer->get_service(); ?></h5>
+					<hr class="style14">
+					<span style="font-style: italic">Located in <?php echo"".$myfreelancer->get_province(); ?>, South Africa</span><br><br>
 					
-                </ul>
-            </div>
-			<div class="media-body pb-md">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Most Ranked Freelancers</h5>
-										
-									</div>
-           <style>
-		   hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-		   
-		   </style>
-		   <?php
-			$arrMostRanked = array();
-			$arrMostRanked = $CoolPeople->MostRankedFreelancers(9);
-			//echo "R: ".count($arrMostRanked);
-			// loadFreelancerConnect
-		   for($k=0; $k<count($arrMostRanked);$k++)
-		   {
-			echo"
-			<div class='col-md-4'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Hire Me</a></li>
+					<?php   
+					$skills = explode(',',$myfreelancer->get_skills());
 					
-                </ul>
-            </div>
+					for($k=0;$k<count($skills);$k++)
+					{
+						echo"
+						<span class='label label-default'>".$skills[$k]."</span>
+						
+						";
+					}
+					
+					
+					?>
+					
+				</div>
+			
+				<hr class="style1">
+				<blockquote>
+										<h5 class="media-heading" style="font-size:24px; font-weight:900" >About Me</h5>
+									</blockquote>
+				<p><strong> 
+					<?php echo"".$myfreelancer->get_about(); ?>
+				</strong></p>
+				<br>
+				
 
-                
-                <div class='widget-body'>
-                           <a class='media-left' href=viewprofile.php?id=".$arrMostRanked[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrMostRanked[$k]->get_email(); echo"/propic";echo "/".$arrMostRanked[$k]->get_propic(); echo"'"; echo" alt=''>
-										
-									</a>
-									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrMostRanked[$k]->get_fullname()."</h5>
-										".$arrMostRanked[$k]->get_views()." Profile Views
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic' class='media-heading'>".$arrMostRanked[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrMostRanked[$k]->get_province()."</span>
-									</div>
-		   
-                </div>
-            </div>
+<hr class="style1">
+				<blockquote>
+										<h5 class="media-heading" style="font-size:24px; font-weight:900" >Why hire me</h5>
+									</blockquote>
+				<p><strong> 
+					<?php echo"".$myfreelancer->get_about2(); ?>
+				</strong></p>
+				<br>
+				
+<hr class="style1">
+<blockquote>
+										<h5 class="media-heading" style="font-size:24px; font-weight:900" >Professional Overview</h5>
+									</blockquote>
+				<p><strong> 
+					<?php echo"".$myfreelancer->get_about3(); ?>
+				</strong></p>
+				<br>
+				
+			
 			</div>
-			</div>
-
-			";  
-		   }
-		   ?>
+			
+			
+			
+			
+			
            
 			
 
@@ -590,196 +538,14 @@ include("classes/customerhome.php");
 									
 									
 									
-								</div>
+								
 								
 							</div>
 							
 							
-							<div class="panel profile-tab">
 							
 							
-       
-   
-								<div class="media">
-								 
-            <div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">View More</a></li>
-					
-                </ul>
-            </div>
-			<div class="media-body pb-md">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" > 
-								<?php
-								$customers ="select * from customerprofile WHERE Cust_ID='".$_SESSION['user']."'";
-								$customers_query=mysql_query($customers);
-
-								while($customers_row=mysql_fetch_array($customers_query))
-								{
-									$C_location= $customers_row['Province'];
-								}
-								
-								echo"Freelancers In ".$C_location;
-								?>
-								
-								
-										
-										</h5>
-										
-									</div>
-           <style>
-		   hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-		   
-		   </style>
-           
-			<?php
-			$arrInLocation = array();
-			//$_SESSION["user"] = 666;
-			//echo "R ". $_SESSION['user'];
-			$arrInLocation = $CoolPeople->FreelancersInLocation(9,$_SESSION['user']);
-			//echo "R: ".count($arrMostRanked);
-			// loadFreelancerConnect
-			
-			//echo "R ". $arrInLocation[1]->get_fullname();
-			//echo "M ". $CoolPeople->loadFreelancerConnect(16);
-		   for($k=0; $k<count($arrInLocation);$k++)
-		   {
-			echo"
-			<div class='col-md-4'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Hire Me</a></li>
-					
-                </ul>
-            </div>
-
-                
-                <div class='widget-body'>
-                          <a class='media-left' href=viewprofile.php?id=".$arrInLocation[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrInLocation[$k]->get_email(); echo"/propic";echo "/".$arrInLocation[$k]->get_propic(); echo"'"; echo" alt=''>
-										
-									</a>
-									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrInLocation[$k]->get_fullname()."</h5>
-										".$arrInLocation[$k]->get_views()." Profile Views
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic' class='media-heading'>".$arrInLocation[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrInLocation[$k]->get_province()."</span>
-									</div>
-		   
-                </div>
-            </div>
-			</div>
-			</div>
-
-			"; 
-		   }
-		   ?>
-			
-			
-			
-									
-									
-									
-									
-								</div>
-								
-							</div>
 							
-							<div class="panel profile-tab">
-							
-							
-       
-   
-								<div class="media">
-								 
-            <div class="panel-controls dropdown">
-                <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="">View More</a></li>
-					
-                </ul>
-            </div>
-			<div class="media-body pb-md">
-										<h5 class="media-heading" style="font-size:28px; font-weight:900" >Discover New Freelancers</h5>
-										
-									</div>
-           <style>
-		   hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-		   
-		   </style>
-           <?php
-			$arrDiscoverNew = array();
-			$arrDiscoverNew = $CoolPeople->DiscoverNewFreelancers(9);
-			
-		   for($k=0; $k<count($arrDiscoverNew);$k++)
-		   {
-			echo"
-			<div class='col-md-4'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Hire Me</a></li>
-					
-                </ul>
-            </div>
-
-                
-                <div class='widget-body'>
-                           <a class='media-left' href=viewprofile.php?id=".$arrDiscoverNew[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrDiscoverNew[$k]->get_email(); echo"/propic";echo "/".$arrDiscoverNew[$k]->get_propic(); echo"'"; echo" alt=''>
-										
-									</a>
-									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrDiscoverNew[$k]->get_fullname()."</h5>
-										".$arrDiscoverNew[$k]->get_views()." Profile Views
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic' class='media-heading'>".$arrDiscoverNew[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrDiscoverNew[$k]->get_province()."</span>
-									</div>
-		   
-                </div>
-            </div>
-			</div>
-			</div>
-
-			"; 
-		   }
-		   ?>
-			
-			
-			
-									
-									
-									
-									
-								</div>
-								
-							</div>
 							
 							
 							
@@ -1202,82 +968,45 @@ include("classes/customerhome.php");
 			
 			
 			<div class="col-md-3">
-<div class="profile-tab panel">
-<div class="widget">
+			<div class="profile-tab panel" style="padding:8px">
 
-                
-				<div class="media-body" style="text-align:center;">
-                              <h5 style="text-align:center; font-size: 20px;margin-left :15px; margin-top: 10px" class="media-heading">Categories</h5>
-                                
-                            </div>
-                <div class="widget-body">
-                    <ul class="media-list contacts">
-                        <?php
-						$cats = array();
-						$cats = $CoolPeople->loadServices();
-						
-						for($k=0; $k<count($cats); $k++)
-						{
-							echo
-							"
-							<li class='media notification-message'>
-                            <div class='media-left'>
-                               <a href='#' ><img class='media-object avatar' src='assets/img/propic/r2.jpg' alt=''></a>
-                            </div>
-                            <div class='media-body'>
-                              <h5 style='font-size:14px' class='media-heading'>".$cats[$k]."</h5>
-                                
-                            </div>
-                        </li>
-							";
-						}
-						?>
-						
-						
-						
-                    </ul>                                
-                </div>
-            </div>
+				<button class="btn btn-default btn-raised btn-block">Hire Me Now</button>
+				<button class="btn btn-default btn-raised btn-block">Save</button>
+				
+				
+          
 			</div>
 			</div>
 			
 			<div class="col-md-3">
-<div class="profile-tab panel">
-<div class="widget">
+			<div class="profile-tab panel" style="padding:8px">
 
-                
-				<div class="media-body" style="text-align:center;">
-                              <h5 style="text-align:center; font-size: 20px; margin-top: 10px" class="media-heading">Recommended Freelancers</h5>
-                                
-                            </div>
-                <div class="widget-body">
-                    <ul class="media-list contacts">
-                        <?php
-						$RecommendedF = array();
-						$RecommendedF = $CoolPeople->RecommendedFreelancers(14);
-						
-						for($k=0; $k<count($RecommendedF); $k++)
-						{
-							echo"
-							<li class='media notification-message'>
-                            <div class='media-left'>
-                               <a href=viewprofile.php?id=".$RecommendedF[$k]->get_ID()."> <img class='img-circle avatar' src='"; echo "classes/freelancer"; echo "/". $RecommendedF[$k]->get_email(); echo"/propic";echo "/".$RecommendedF[$k]->get_propic(); echo"'"; echo" alt=''></a>
-                            </div>
-                            <div class='media-body'>
-                                <span class='text-gray'>".$RecommendedF[$k]->get_fullname()."</span>
-                                <span class='contact-status text-success'>".$RecommendedF[$k]->get_worktype()."</span>
-                            </div>
-                        </li>
-							";
-						}
-						
-						?>
-                        
-                    </ul>                                
-                </div>
-            </div>
+				<h5 class="media-heading" style="font-size:16px; font-weight:900" >Availability</h5>
+				<p><strong> 
+				<p><strong> 
+					<?php echo"".$myfreelancer->get_workhrs(); ?>/week
+				</strong></p>
+				
+				
+				<br>
+				
+				<h5 class="media-heading" style="font-size:16px; font-weight:900" >Fee</h5>
+				<p><strong> 
+				From R<?php echo"".$myfreelancer->get_fee(); ?>/hour
+				</strong></p>
+				
+				<br>
+				
+				<h5 class="media-heading" style="font-size:16px; font-weight:900" >Languages</h5>
+				<p><strong> 
+				English<br>
+				</strong></p>
+				
+          
 			</div>
 			</div>
+			
+			
 			
 			
 			

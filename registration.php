@@ -136,11 +136,12 @@ session_start();
 							if($cat == "FreeLancer")
 							{
 								$_SESSION["Password"] = $Password;
+								
 								echo"
 								
 								<script>
 								
-									window.location.replace('freelancer_registrationwizard.php?Name=$FullName&Email=$Email&Cat=$cat');
+									window.location.replace('bridge/register.php?Name=$FullName&Email=$Email&Cat=$cat');
 
 								</script>";
 							}

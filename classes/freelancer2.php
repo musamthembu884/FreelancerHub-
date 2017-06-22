@@ -1,5 +1,5 @@
 <?php
-class Freelancer
+class Freelancer2
 {
 	private $ID;
 	private $fullname;
@@ -14,24 +14,35 @@ class Freelancer
 	private $verifystatus;
 	private $propic;
 	private $num_connections;
+	//
+	private $about;
+	private $about2;
+	private $about3;
+	private $services;
+	private $skills;
+	private $workhrs;
+	private $fee;
 	private $views;
 	
-	public function __construct($ID,$fullname,$email,$password,$street,$town,$province,$contact,$description,$worktype,$verifystatus,$propic,$num_connections,$views)
+	public function __construct($ID,$password,$fullname,$email,$verifystatus,$propic,$about,$about2,$about3,$services,$skills,$workhrs,$fee,$province,$views)
 	{
 		$this->ID = $ID;
 		$this->fullname = $fullname;
 		$this->email = $email;
 		$this->password = $password;
-		$this->street = $street;
-		$this->town = $town;
 		$this->province = $province;
-		$this->contact = $contact;
-		$this->description = $description;
-		$this->worktype = $worktype;
 		$this->verifystatus = $verifystatus;
 		$this->propic = $propic;
-		$this->num_connections = $num_connections;
+		
+		$this->about = $about;
+		$this->about2 = $about2;
+		$this->about3 = $about3;
+		$this->services = $services;
+		$this->skills = $skills;
+		$this->workhrs = $workhrs;
+		$this->fee = $fee;
 		$this->views = $views;
+		
 	}
 
 	
@@ -40,6 +51,42 @@ class Freelancer
 	{
 		return $this->views;
 	}
+	
+	public function get_about()
+	{
+		return $this->about;
+	}
+	
+	public function get_about2()
+	{
+		return $this->about2;
+	}
+	
+	public function get_about3()
+	{
+		return $this->about3;
+	}
+	
+	public function get_service()
+	{
+		return $this->services;
+	}
+	
+	public function get_skills()
+	{
+		return $this->skills;
+	}
+	
+	public function get_workhrs()
+	{
+		return $this->workhrs;
+	}
+	
+	public function get_fee()
+	{
+		return $this->fee;
+	}
+	
 	
 	public function get_ID()
 	{
