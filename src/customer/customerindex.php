@@ -152,3 +152,25 @@ $app->delete('/api/customerindex/DeleteBookMarkedFreelancers/{CustomerID}/{Freel
        echo '{"error": {"text": '.$e->getMessage().'}';
    }
 });
+
+$app->delete('/api/customerindex/DeleteAllBookMarkedFreelancers/{CustomerID}', function (Request $request, Response $response) { 
+
+   $CustomerID = $request->getAttribute('CustomerID');
+
+
+   $sql = "DELETE FROM bookedmarkedfreelancers WHERE customerID='$CustomerID'";
+  
+   try{
+       $db = new db();
+       $db = $db->connect();
+
+       $stmt = $db->prepare($sql);
+       $stmt->execute();
+       $db = null;
+
+       echo '{"notice": {"text": "All BookMarkedFreelancers Succesfully Deleted!"}';
+    
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
