@@ -14,7 +14,7 @@ $app->put('/api/customerindex/PostJob/{customerID}', function (Request $request,
 
    $Title = $request->getParam('Title'); 
    $Description = $request->getParam('Description'); 
-   $DatePosted = date("d M Y"); //NEEDS MORE WORK!!!
+   $DatePosted = date("d M Y"); 
    $Budget = 0; 
    $Category = $request->getParam('Category'); 
    $TimeSpan = $request->getParam('TimeSpan'); 
@@ -85,7 +85,7 @@ $app->get('/api/customerindex/LoadJobs/{JobStatus}/{CustomerID}', function (Requ
 });
 
 //Load Booked Marked Freelancers
-$app->get('/api/customerindex/LoadBookedMarkedFreelancers/{CustomerID}', function (Request $request, Response $response) { 
+$app->get('/api/customerindex/LoadBookMarkedFreelancers/{CustomerID}', function (Request $request, Response $response) { 
 
    $CustomerID = $request->getAttribute('CustomerID');
 
@@ -117,7 +117,14 @@ $app->get('/api/customerindex/LoadBookedMarkedFreelancers/{CustomerID}', functio
        $BookedMarkedFreelancers = $stmt->fetchAll(PDO::FETCH_OBJ);
        $db = null;
 
-       echo json_encode($BookedMarkedFreelancers);
+       if(empty($BookedMarkedFreelancers))
+       {
+         echo '{"notice": {"text": "No Book Marked Freelancers Found!"}';
+       }
+       else
+       {
+         echo json_encode($BookedMarkedFreelancers);
+       }
         
    }catch(PDOException $e){
        echo '{"error": {"text": '.$e->getMessage().'}';
