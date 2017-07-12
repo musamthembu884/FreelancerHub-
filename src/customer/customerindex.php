@@ -14,7 +14,7 @@ $app->put('/api/customerindex/PostJob/{customerID}', function (Request $request,
 
    $Title = $request->getParam('Title'); 
    $Description = $request->getParam('Description'); 
-   $DatePosted = date("ddmmY"); //NEEDS MORE WORK!!!
+   $DatePosted = date("d M Y"); //NEEDS MORE WORK!!!
    $Budget = 0; 
    $Category = $request->getParam('Category'); 
    $TimeSpan = $request->getParam('TimeSpan'); 
