@@ -1,0 +1,24 @@
+{
+	"AccountType":"Freelancer",
+	"FullName":"Lee Hai",
+	"Email":"LHai@gmail.com",
+	"Password":"1234",
+	"DOB":"13/05/1955",
+	"Province":"Gauteng",
+	"Profession":"Animator",
+	"Category":"Animation",
+    "Skills":"Adobe,Anime",
+	"AboutMe":"qwertrewertyuytrew",
+	"WhyHireMe":"qwertyuhgfdfghjhgfd",
+    "ProfessionalOverview":"sdfghjhtgrfeds",
+	"ProfileViews":"0",
+	"ProfilePicture":"default.png"
+}
+
+{
+	"Title":"I need a php web designer to fix my website!",
+	"Description":"tdfyghjkjlhghfgfchgvjkbllhkj fgjhklkhgfdgjk fhgjh",
+	"Category":"Web Design",
+	"TimeSpan":"2-4 weeks"
+}
+
