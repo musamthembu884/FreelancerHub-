@@ -4,15 +4,12 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 $app = new \Slim\App;
 
-//CustomerIndex API
-require 'customerindex.php';
+//Get Freelancer Profile
+$app->get('/api/freelancer/ViewProfile/{FreelancerID}', function (Request $request, Response $response) {
 
-//Interesting Freelancers
-$app->get('/api/freelancer/ViewProfile/{num}', function (Request $request, Response $response) {
+   $FreelancerID = $request->getAttribute('FreelancerID'); 
 
-   $Count = $request->getAttribute('num'); 
-
-   $sql = "SELECT * FROM freelancer order by RAND() LIMIT $Count";
+   $sql = "SELECT * FROM freelancer WHERE ID = '$FreelancerID'";
   
    try{
        $db = new db();
