@@ -18,7 +18,12 @@ require '../src/Authentication/auth.php';
 //CustomerIndex API
 //require '../src/customer/customerindex.php';
 
-//ViewProfile API
-//require '../src/customer/viewprofile.php';
+//FreelancerViewProfile API
+//require '../src/freelancer/viewprofile.php';
+
+//FreelancerIndex API
+//require '../src/freelancer/freelancerindex.php';
+
+
 
 $app->run();
