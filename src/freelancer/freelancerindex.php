@@ -188,7 +188,15 @@ $app->get('/api/freelancerindex/LoadBookedMarkedJobs/{FreelancerID}', function (
        $BookedMarkedFreelancers = $stmt->fetchAll(PDO::FETCH_OBJ);
        $db = null;
 
-       echo json_encode($BookedMarkedFreelancers);
+       
+       if(empty($BookedMarkedFreelancers))
+       {
+         echo '{"notice": {"text": "No Jobs Found!"}';
+       }
+       else
+       {
+         echo json_encode($BookedMarkedFreelancers);
+       }
         
    }catch(PDOException $e){
        echo '{"error": {"text": '.$e->getMessage().'}';
