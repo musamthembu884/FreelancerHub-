@@ -12,7 +12,7 @@ $app->put('/api/freelancerindex/PostAd/{freelancerID}', function (Request $reque
    $Title = $request->getParam('Title'); 
    $Description = $request->getParam('Description'); 
    $Category = $request->getParam('Category'); 
-   $DatePosted = date("d M Y"); //NEEDS MORE WORK!!! 
+   $DatePosted = date("d M Y"); 
 
    $sql = "INSERT INTO ad
     (Title,Description,Category,FreelancerID,AdViews,DatePosted)
@@ -39,3 +39,42 @@ $app->put('/api/freelancerindex/PostAd/{freelancerID}', function (Request $reque
        echo '{"error": {"text": '.$e->getMessage().'}';
    }
 });
+
+//Load My Ads
+$app->get('/api/freelancerindex/LoadMyAds/{FreelancerID}', function (Request $request, Response $response) {
+
+   $FreelancerID = $request->getAttribute('FreelancerID'); 
+
+   $sql = "SELECT   freelancer.ID,
+                    freelancer.FullName,
+                    ad.Title,
+                    ad.Description,
+                    ad.Category,
+                    ad.AdViews,
+                    ad.DatePosted
+           FROM freelancer, ad
+           WHERE freelancer.ID = '$FreelancerID' AND ad.FreelancerID = '$FreelancerID'";
+  
+   try{
+       $db = new db();
+       $db = $db->connect();
+
+       $stmt = $db->query($sql);
+       $Ads = $stmt->fetchAll(PDO::FETCH_OBJ);
+       $db = null;
+
+       if(empty($Ads))
+       {
+         echo '{"notice": {"text": "No Ads Found!"}';
+       }
+       else
+       {
+         echo json_encode($Ads);
+       }
+      
+        
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
+
