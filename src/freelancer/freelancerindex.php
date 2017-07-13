@@ -202,3 +202,27 @@ $app->get('/api/freelancerindex/LoadBookedMarkedJobs/{FreelancerID}', function (
        echo '{"error": {"text": '.$e->getMessage().'}';
    }
 });
+
+//Remove Booked Marked Jobs
+$app->delete('/api/freelancerindex/RemoveBookedMarkedJobs/{FreelancerID}/{JobID}', function (Request $request, Response $response) { 
+
+   $FreelancerID = $request->getAttribute('FreelancerID');
+   $JobID = $request->getAttribute('JobID');
+
+   $sql = "DELETE FROM bookedmarkedjobs WHERE FreelancerID = '$FreelancerID' AND JobID = '$JobID'";
+  
+   try{
+       $db = new db();
+       $db = $db->connect();
+
+       $stmt = $db->prepare($sql);
+       $stmt->execute();
+       $db = null;
+
+       echo '{"notice": {"text": "Job Successfully Removed!"}';
+         
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
+
