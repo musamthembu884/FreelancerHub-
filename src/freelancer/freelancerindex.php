@@ -78,3 +78,39 @@ $app->get('/api/freelancerindex/LoadMyAds/{FreelancerID}', function (Request $re
    }
 });
 
+//Edit My Ad
+$app->put('/api/freelancerindex/EditMyAds/{FreelancerID}/{AdID}', function (Request $request, Response $response) {
+   $FreelancerID = $request->getAttribute('FreelancerID'); 
+   $AdID = $request->getAttribute('AdID');
+
+   $Title = $request->getParam('Title'); 
+   $Description = $request->getParam('Description'); 
+   $Category = $request->getParam('Category'); 
+   $DatePosted = date("d M Y"); 
+
+   $sql = "UPDATE ad SET
+    Title = :Title,
+    Description = :Description,
+    Category = :Category
+   WHERE ID = '$AdID' AND
+   FreelancerID = '$FreelancerID'";
+  
+   try{
+      $db = new db();
+      $db = $db->connect();
+
+      $stmt = $db->prepare($sql);
+
+      $stmt->bindParam(':Title', $Title);
+      $stmt->bindParam(':Description',    $Description);
+      $stmt->bindParam(':Category',       $Category);
+      
+      
+      $stmt->execute();
+
+      echo '{"notice": {"text": "Ad Successfully Updated!"}';
+       
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
