@@ -12,7 +12,7 @@ $app->put('/api/freelancerindex/PostAd/{freelancerID}', function (Request $reque
    $Title = $request->getParam('Title'); 
    $Description = $request->getParam('Description'); 
    $Category = $request->getParam('Category'); 
-   $DatePosted = date("D m Y"); //NEEDS MORE WORK!!! 
+   $DatePosted = date("d M Y"); //NEEDS MORE WORK!!! 
 
    $sql = "INSERT INTO ad
     (Title,Description,Category,FreelancerID,AdViews,DatePosted)
