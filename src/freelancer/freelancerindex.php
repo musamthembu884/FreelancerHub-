@@ -4,6 +4,9 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 $app = new \Slim\App;
 
+//FreelancerHome API
+require 'freelancerhome.php';
+
 //Post Ad
 $app->put('/api/freelancerindex/PostAd/{freelancerID}', function (Request $request, Response $response) {
 
@@ -158,64 +161,36 @@ $app->delete('/api/freelancerindex/DeleteAllMyAds/{FreelancerID}', function (Req
    }
 });
 
-//Bookmark Job
-$app->put('/api/freelancerindex/BookMarkJob/{freelancerID}/{JobID}', function (Request $request, Response $response) {
+//Load Booked Marked Jobs
+$app->get('/api/freelancerindex/LoadBookedMarkedJobs/{FreelancerID}', function (Request $request, Response $response) { 
 
-////Preventing duplicate insertion<ValidateBookmark>
-function ValidateBookmark($jobsID,$freelancerID){
-   $sql = "SELECT * FROM bookedmarkedjobs WHERE JobID = '$jobsID' AND FreelancerID = '$freelancerID'";
+   $FreelancerID = $request->getAttribute('FreelancerID');
+
+   $sql = "SELECT job.ID,
+                  job.Title,
+                  job.Description,
+                  job.DatePosted,
+                  job.Budget,
+                  job.Category,
+                  job.TimeSpan,
+                  job.Status,
+                  job.Progress,
+                  job.CustomerID 
+           FROM   bookedmarkedjobs,job 
+           WHERE  bookedmarkedjobs.freelancerID = '$FreelancerID'
+           AND    job.ID = bookedmarkedjobs.JobID";
   
    try{
        $db = new db();
        $db = $db->connect();
 
        $stmt = $db->query($sql);
-       $ValidateBookmark = $stmt->fetchAll(PDO::FETCH_OBJ);
+       $BookedMarkedFreelancers = $stmt->fetchAll(PDO::FETCH_OBJ);
        $db = null;
 
-       if(empty($ValidateBookmark))
-       {
-           return true; //OK!
-       }
-       else
-       {
-           return false;//NOT OKAY:(
-       }
+       echo json_encode($BookedMarkedFreelancers);
         
    }catch(PDOException $e){
        echo '{"error": {"text": '.$e->getMessage().'}';
    }
-}//</ValidateBookmark>
-   $jobsID = $request->getAttribute('JobID'); 
-   $freelancerID = $request->getAttribute('freelancerID');
-
-   if(ValidateBookmark($jobsID,$freelancerID))
-   {
-    $sql = "INSERT INTO bookedmarkedjobs
-            (FreelancerID,JobID)
-            VALUES 
-            (:FreelancerID,:JobsID)";
-
-    try{
-        $db = new db();
-        $db = $db->connect();
-
-        $stmt = $db->prepare($sql);
-
-        $stmt->bindParam(':FreelancerID', $freelancerID);
-        $stmt->bindParam(':JobsID',   $jobsID);
-
-        $stmt->execute();
-
-        echo '{"notice": {"text": "Job Successfully BookedMarked!"}';
-
-    }catch(PDOException $e){
-        echo '{"error": {"text": '.$e->getMessage().'}';
-    }
-   }
-   else
-   {
-       echo '{"notice": {"text": "Already BookedMarked!"}';
-   }
-  
 });
