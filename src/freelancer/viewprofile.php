@@ -4,6 +4,9 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 $app = new \Slim\App;
 
+//FreelancerIndex API
+require 'freelancerindex.php';
+
 //Get Freelancer Profile
 $app->get('/api/freelancer/ViewProfile/{FreelancerID}', function (Request $request, Response $response) {
 
