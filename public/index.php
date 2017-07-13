@@ -24,6 +24,9 @@ require '../src/Authentication/auth.php';
 //FreelancerIndex API
 //require '../src/freelancer/freelancerindex.php';
 
+//FreelancerHome API
+//require '../src/freelancer/freelancerhome.php';
+
 
 
 $app->run();
