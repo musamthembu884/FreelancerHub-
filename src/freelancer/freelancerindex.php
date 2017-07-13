@@ -114,3 +114,25 @@ $app->put('/api/freelancerindex/EditMyAds/{FreelancerID}/{AdID}', function (Requ
        echo '{"error": {"text": '.$e->getMessage().'}';
    }
 });
+
+//Delete My Ad
+$app->delete('/api/freelancerindex/EditMyAds/{FreelancerID}/{AdID}', function (Request $request, Response $response) {
+   $FreelancerID = $request->getAttribute('FreelancerID'); 
+   $AdID = $request->getAttribute('AdID');
+
+   $sql = "DELETE FROM ad WHERE ID = '$AdID' AND FreelancerID = '$FreelancerID'";
+  
+   try{
+      $db = new db();
+      $db = $db->connect();
+
+      $stmt = $db->prepare($sql);
+
+      $stmt->execute();
+
+      echo '{"notice": {"text": "Ad Successfully Deleted!"}';
+       
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
