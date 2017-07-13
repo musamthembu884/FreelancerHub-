@@ -116,7 +116,7 @@ $app->put('/api/freelancerindex/EditMyAds/{FreelancerID}/{AdID}', function (Requ
 });
 
 //Delete My Ad
-$app->delete('/api/freelancerindex/EditMyAds/{FreelancerID}/{AdID}', function (Request $request, Response $response) {
+$app->delete('/api/freelancerindex/DeleteMyAds/{FreelancerID}/{AdID}', function (Request $request, Response $response) {
    $FreelancerID = $request->getAttribute('FreelancerID'); 
    $AdID = $request->getAttribute('AdID');
 
