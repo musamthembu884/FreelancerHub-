@@ -66,3 +66,41 @@ function ValidateBookmark($jobsID,$freelancerID){
    }
   
 });
+
+//Propose Job
+$app->put('/api/freelancerhome/ProposeJob/{freelancerID}/{JobID}', function (Request $request, Response $response) {
+
+   $FreelancerID = $request->getAttribute('freelancerID'); 
+   $JobID = $request->getAttribute('JobID'); 
+
+   $Title = $request->getParam('Title'); 
+   $Description = $request->getParam('Description'); 
+   $TimeSpan = $request->getParam('TimeSpan'); 
+   $Price = $request->getParam('Price'); 
+
+   $sql = "INSERT INTO proposedjobs
+    (Title,Description,TimeSpan,Price,JobID,FreelancerID)
+    VALUES 
+    (:Title,:Description,:TimeSpan,:Price,:JobID,:FreelancerID)";
+  
+   try{
+      $db = new db();
+      $db = $db->connect();
+
+      $stmt = $db->prepare($sql);
+
+      $stmt->bindParam(':Title',        $Title);
+      $stmt->bindParam(':Description',  $Description);
+      $stmt->bindParam(':TimeSpan',     $TimeSpan);
+      $stmt->bindParam(':Price',        $Price);
+      $stmt->bindParam(':JobID',        $JobID);
+      $stmt->bindParam(':FreelancerID', $FreelancerID);
+  
+      $stmt->execute();
+
+      echo '{"notice": {"text": "Job Proposal Successfully Posted!"}';
+       
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
