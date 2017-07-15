@@ -200,3 +200,53 @@ function ValidateBookmark($customerID,$freelancerID){
    }
   
 });
+
+//View More Freelancers in Category
+$app->get('/api/customerhome/ViewMoreFreelancers/{Category}/{num}/{CustomerProvince}', function (Request $request, Response $response) {
+
+   $Category = $request->getAttribute('Category'); 
+   $Count = $request->getAttribute('num'); 
+   $CustomerProvince = $request->getAttribute('CustomerProvince'); 
+
+   switch($Category)
+   {
+       case "MostRankedFreelancers":
+       {
+        $sql = "SELECT * FROM freelancer order by ProfileViews DESC limit 0,$Count";
+       }
+       break;
+
+       case "FreelancersInLocation":
+       {
+        $sql = "SELECT * FROM freelancer WHERE Province = '$CustomerProvince' limit 0,$Count";
+       }
+       break;
+
+       case "DiscoverNewFreelancers":
+       {
+        $sql = "SELECT * FROM freelancer ORDER BY freelancer.ID DESC limit 0,$Count";
+       }
+       break;
+
+       default:
+       {
+         $sql = "SELECT * FROM freelancer WHERE Category = '$Category' LIMIT $Count";
+       }
+       break;
+
+   }
+  
+   try{
+       $db = new db();
+       $db = $db->connect();
+
+       $stmt = $db->query($sql);
+       $user = $stmt->fetchAll(PDO::FETCH_OBJ);
+       $db = null;
+
+       echo json_encode($user);
+        
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
