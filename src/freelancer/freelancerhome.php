@@ -104,3 +104,26 @@ $app->put('/api/freelancerhome/ProposeJob/{freelancerID}/{JobID}', function (Req
        echo '{"error": {"text": '.$e->getMessage().'}';
    }
 });
+
+//Load Recommended Jobs
+$app->get('/api/freelancerhome/RecommendedJobs/{FreelancerCategory}/{num}', function (Request $request, Response $response) {
+
+   $FreelancerCategory = $request->getAttribute('FreelancerCategory'); 
+   $Count = $request->getAttribute('num'); 
+
+   $sql = "SELECT * FROM job WHERE Category = '$FreelancerCategory'";
+  
+   try{
+       $db = new db();
+       $db = $db->connect();
+
+       $stmt = $db->query($sql);
+       $jobs = $stmt->fetchAll(PDO::FETCH_OBJ);
+       $db = null;
+
+       echo json_encode($jobs);
+        
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
