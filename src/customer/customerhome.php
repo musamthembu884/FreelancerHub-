@@ -233,7 +233,6 @@ $app->get('/api/customerhome/ViewMoreFreelancers/{Category}/{num}/{CustomerProvi
          $sql = "SELECT * FROM freelancer WHERE Category = '$Category' LIMIT $Count";
        }
        break;
-
    }
   
    try{
@@ -244,7 +243,14 @@ $app->get('/api/customerhome/ViewMoreFreelancers/{Category}/{num}/{CustomerProvi
        $user = $stmt->fetchAll(PDO::FETCH_OBJ);
        $db = null;
 
-       echo json_encode($user);
+       if(empty($user))
+       {
+         echo '{"notice": {"text": "No Freelancers Found!"}';
+       }
+       else
+       {
+          echo json_encode($user);
+       }
         
    }catch(PDOException $e){
        echo '{"error": {"text": '.$e->getMessage().'}';
