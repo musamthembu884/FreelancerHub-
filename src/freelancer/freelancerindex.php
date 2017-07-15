@@ -247,3 +247,44 @@ $app->delete('/api/freelancerindex/RemoveAllBookedMarkedJobs/{FreelancerID}', fu
        echo '{"error": {"text": '.$e->getMessage().'}';
    }
 });
+
+//Load Proposed Jobs
+$app->get('/api/freelancerindex/LoadProposedJobs/{FreelancerID}', function (Request $request, Response $response) { 
+
+   $FreelancerID = $request->getAttribute('FreelancerID');
+
+   $sql = "SELECT proposedjobs.ID,
+                  proposedjobs.Title,
+                  proposedjobs.Description,
+                  proposedjobs.TimeSpan,
+                  proposedjobs.Price,
+                  proposedjobs.JobID,
+                  job.Title AS JobTitle,
+                  customer.FullName
+           FROM   proposedjobs,job,customer
+           WHERE  proposedjobs.FreelancerID = '$FreelancerID'
+           AND    job.ID = proposedjobs.JobID
+           AND    customer.ID = job.CustomerID";
+  
+   try{
+       $db = new db();
+       $db = $db->connect();
+
+       $stmt = $db->query($sql);
+       $ProposedJobs = $stmt->fetchAll(PDO::FETCH_OBJ);
+       $db = null;
+
+       
+       if(empty($ProposedJobs))
+       {
+         echo '{"notice": {"text": "No Proposed Jobs Found!"}';
+       }
+       else
+       {
+         echo json_encode($ProposedJobs);
+       }
+        
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
