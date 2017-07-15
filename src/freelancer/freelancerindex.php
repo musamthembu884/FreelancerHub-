@@ -288,3 +288,26 @@ $app->get('/api/freelancerindex/LoadProposedJobs/{FreelancerID}', function (Requ
        echo '{"error": {"text": '.$e->getMessage().'}';
    }
 });
+
+//Remove Proposed Jobs
+$app->delete('/api/freelancerindex/RemoveProposedJobs/{FreelancerID}/{JobID}', function (Request $request, Response $response) { 
+
+   $FreelancerID = $request->getAttribute('FreelancerID');
+   $JobID = $request->getAttribute('JobID');
+
+   $sql = "DELETE FROM proposedjobs WHERE FreelancerID = '$FreelancerID' AND ID = '$JobID'";
+  
+   try{
+       $db = new db();
+       $db = $db->connect();
+
+       $stmt = $db->prepare($sql);
+       $stmt->execute();
+       $db = null;
+
+       echo '{"notice": {"text": "Proposed Job Successfully Removed!"}';
+         
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
