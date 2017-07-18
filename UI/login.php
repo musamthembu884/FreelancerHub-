@@ -92,8 +92,6 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-       
-
         ini_set("allow_url_fopen", 1);
         $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication?username='.$username.'&password='.$password);
         $JSONArray = json_decode($json,true);
@@ -102,7 +100,6 @@
         {
             // echo $JSONArray[0]['notice'];
              header('Location: login.php?CredError');
-             
         }
         else
         {
