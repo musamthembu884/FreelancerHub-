@@ -72,7 +72,7 @@
 										<span class="input-group-addon">
 											<i class="ti ti-key"></i>
 										</span>
-										<input type="password" id="password" name="password" class="form-control" placeholder="Password">
+										<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 									</div>
 		                        </div>
 							</div>
@@ -88,7 +88,7 @@
 <?php
     if(isset($_POST['username']))
     {
-    try{
+  
         $username = $_POST['username'];
         $password = $_POST['password'];
 
@@ -105,9 +105,6 @@
         {
              echo $JSONArray[0]['FullName'];
         }
-     }catch(Exception $e){
-
-     }
         
     }
 ?>
