@@ -12,7 +12,7 @@ session_start();
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="author" content="KaijuThemes">
-
+<script src='https://www.google.com/recaptcha/api.js'></script>
     <link type='text/css' href='http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500' rel='stylesheet'>
     <link type='text/css'  href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet"> 
     <link href="assets/plugins/progress-skylo/skylo.css" type="text/css" rel="stylesheet">                   <!-- Skylo -->
@@ -103,21 +103,19 @@ session_start();
 										<span class="material-input"></span></div>
 						<div class="form-group mb-n">
 							<div class="col-xs-offset-2 col-xs-8">
-								<div class="chekbox">
-						          <label>
-						            <input type="checkbox" required="" name="terms"><span class="checkbox-material"><span class="check"></span></span>
-						            Accept Terms &amp; Conditions
-						          </label>
-						      </div>
+								<div class="g-recaptcha" data-sitekey="6Lc1jykUAAAAAExN5ORwKGLLoxArVoqAV2Wt4PFr"></div>
+				
 							</div>
 						</div>
 						<div class="panel-footer">
+                         
 					<div class="clearfix">
 						<a href="login.php" class="btn btn-default pull-left">Already Registered? Login</a>
-						<button id="submit" name="submit" class="btn-raised btn-primary btn pull-right">Register</button>
+						<button disabled id="submit" name="submit" class="btn-raised btn-primary btn pull-right">Register</button>
 					</div>
+                   
 				</div>
-					</form>
+                	</form>
 					
 					
 					<?php
