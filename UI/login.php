@@ -54,7 +54,7 @@
 					</div>
 					<div class="panel-body">
 						
-						<form action="bridge/login.php" method="post" class="form-horizontal" id="validate-form">
+						<form action="login.php" method="post" class="form-horizontal" id="validate-form">
 							<div class="form-group mb-md">
 		                        <div class="col-xs-12">
 		                        	<div class="input-group">							
@@ -84,6 +84,34 @@
 							
 							<a href="registration.php" class="btn btn-default pull-right">Register</a>
 						</div>
+
+<?php
+    if(isset($_POST['username']))
+    {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        ini_set("allow_url_fopen", 1);
+        $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/'.$username.'/'.$password);
+        $JSONArray = json_decode($json,true);
+
+        if(array_key_exists("notice",$JSONArray[0]))
+        {
+             echo $JSONArray[0]['notice'];
+        }
+        else
+        {
+             echo $JSONArray[0]['FullName'];
+        }
+       
+        
+        
+        
+
+        
+        
+    }
+?>
 						
 						
 					</div>
