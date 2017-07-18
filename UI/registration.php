@@ -103,7 +103,7 @@ session_start();
 										<span class="material-input"></span></div>
 						<div class="form-group mb-n">
 							<div class="col-xs-offset-2 col-xs-8">
-								<div class="g-recaptcha" data-sitekey="6Lc1jykUAAAAAExN5ORwKGLLoxArVoqAV2Wt4PFr"></div>
+								<div class="g-recaptcha" data-sitekey="6Lc1jykUAAAAAExN5ORwKGLLoxArVoqAV2Wt4PFr" data-callback="enableBtn"></div>
 				
 							</div>
 						</div>
@@ -117,6 +117,11 @@ session_start();
 				</div>
                 	</form>
 					
+                    <script>
+                    function enableBtn(){
+                        document.getElementById("submit").disabled = false;
+                    }
+                    </script>
 					
 					<?php
 					
