@@ -37,7 +37,7 @@ $app->get('/api/authentication/{username}/{password}', function (Request $reques
 
         if(empty($user))
         {
-             echo '{"notice": {"text": "Incorrect Username/Password"}';
+             echo '[{"notice": "Incorrect Username/Password"}]';
         }
         else
         {
@@ -48,7 +48,7 @@ $app->get('/api/authentication/{username}/{password}', function (Request $reques
             }
             else
             {
-                 echo '{"notice": {"text": "Incorrect Username/Password"}';
+                 echo '[{"notice": "Incorrect Username/Password"}]';
             }
         }
 
