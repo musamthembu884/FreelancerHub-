@@ -88,27 +88,32 @@
 <?php
     if(isset($_POST['username']))
     {
+    try{
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+        if(preg_match('/'.preg_quote('\.,').'/',$username) && preg_match('/'.preg_quote('\.,').'/',$password))
+        {
+            echo "EEEEEEEEERRRRRRRRRRRRRRR";
+        }
+
         ini_set("allow_url_fopen", 1);
-        $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/'.$username.'/'.$password);
+        $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/'.$username.'/'.$password,false);
         $JSONArray = json_decode($json,true);
 
         if(array_key_exists("notice",$JSONArray[0]))
         {
-             echo $JSONArray[0]['notice'];
+            // echo $JSONArray[0]['notice'];
+             header('Location: login.php?CredError');
+             
         }
         else
         {
              echo $JSONArray[0]['FullName'];
         }
-       
-        
-        
-        
+     }catch(Exception $e){
 
-        
+     }
         
     }
 ?>
