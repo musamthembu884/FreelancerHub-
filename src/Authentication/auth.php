@@ -8,10 +8,10 @@ $app = new \Slim\App;
 require '../src/customer/customerhome.php';
 
 //User LogIn
-$app->get('/api/authentication/{username}/{password}', function (Request $request, Response $response) {
+$app->get('/api/authentication', function (Request $request, Response $response) {
 
-   $username = $request->getAttribute('username'); 
-   $password = $request->getAttribute('password'); 
+   $username = $request->getParam('username'); 
+   $password = $request->getParam('password'); 
 
    $sqlC = "SELECT * FROM Customer WHERE Email = '$username'";
    $sqlF = "SELECT * FROM freelancer WHERE Email = '$username'";
