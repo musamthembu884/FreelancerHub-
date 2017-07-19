@@ -111,7 +111,7 @@ session_start();
 										<span class="material-input"></span></div>
                                         <input type="hidden" name="DOB" value="12 Jul 2017">
                                         <input type="hidden" name="ProfilePicture" value="default.png">
-                                       
+                                       <input type="hidden" name="Url" value="/freelancer_hub2.0/freelancerhub/UI/login.php">
 						<div class="form-group mb-n">
 							<div class="col-xs-offset-2 col-xs-8">
 								<!--<div class="g-recaptcha" data-sitekey="6Lc1jykUAAAAAExN5ORwKGLLoxArVoqAV2Wt4PFr" data-callback="enableBtn"></div>-->
