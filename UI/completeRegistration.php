@@ -46,6 +46,9 @@ session_start();
 		
 		
 	?>
+
+	
+	
         
 <div class="container" id="registration-form">
 	<a href="#" class="login-logo"><img src="assets/img/logo-dark.png"></a>
@@ -56,7 +59,10 @@ session_start();
 					<h2 style="color:white" >Registration Form</h2>
 				</div>
 				<div class="panel-body">
-					<form action="" method="post" class="form-horizontal">
+
+				
+
+					<form action="http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/Freelancer/update/<?php echo $_SESSION["User"]["ID"]?>" method="post" class="form-horizontal">
 						
 						
 						<div class="form-group is-empty">
@@ -71,11 +77,11 @@ session_start();
 						<div class="form-group">
 						<label for="form-password" class="col-sm-2 control-label">Category</label>
 											 <div class="col-sm-8 tabular-border">
-											<select required name="Province" id="Category" class="form-control"  required>
+											<select required name="Category" id="Category" class="form-control"  required>
 												
 												<option value="">Choose Category</option>
-												<option value="Web Design">Gauteng</option>
-												<option value="Graphics">Limpopo</option>
+												<option value="Web Design">Web Design</option>
+												<option value="Graphics">Graphics</option>
 												
 											</select></div>
 											<div class="col-sm-2"><p class="help-block">Choose a category that best fits your Profession</p></div>
@@ -99,9 +105,9 @@ session_start();
 				<span class="material-input"></span></div>
 
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Why Me</label>
+					<label class="col-sm-2 control-label">Why Hire Me</label>
 					<div class="col-sm-8">
-						<textarea required name="WhyMe" id="WhyMe" class="form-control autosize" style=" word-wrap: break-word; height: 106px;"  placeholder="Flexible in working environments having positioned for startups, digital agencies, and fortune 500 companies. Focused on helping agile teams with UI development for large scale CMS websites or client-side web apps." ></textarea>
+						<textarea required name="WhyHireMe" id="WhyHireMe" class="form-control autosize" style=" word-wrap: break-word; height: 106px;"  placeholder="Flexible in working environments having positioned for startups, digital agencies, and fortune 500 companies. Focused on helping agile teams with UI development for large scale CMS websites or client-side web apps." ></textarea>
 					</div>
 					<div class="col-sm-2"><p class="help-block">Tell your clients why you are the best choice for their services</p></div>
 				<span class="material-input"></span></div>
@@ -109,13 +115,22 @@ session_start();
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Professional Overview</label>
 					<div class="col-sm-8">
-						<textarea required name="ProfessinalOverview" id="ProfessinalOverview" class="form-control autosize" style=" word-wrap: break-word; height: 106px;"  placeholder="At Dariel, I Worked with digital agencies, startups, and companies on projects ranging from web design, Wordpress theme development, front-end maintenance, SEO, and more"></textarea>
+						<textarea required name="ProfessionalOverview" id="ProfessinalOverview" class="form-control autosize" style=" word-wrap: break-word; height: 106px;"  placeholder="At Dariel, I Worked with digital agencies, startups, and companies on projects ranging from web design, Wordpress theme development, front-end maintenance, SEO, and more"></textarea>
 					</div>
 					<div class="col-sm-2"><p class="help-block">Provide a brief professinal overview</p></div>
 				<span class="material-input"></span></div>
 
-
-                        
+					
+					<input type="hidden" name="AccountType"	 value="<?php echo $_SESSION["User"]["AccountType"]?>">
+					<input type="hidden" name="FullName" 	 value="<?php echo $_SESSION["User"]["FullName"]?>">
+					<input type="hidden" name="Email" 		 value="<?php echo $_SESSION["User"]["Email"]?>">
+					<input type="hidden" name="Password" 	 value="<?php echo $_SESSION["User"]["Password"]?>">
+					<input type="hidden" name="DOB" 		 value="<?php echo $_SESSION["User"]["DOB"]?>">
+					<input type="hidden" name="Province" 	 value="<?php echo $_SESSION["User"]["Province"]?>">
+					<input type="hidden" name="ProfileViews" value="0">
+					<input type="hidden" name="ProfilePicture" value="default.png">
+					<input type="hidden" name="Status" 		 value="Active">
+					
                         <input type="hidden" name="Url" value="/freelancer_hub2.0/freelancerhub/UI/login.php?RegComplete">
 						<div class="form-group mb-n">
 							<div class="col-xs-offset-2 col-xs-8">
@@ -133,6 +148,8 @@ session_start();
 				</div>
                 
                 	</form>
+
+
 					
                     <script>
                     function enableBtn(){
