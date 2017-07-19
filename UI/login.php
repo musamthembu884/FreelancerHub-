@@ -106,7 +106,16 @@
         {
              //echo $JSONArray[0]['FullName'];
              $_SESSION["User"] = $JSONArray;
-             header('Location: customerindex.php');
+
+             if($JSONArray[0]['AccountType'] == "Freelancer")
+             {
+                header('Location: freelancerindex.php');
+             }
+             else
+             {
+                 header('Location: customerindex.php');
+             }
+             
         }
         
     }
