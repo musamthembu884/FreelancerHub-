@@ -41,6 +41,17 @@
 			
 			";
 		}
+        elseif(isset($_GET['RegComplete']))
+        {
+            echo
+			"
+				<div class='alert alert-dismissable alert-success' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
+						<i class='fa fa-check'></i>&nbsp; <strong>Welcome!</strong> Your account was successfully registered. Please login with your credentials.
+						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+					</div>
+			
+			";
+        }
 		
 	?>
         
