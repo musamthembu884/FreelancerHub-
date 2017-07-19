@@ -90,18 +90,18 @@ session_start();
 
                         <div class="form-group">
 											 <div class="col-xs-8 col-xs-offset-2">
-											<select name="selector1" id="selector1" class="form-control">
+											<select name="selector1" id="selectorProvince" class="form-control" required>
 												
 												<option value="null">Choose Province:</option>
-												<option value="FreeLancer">Gauteng</option>
-												<option value="Customer">Limpopo</option>
+												<option value="Gauteng">Gauteng</option>
+												<option value="Limpopo">Limpopo</option>
 												
 											</select></div>
 										<span class="material-input"></span></div>
 						
 						<div class="form-group">
 											 <div class="col-xs-8 col-xs-offset-2">
-											<select name="selector1" id="selector1" class="form-control">
+											<select name="selector1" id="selectorType" class="form-control">
 												
 												<option value="null">Register As:</option>
 												<option value="FreeLancer">Freelancer</option>
@@ -138,33 +138,34 @@ session_start();
 						$FullName = $_POST['FullName'];	
 						$Email = $_POST['Email'];
 						$Password = $_POST['Password'];
-						$ConfirmPassword = $_POST['ConfirmPassword'];
-						$cat = $_POST['selector1'];	
+                        $DOB = date("d M Y"); 
+						$Province = $_POST['selectorProvince'];
+						$cat = $_POST['selectorType'];	
 						
 						//Validation
-						if($Password == $ConfirmPassword)
-						{
+						
 							if($cat == "FreeLancer")
 							{
-								$_SESSION["Password"] = $Password;
-								
-								echo"
-								
-								<script>
-								
-									window.location.replace('bridge/register.php?Name=$FullName&Email=$Email&Cat=$cat');
-
-								</script>";
+								ini_set("allow_url_fopen", 1);
+                                $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/Freelancer/add?AccountType=Freelancer&
+                                FullName='.$FullName.'&
+                                Email='.$Email.'&
+                                Password='.$Password.'&
+                                DOB='.$DOB.'&
+                                Province='.$Province.'&
+                                Profession=null&
+                                Category=null&
+                                Skills=null&
+                                AboutMe=null&
+                                WhyHireMe=null&
+                                ProfessionalOverview=null&
+                                ProfileViews=0&
+                                ProfilePicture=default.png');
+                                $JSONArray = json_decode($json,true);
 							}
 							elseif($cat == "Customer")
 							{
-								$_SESSION["Password"] = $Password;
-								echo"
-								<script>
 								
-									window.location.replace('customer_registrationwizard.php?Name=$FullName&Email=$Email&Cat=$cat');
-
-								</script>";
 							}
 							else
 							{
@@ -175,16 +176,7 @@ session_start();
 
 								</script>";
 							}
-						}
-						else
-						{
-							echo"
-								<script>
-								
-									window.location.replace('registration.php?PasswordNotMatch');
-
-								</script>";
-						}
+						
 					}
 					
 					?>
