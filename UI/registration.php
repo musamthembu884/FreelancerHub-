@@ -68,7 +68,7 @@ session_start();
 					<h2 style="color:white" >Registration Form</h2>
 				</div>
 				<div class="panel-body">
-					<form action="http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/Customer/add" method="post" class="form-horizontal">
+					<form action="http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/add" method="post" class="form-horizontal">
 						<div class="form-group mb-md">
 	                        <div class="col-xs-8 col-xs-offset-2">
 	                        	<input type="text" class="form-control" name="FullName" id="FullName" placeholder="Full Name" required>
@@ -104,7 +104,7 @@ session_start();
 											<select name="AccountType" id="AccountType" class="form-control">
 												
 												<option value="null">Register As:</option>
-												<option value="FreeLancer">Freelancer</option>
+												<option value="Freelancer">Freelancer</option>
 												<option value="Customer">Customer</option>
 												
 											</select></div>
