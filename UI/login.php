@@ -105,7 +105,7 @@
         else
         {
              //echo $JSONArray[0]['FullName'];
-             $_SESSION["User"] = $JSONArray;
+             $_SESSION["User"] = $JSONArray[0];
 
              if($JSONArray[0]['AccountType'] == "Freelancer")
              {
