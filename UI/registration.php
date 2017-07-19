@@ -19,7 +19,7 @@ session_start();
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="assets/fonts/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
     <link href="assets/css/styles.css" type="text/css" rel="stylesheet">
-
+<link href="assets/plugins/form-daterangepicker/daterangepicker-bs3.css" type="text/css" rel="stylesheet">    <!-- DateRangePicker -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries. Placeholdr.js enables the placeholder attribute -->
     <!--[if lt IE 9]>
         <link href="assets/css/ie8.css" type="text/css" rel="stylesheet">
@@ -86,11 +86,19 @@ session_start();
 	                        	<input type="password" class="form-control" name="Password" id="Password" placeholder="Password" required>
 	                        </div>
 						</div>
-						<div class="form-group mb-md">
-	                        <div class="col-xs-8 col-xs-offset-2">
-	                        	<input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword" placeholder="Confirm Password" required>
-	                        </div>
-						</div>
+                       
+
+                        <div class="form-group">
+											 <div class="col-xs-8 col-xs-offset-2">
+											<select name="selector1" id="selector1" class="form-control">
+												
+												<option value="null">Choose Province:</option>
+												<option value="FreeLancer">Gauteng</option>
+												<option value="Customer">Limpopo</option>
+												
+											</select></div>
+										<span class="material-input"></span></div>
+						
 						<div class="form-group">
 											 <div class="col-xs-8 col-xs-offset-2">
 											<select name="selector1" id="selector1" class="form-control">
@@ -218,10 +226,20 @@ session_start();
 <script src="assets/plugins/dropdown.js/jquery.dropdown.js"></script> <!-- Fancy Dropdowns -->
 <script src="assets/plugins/bootstrap-material-design/js/material.min.js"></script> <!-- Bootstrap Material -->
 <script src="assets/plugins/bootstrap-material-design/js/ripples.min.js"></script> <!-- Bootstrap Material -->
+<script src="assets/plugins/form-daterangepicker/moment.min.js"></script>              			<!-- Moment.js for Date Range Picker -->
+
+<script src="assets/plugins/form-colorpicker/js/bootstrap-colorpicker.min.js"></script> 			<!-- Color Picker -->
+
+<script src="assets/plugins/form-daterangepicker/daterangepicker.js"></script>     				<!-- Date Range Picker -->
+<script src="assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>      			<!-- Datepicker -->
+<script src="assets/plugins/bootstrap-timepicker/bootstrap-timepicker.js"></script>      			<!-- Timepicker -->
+<script src="assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script> <!-- DateTime Picker -->
 
 <script src="assets/js/application.js"></script>
 <script src="assets/demo/demo.js"></script>
 <script src="assets/demo/demo-switcher.js"></script>
+
+<script src="assets/demo/demo-pickers.js"></script>
 
 <!-- End loading site level scripts -->
     <!-- Load page level scripts-->
