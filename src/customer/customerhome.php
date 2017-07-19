@@ -122,7 +122,7 @@ $app->get('/api/customerhome/RecommendedFreelancers/{num}', function (Request $r
 //Load Categories
 $app->get('/api/customerhome/Categories', function (Request $request, Response $response) { 
 
-   $sql = "SELECT * FROM categories";
+   $sql = "SELECT * FROM category";
   
    try{
        $db = new db();
