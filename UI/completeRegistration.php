@@ -44,8 +44,10 @@ session_start();
 			";
 		
 		
-		
-	?>
+		ini_set("allow_url_fopen", 1);
+        $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerhome/Categories');
+        $JSONArray = json_decode($json,true);
+	    ?>
 
 	
 	
@@ -80,8 +82,17 @@ session_start();
 											<select required name="Category" id="Category" class="form-control"  required>
 												
 												<option value="">Choose Category</option>
-												<option value="Web Design">Web Design</option>
-												<option value="Graphics">Graphics</option>
+						
+
+												<?php
+													for($k=0; $k<count($JSONArray); $k++)
+													{
+														echo"
+														<option value='".$JSONArray[$k]['Name']."'>".$JSONArray[$k]['Name']."</option>
+														";
+													}
+													echo count($JSONArray);
+												?>
 												
 											</select></div>
 											<div class="col-sm-2"><p class="help-block">Choose a category that best fits your Profession</p></div>
