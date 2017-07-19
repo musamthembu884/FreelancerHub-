@@ -91,7 +91,7 @@ session_start();
 														<option value='".$JSONArray[$k]['Name']."'>".$JSONArray[$k]['Name']."</option>
 														";
 													}
-													echo count($JSONArray);
+													
 												?>
 												
 											</select></div>
