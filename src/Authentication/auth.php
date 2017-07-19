@@ -202,11 +202,55 @@ $app->put('/api/authentication/Freelancer/update/{id}', function (Request $reque
    }
 });
 
-//Customer Registration
-$app->post('/api/authentication/Customer/add', function (Request $request, Response $response) {
+//Registration
+$app->post('/api/authentication/add', function (Request $request, Response $response) {
 
-   $Url = $request->getParam('Url'); 
    $AccountType = $request->getParam('AccountType'); 
+
+   if($AccountType == "Customer")
+   {
+    $Url = $request->getParam('Url'); 
+    $FullName = $request->getParam('FullName'); 
+    $Email = $request->getParam('Email'); 
+
+    //Password Hashing
+    $UserPassword = $request->getParam('Password'); 
+    $Password = password_hash($UserPassword,PASSWORD_DEFAULT);
+
+    $DOB = $request->getParam('DOB'); 
+    $Province = $request->getParam('Province'); 
+    $ProfilePicture = $request->getParam('ProfilePicture'); 
+
+        $sql = "INSERT INTO customer(AccountType,FullName,Email,Password,DOB,Province,ProfilePicture) VALUES (:AccountType,:FullName,:Email,:Password,:DOB,:Province,:ProfilePicture)";
+
+    try{
+        $db = new db();
+        $db = $db->connect();
+
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindParam(':AccountType', $AccountType);
+        $stmt->bindParam(':FullName',    $FullName);
+        $stmt->bindParam(':Email',       $Email);
+        $stmt->bindParam(':Password',    $Password);
+        $stmt->bindParam(':DOB',         $DOB);
+        $stmt->bindParam(':Province',    $Province);
+        $stmt->bindParam(':ProfilePicture',$ProfilePicture);
+        
+        $stmt->execute();
+
+        // echo '[{"notice":"Customer Successfully Added!"}]';
+        header("Location: ".$Url);
+        $app->halt(301);
+        
+        
+    }catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
+   }
+   elseif($AccountType == "Freelancer")
+   {
+   $Url = $request->getParam('Url'); 
    $FullName = $request->getParam('FullName'); 
    $Email = $request->getParam('Email'); 
 
@@ -216,9 +260,16 @@ $app->post('/api/authentication/Customer/add', function (Request $request, Respo
 
    $DOB = $request->getParam('DOB'); 
    $Province = $request->getParam('Province'); 
+   $Profession = $request->getParam('Profession'); 
+   $Category = $request->getParam('Category'); 
+   $Skills = $request->getParam('Skills'); 
+   $AboutMe = $request->getParam('AboutMe'); 
+   $WhyHireMe = $request->getParam('WhyHireMe'); 
+   $ProfessionalOverview = $request->getParam('ProfessionalOverview'); 
+   $ProfileViews = $request->getParam('ProfileViews'); 
    $ProfilePicture = $request->getParam('ProfilePicture'); 
 
-    $sql = "INSERT INTO customer(AccountType,FullName,Email,Password,DOB,Province,ProfilePicture) VALUES (:AccountType,:FullName,:Email,:Password,:DOB,:Province,:ProfilePicture)";
+  $sql = "INSERT INTO freelancer(AccountType,FullName,Email,Password,DOB,Province,Profession,Category,Skills,AboutMe,WhyHireMe,ProfessionalOverview,ProfileViews,ProfilePicture) VALUES (:AccountType,:FullName,:Email,:Password,:DOB,:Province,:Profession,:Category,:Skills,:AboutMe,:WhyHireMe,:ProfessionalOverview,:ProfileViews,:ProfilePicture)";
 
    try{
        $db = new db();
@@ -232,18 +283,28 @@ $app->post('/api/authentication/Customer/add', function (Request $request, Respo
       $stmt->bindParam(':Password',    $Password);
       $stmt->bindParam(':DOB',         $DOB);
       $stmt->bindParam(':Province',    $Province);
-      $stmt->bindParam(':ProfilePicture',$ProfilePicture);
+      $stmt->bindParam(':Profession',  $Profession);
+      $stmt->bindParam(':Category',    $Category);
+      $stmt->bindParam(':Skills',      $Skills);
+      $stmt->bindParam(':AboutMe',     $AboutMe);
+      $stmt->bindParam(':WhyHireMe',   $WhyHireMe);
+      $stmt->bindParam(':ProfessionalOverview',    $ProfessionalOverview);
+      $stmt->bindParam(':ProfileViews',            $ProfileViews);
+      $stmt->bindParam(':ProfilePicture',          $ProfilePicture);
       
       $stmt->execute();
 
-     // echo '[{"notice":"Customer Successfully Added!"}]';
-     header("Location: ".$Url);
-     $app->halt(301);
-     
+     // echo '{"notice": {"text": "Freelancer Successfully Added!"}';
+      header("Location: ".$Url);
+        $app->halt(301);
        
    }catch(PDOException $e){
        echo '{"error": {"text": '.$e->getMessage().'}';
    }
+   }
+
+
+   
 });
 
 //Update Customer
