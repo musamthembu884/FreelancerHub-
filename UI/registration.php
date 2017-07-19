@@ -110,8 +110,16 @@ session_start();
 											</select></div>
 										<span class="material-input"></span></div>
                                         <input type="hidden" name="DOB" value="12 Jul 2017">
+                                        <input type="hidden" name="Profession" value="null">
+                                        <input type="hidden" name="Category" value="null">
+                                        <input type="hidden" name="Skills" value="null">
+                                        <input type="hidden" name="AboutMe" value="null">
+                                        <input type="hidden" name="WhyHireMe" value="null">
+                                        <input type="hidden" name="ProfessionalOverview" value="null">
+                                         <input type="hidden" name="ProfileViews" value="0">
+                                       
                                         <input type="hidden" name="ProfilePicture" value="default.png">
-                                       <input type="hidden" name="Url" value="/freelancer_hub2.0/freelancerhub/UI/login.php">
+                                       <input type="hidden" name="Url" value="/freelancer_hub2.0/freelancerhub/UI/login.php?RegComplete">
 						<div class="form-group mb-n">
 							<div class="col-xs-offset-2 col-xs-8">
 								<!--<div class="g-recaptcha" data-sitekey="6Lc1jykUAAAAAExN5ORwKGLLoxArVoqAV2Wt4PFr" data-callback="enableBtn"></div>-->
