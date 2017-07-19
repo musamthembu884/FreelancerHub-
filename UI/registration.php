@@ -165,7 +165,15 @@ session_start();
 							}
 							elseif($cat == "Customer")
 							{
-								
+								ini_set("allow_url_fopen", 1);
+                                $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/Freelancer/add?AccountType=Customer&
+                                FullName='.$FullName.'&
+                                Email='.$Email.'&
+                                Password='.$Password.'&
+                                DOB='.$DOB.'&
+                                Province='.$Province.'&
+                                ProfilePicture=default.png');
+                                $JSONArray = json_decode($json,true);
 							}
 							else
 							{
