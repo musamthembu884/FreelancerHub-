@@ -235,7 +235,7 @@ $app->post('/api/authentication/Customer/add', function (Request $request, Respo
       
       $stmt->execute();
 
-      echo '{"notice": {"text": "Customer Successfully Added!"}';
+      echo '[{"notice":"Customer Successfully Added!"}]';
        
    }catch(PDOException $e){
        echo '{"error": {"text": '.$e->getMessage().'}';
