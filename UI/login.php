@@ -120,7 +120,14 @@
 
              if($JSONArray[0]['AccountType'] == "Freelancer")
              {
-                header('Location: freelancerindex.php');
+				 if($JSONArray[0]['Status'] == "Active")
+				 {
+					 header('Location: freelancerindex.php');
+				 }
+				 else
+				 {
+					 header('Location: completeRegistration.php');
+				 }
              }
              else
              {
