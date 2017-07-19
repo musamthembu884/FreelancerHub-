@@ -33,93 +33,90 @@ session_start();
     <body class="focused-form animated-content">
         <?php
 		
-		if(isset($_GET['FieldError']))
-		{
-			echo
-			"
-				<div class='alert alert-dismissable alert-danger' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
-						<i class='fa fa-close'></i>&nbsp; <strong>Oh snap!</strong> Please Select Type of User!
-						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-					</div>
-			
-			";
-		}
 		
-		if(isset($_GET['PasswordNotMatch']))
-		{
 			echo
 			"
-				<div class='alert alert-dismissable alert-danger' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
-						<i class='fa fa-close'></i>&nbsp; <strong>Oh snap!</strong> Password not matching!
+				<div class='alert alert-dismissable alert-info' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
+						<i class='fa fa-info'></i>&nbsp; <strong>Almost Ready!</strong> Welcome back to FreelancerHub! Please complete your registration.
 						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
 					</div>
 			
 			";
-		}
+		
+		
 		
 	?>
         
 <div class="container" id="registration-form">
 	<a href="#" class="login-logo"><img src="assets/img/logo-dark.png"></a>
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 				<div style="background-color:#42a5f5" class="panel-heading">
 					<h2 style="color:white" >Registration Form</h2>
 				</div>
 				<div class="panel-body">
-					<form action="http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/add" method="post" class="form-horizontal">
-						<div class="form-group mb-md">
-	                        <div class="col-xs-8 col-xs-offset-2">
-	                        	<input type="text" class="form-control" name="FullName" id="FullName" placeholder="Full Name" required>
-	                        </div>
-	                       
-						</div>
+					<form action="" method="post" class="form-horizontal">
 						
-						<div class="form-group mb-md">
-	                        <div class="col-xs-8 col-xs-offset-2">
-	                        	<input type="text" class="form-control" name="Email" id="Email" placeholder="Email" required>
-	                        </div>
-						</div>
-						<div class="form-group mb-md">
-	                        <div class="col-xs-8 col-xs-offset-2">
-	                        	<input type="password" class="form-control" name="Password" id="Password" placeholder="Password" required>
-	                        </div>
-						</div>
-                       
+						
+						<div class="form-group is-empty">
+							<label for="form-password" class="col-sm-2 control-label">Profession</label>
+							<div class="col-sm-8 tabular-border">
+								<input required type="text" name="Profession" id="Profession" placeholder="EXAMPLE: Front-End Web Design" class="form-control tooltips" data-trigger="hover" >
+								
+							</div>
+							<div class="col-sm-2"><p class="help-block">Your day to day occupation</p></div>
+						<span class="material-input"></span></div>
 
-                        <div class="form-group">
-											 <div class="col-xs-8 col-xs-offset-2">
-											<select name="Province" id="Province" class="form-control" required>
+						<div class="form-group">
+						<label for="form-password" class="col-sm-2 control-label">Category</label>
+											 <div class="col-sm-8 tabular-border">
+											<select required name="Province" id="Category" class="form-control"  required>
 												
-												<option value="null">Choose Province:</option>
-												<option value="Gauteng">Gauteng</option>
-												<option value="Limpopo">Limpopo</option>
+												<option value="">Choose Category</option>
+												<option value="Web Design">Gauteng</option>
+												<option value="Graphics">Limpopo</option>
 												
 											</select></div>
+											<div class="col-sm-2"><p class="help-block">Choose a category that best fits your Profession</p></div>
 										<span class="material-input"></span></div>
 						
+						<div class="form-group is-empty">
+							<label for="form-password" class="col-sm-2 control-label">Skills</label>
+							<div class="col-sm-8 tabular-border">
+								<input required type="text" name="Skills" id="Skills" placeholder="EXAMPLE: Photoshop, Illustrator, Paint, Sketch" class="form-control tooltips" data-trigger="hover">
+								
+							</div>
+							<div class="col-sm-2"><p class="help-block">Separate your skills with commas</p></div>
+						<span class="material-input"></span></div>
+                       
 						<div class="form-group">
-											 <div class="col-xs-8 col-xs-offset-2">
-											<select name="AccountType" id="AccountType" class="form-control">
-												
-												<option value="null">Register As:</option>
-												<option value="Freelancer">Freelancer</option>
-												<option value="Customer">Customer</option>
-												
-											</select></div>
-										<span class="material-input"></span></div>
-                                        <input type="hidden" name="DOB" value="12 Jul 2017">
-                                        <input type="hidden" name="Profession" value="null">
-                                        <input type="hidden" name="Category" value="null">
-                                        <input type="hidden" name="Skills" value="null">
-                                        <input type="hidden" name="AboutMe" value="null">
-                                        <input type="hidden" name="WhyHireMe" value="null">
-                                        <input type="hidden" name="ProfessionalOverview" value="null">
-                                         <input type="hidden" name="ProfileViews" value="0">
-                                       
-                                        <input type="hidden" name="ProfilePicture" value="default.png">
-                                       <input type="hidden" name="Url" value="/freelancer_hub2.0/freelancerhub/UI/login.php?RegComplete">
+					<label class="col-sm-2 control-label">About Me</label>
+					<div class="col-sm-8">
+						<textarea required name="AboutMe" id="AboutMe" class="form-control autosize" style=" word-wrap: break-word; height: 106px;"  placeholder="Award winning front-end developer with more than 8+ years experience building pixel perfect websites. Recent contributor to Smashing Magazine. Nominated for a Webby and AGDA design award with portfolio featured on Awwwards as Site of the Day." class="form-control tooltips" data-trigger="hover" data-original-title="Seperate your skills with commas"></textarea>
+					</div>
+					<div class="col-sm-2"><p class="help-block">Tell your clients about yourself</p></div>
+				<span class="material-input"></span></div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Why Me</label>
+					<div class="col-sm-8">
+						<textarea required name="WhyMe" id="WhyMe" class="form-control autosize" style=" word-wrap: break-word; height: 106px;"  placeholder="Flexible in working environments having positioned for startups, digital agencies, and fortune 500 companies. Focused on helping agile teams with UI development for large scale CMS websites or client-side web apps." ></textarea>
+					</div>
+					<div class="col-sm-2"><p class="help-block">Tell your clients why you are the best choice for their services</p></div>
+				<span class="material-input"></span></div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Professional Overview</label>
+					<div class="col-sm-8">
+						<textarea required name="ProfessinalOverview" id="ProfessinalOverview" class="form-control autosize" style=" word-wrap: break-word; height: 106px;"  placeholder="At Dariel, I Worked with digital agencies, startups, and companies on projects ranging from web design, Wordpress theme development, front-end maintenance, SEO, and more"></textarea>
+					</div>
+					<div class="col-sm-2"><p class="help-block">Provide a brief professinal overview</p></div>
+				<span class="material-input"></span></div>
+
+
+                        
+                        <input type="hidden" name="Url" value="/freelancer_hub2.0/freelancerhub/UI/login.php?RegComplete">
 						<div class="form-group mb-n">
 							<div class="col-xs-offset-2 col-xs-8">
 								<!--<div class="g-recaptcha" data-sitekey="6Lc1jykUAAAAAExN5ORwKGLLoxArVoqAV2Wt4PFr" data-callback="enableBtn"></div>-->
@@ -129,8 +126,8 @@ session_start();
 						<div class="panel-footer">
                          
 					<div class="clearfix">
-						<a href="login.php" class="btn btn-default pull-left">Already Registered? Login</a>
-						<button id="submit" name="submit" class="btn-raised btn-primary btn pull-right">Register</button>
+						<a href="login.php" class="btn btn-default pull-left">Cancel</a>
+						<button id="submit" name="submit" class="btn-raised btn-primary btn pull-right">Done</button>
 					</div>
                    
 				</div>
