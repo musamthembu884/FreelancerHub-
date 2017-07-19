@@ -92,18 +92,25 @@ session_start();
 											 <div class="col-xs-8 col-xs-offset-2">
 											<select name="Province" id="Province" class="form-control" required>
 												
-												<option value="null">Choose Province:</option>
+												<option value="">Select Province</option>
+												<option value="Eastern Cape">Eastern Cape</option>
+												<option value="Free State">Free State</option>
 												<option value="Gauteng">Gauteng</option>
+												<option value="KwaZulu-Natal">KwaZulu-Natal</option>
 												<option value="Limpopo">Limpopo</option>
+												<option value="Mpumalanga">Mpumalanga</option>
+												<option value="Northern Cape">Northern Cape</option>
+												<option value="Western Cape">Western Cape</option>
+												<option value="North West">North West</option>
 												
 											</select></div>
 										<span class="material-input"></span></div>
 						
 						<div class="form-group">
 											 <div class="col-xs-8 col-xs-offset-2">
-											<select name="AccountType" id="AccountType" class="form-control">
+											<select name="AccountType" id="AccountType" class="form-control" required>
 												
-												<option value="null">Register As:</option>
+												<option value="">Register As:</option>
 												<option value="Freelancer">Freelancer</option>
 												<option value="Customer">Customer</option>
 												
