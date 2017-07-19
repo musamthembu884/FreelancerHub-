@@ -9,6 +9,7 @@
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="author" content="KaijuThemes">
 
+    
     <link type='text/css' href='http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500' rel='stylesheet'>
     <link type='text/css'  href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet"> 
     <link href="assets/plugins/progress-skylo/skylo.css" type="text/css" rel="stylesheet">                   <!-- Skylo -->
@@ -103,7 +104,9 @@
         }
         else
         {
-             echo $JSONArray[0]['FullName'];
+             //echo $JSONArray[0]['FullName'];
+             $_SESSION["User"] = $JSONArray;
+             header('Location: customerindex.php');
         }
         
     }
