@@ -137,7 +137,7 @@ $app->post('/api/authentication/Freelancer/add', function (Request $request, Res
 });
 
 //Update Freelancer
-$app->put('/api/authentication/Freelancer/update/{id}', function (Request $request, Response $response) {
+$app->post('/api/authentication/Freelancer/update/{id}', function (Request $request, Response $response) {
    $ID = $request->getAttribute('id'); 
 
    $AccountType = $request->getParam('AccountType'); 
@@ -154,6 +154,7 @@ $app->put('/api/authentication/Freelancer/update/{id}', function (Request $reque
    $ProfessionalOverview = $request->getParam('ProfessionalOverview'); 
    $ProfileViews = $request->getParam('ProfileViews'); 
    $ProfilePicture = $request->getParam('ProfilePicture'); 
+   $Status = $request->getParam('Status'); 
 
    $sql = "UPDATE freelancer SET
     AccountType = :AccountType,
@@ -169,7 +170,8 @@ $app->put('/api/authentication/Freelancer/update/{id}', function (Request $reque
     WhyHireMe = :WhyHireMe,
     ProfessionalOverview = :ProfessionalOverview,
     ProfileViews = :ProfileViews,
-    ProfilePicture = :ProfilePicture
+    ProfilePicture = :ProfilePicture,
+    Status = :Status
    WHERE ID = $ID";
   
    try{
@@ -192,10 +194,11 @@ $app->put('/api/authentication/Freelancer/update/{id}', function (Request $reque
       $stmt->bindParam(':ProfessionalOverview',    $ProfessionalOverview);
       $stmt->bindParam(':ProfileViews',            $ProfileViews);
       $stmt->bindParam(':ProfilePicture',          $ProfilePicture);
+      $stmt->bindParam(':Status',      $Status);
       
       $stmt->execute();
 
-      echo '{"notice": {"text": "Freelancer Successfully Updated!"}';
+      echo '[{"notice":"Freelancer Successfully Updated!"}]';
        
    }catch(PDOException $e){
        echo '{"error": {"text": '.$e->getMessage().'}';
@@ -268,8 +271,9 @@ $app->post('/api/authentication/add', function (Request $request, Response $resp
    $ProfessionalOverview = $request->getParam('ProfessionalOverview'); 
    $ProfileViews = $request->getParam('ProfileViews'); 
    $ProfilePicture = $request->getParam('ProfilePicture'); 
+   $Status ="Not Active"; 
 
-  $sql = "INSERT INTO freelancer(AccountType,FullName,Email,Password,DOB,Province,Profession,Category,Skills,AboutMe,WhyHireMe,ProfessionalOverview,ProfileViews,ProfilePicture) VALUES (:AccountType,:FullName,:Email,:Password,:DOB,:Province,:Profession,:Category,:Skills,:AboutMe,:WhyHireMe,:ProfessionalOverview,:ProfileViews,:ProfilePicture)";
+  $sql = "INSERT INTO freelancer(AccountType,FullName,Email,Password,DOB,Province,Profession,Category,Skills,AboutMe,WhyHireMe,ProfessionalOverview,ProfileViews,ProfilePicture,Status) VALUES (:AccountType,:FullName,:Email,:Password,:DOB,:Province,:Profession,:Category,:Skills,:AboutMe,:WhyHireMe,:ProfessionalOverview,:ProfileViews,:ProfilePicture,:Status)";
 
    try{
        $db = new db();
@@ -291,7 +295,8 @@ $app->post('/api/authentication/add', function (Request $request, Response $resp
       $stmt->bindParam(':ProfessionalOverview',    $ProfessionalOverview);
       $stmt->bindParam(':ProfileViews',            $ProfileViews);
       $stmt->bindParam(':ProfilePicture',          $ProfilePicture);
-      
+      $stmt->bindParam(':Status',      $Status);
+
       $stmt->execute();
 
      // echo '{"notice": {"text": "Freelancer Successfully Added!"}';
