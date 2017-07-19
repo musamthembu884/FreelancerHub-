@@ -205,6 +205,7 @@ $app->put('/api/authentication/Freelancer/update/{id}', function (Request $reque
 //Customer Registration
 $app->post('/api/authentication/Customer/add', function (Request $request, Response $response) {
 
+   $Url = $request->getParam('Url'); 
    $AccountType = $request->getParam('AccountType'); 
    $FullName = $request->getParam('FullName'); 
    $Email = $request->getParam('Email'); 
@@ -235,7 +236,9 @@ $app->post('/api/authentication/Customer/add', function (Request $request, Respo
       
       $stmt->execute();
 
-      echo '[{"notice":"Customer Successfully Added!"}]';
+     // echo '[{"notice":"Customer Successfully Added!"}]';
+     header("Location: ".$Url);
+     $app->halt(301);
      
        
    }catch(PDOException $e){
