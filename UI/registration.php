@@ -68,7 +68,7 @@ session_start();
 					<h2 style="color:white" >Registration Form</h2>
 				</div>
 				<div class="panel-body">
-					<form action="registration.php" method="post" class="form-horizontal">
+					<form action="http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/Customer/add" method="post" class="form-horizontal">
 						<div class="form-group mb-md">
 	                        <div class="col-xs-8 col-xs-offset-2">
 	                        	<input type="text" class="form-control" name="FullName" id="FullName" placeholder="Full Name" required>
@@ -90,7 +90,7 @@ session_start();
 
                         <div class="form-group">
 											 <div class="col-xs-8 col-xs-offset-2">
-											<select name="selector1" id="selectorProvince" class="form-control" required>
+											<select name="Province" id="Province" class="form-control" required>
 												
 												<option value="null">Choose Province:</option>
 												<option value="Gauteng">Gauteng</option>
@@ -101,7 +101,7 @@ session_start();
 						
 						<div class="form-group">
 											 <div class="col-xs-8 col-xs-offset-2">
-											<select name="selector1" id="selectorType" class="form-control">
+											<select name="AccountType" id="AccountType" class="form-control">
 												
 												<option value="null">Register As:</option>
 												<option value="FreeLancer">Freelancer</option>
@@ -109,9 +109,12 @@ session_start();
 												
 											</select></div>
 										<span class="material-input"></span></div>
+                                        <input type="hidden" name="DOB" value="12 Jul 2017">
+                                        <input type="hidden" name="ProfilePicture" value="default.png">
+                                       
 						<div class="form-group mb-n">
 							<div class="col-xs-offset-2 col-xs-8">
-								<div class="g-recaptcha" data-sitekey="6Lc1jykUAAAAAExN5ORwKGLLoxArVoqAV2Wt4PFr" data-callback="enableBtn"></div>
+								<!--<div class="g-recaptcha" data-sitekey="6Lc1jykUAAAAAExN5ORwKGLLoxArVoqAV2Wt4PFr" data-callback="enableBtn"></div>-->
 				
 							</div>
 						</div>
@@ -119,10 +122,11 @@ session_start();
                          
 					<div class="clearfix">
 						<a href="login.php" class="btn btn-default pull-left">Already Registered? Login</a>
-						<button disabled id="submit" name="submit" class="btn-raised btn-primary btn pull-right">Register</button>
+						<button id="submit" name="submit" class="btn-raised btn-primary btn pull-right">Register</button>
 					</div>
                    
 				</div>
+                
                 	</form>
 					
                     <script>
@@ -147,11 +151,7 @@ session_start();
 							if($cat == "FreeLancer")
 							{
 								ini_set("allow_url_fopen", 1);
-                                $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/Freelancer/add?AccountType=Freelancer&
-                                FullName='.$FullName.'&
-                                Email='.$Email.'&
-                                Password='.$Password.'&
-                                DOB='.$DOB.'&
+                                $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/Freelancer/add?AccountType=Freelancer&FullName='.$FullName.'&Email='.$Email.'&Password='.$Password.'&DOB='.$DOB.'&
                                 Province='.$Province.'&
                                 Profession=null&
                                 Category=null&
@@ -166,14 +166,10 @@ session_start();
 							elseif($cat == "Customer")
 							{
 								ini_set("allow_url_fopen", 1);
-                                $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/Freelancer/add?AccountType=Customer&
-                                FullName='.$FullName.'&
-                                Email='.$Email.'&
-                                Password='.$Password.'&
-                                DOB='.$DOB.'&
-                                Province='.$Province.'&
-                                ProfilePicture=default.png');
+                                $json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/authentication/Customer/add?AccountType=Customer&FullName='.$FullName.'&Email='.$Email.'&Password='.$Password.'&DOB='.$DOB.'&Province='.$Province.'&ProfilePicture=default.png');
                                 $JSONArray = json_decode($json,true);
+
+                               echo $JSONArray[0]['notice'];
 							}
 							else
 							{
