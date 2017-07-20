@@ -261,15 +261,7 @@ session_start();
 	</ul>
 
 </header>
-<?php
-include("classes/customerhome.php");
-			include("database/database.php");
-		
-		
-			$CEmail = $_SESSION['Email'];
-			$CustProfile = new CustomerHome();
-			$mycust = $CustProfile->CProfile($CEmail);
-?>
+
         <div id="wrapper">
             <div id="layout-static">
                 <div class="static-sidebar-wrapper sidebar-cyan">
@@ -279,13 +271,13 @@ include("classes/customerhome.php");
         <div class="widget-body">
             <div class="userinfo ">
                 <div class="avatar pull-left">
-                   <img src="classes/freelancer/<?php echo"".$mycust[1]; ?>/propic/<?php echo"".$mycust[2]; ?>" class="img-responsive img-circle"> 
+                   <img src="customer/<?php echo $_SESSION["User"]["Email"]?>/propic/<?php echo $_SESSION["User"]["ProfilePicture"]?>" class="img-responsive img-circle"> 
                 </div>
                 <div class="info">
 
-                    <span class="username"><?php echo"".$mycust[0]; ?></span>
+                    <span class="username"><?php echo $_SESSION["User"]["FullName"] ?></span>
 					
-                    <span class="useremail"><?php echo"".$mycust[1]; ?></span>
+                    <span class="useremail"><?php echo $_SESSION["User"]["Email"] ?></span>
                 </div>
 
                 <div class="acct-dropdown clearfix dropdown">
@@ -383,10 +375,7 @@ include("classes/customerhome.php");
 									   
 								  // include("classes/customerhome.php");
 								  // include("database/database.php");
-								   $CoolPeople = new CustomerHome();
-								  $arrCoolPeople = array();
-								  $arrCoolPeople = $CoolPeople->InterestingFreelancers(12);
-								 // echo "R: " . count($arrCoolPeople);
+								
 								 $counter=0;
 								  
 								   for($k=0; $k<4;$k++)
