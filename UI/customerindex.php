@@ -531,7 +531,7 @@ session_start();
 		  
 		  <h5 class="media-heading" style="font-size:18px; font-weight:900">Name your job posting</h5>
 		  <div class="col-sm-12 input-group">
-			<div class="form-group"><input type="text" name="Title" placeholder="EXAMPLE: I need a web developer to update my website" id="addon3a" class="form-control" value=""><span class="material-input"></span></div>
+			<div class="form-group"><input required type="text" name="Title" placeholder="EXAMPLE: I need a web developer to update my website" id="addon3a" class="form-control" value=""><span class="material-input"></span></div>
 									<br><br>
 						
 				</div>
@@ -544,13 +544,13 @@ session_start();
 				
 				<div class="DisplayJobPost" id="JobP" >
 				<h5 class="media-heading" style="font-size:18px; font-weight:900">Describe the work to be done</h5>
-				<div class="form-group"><textarea name="Description" placeholder="EXAMPLE: Looking for an experienced front end developer for a 3-6 month project. You will work with a team of international experts for this project. This contract includes multiple sub-projects. Must be experienced with Javascript, AngularJS, Bootstrap, and Kendo UI. Please note we are creating a Rich Internet Application, not a website/blog/etc. We have specifications available for applicants to review upon request." style="height:140px" class="form-control fullscreen"></textarea><span class="material-input"></span></div>
+				<div class="form-group"><textarea required name="Description" placeholder="EXAMPLE: Looking for an experienced front end developer for a 3-6 month project. You will work with a team of international experts for this project. This contract includes multiple sub-projects. Must be experienced with Javascript, AngularJS, Bootstrap, and Kendo UI. Please note we are creating a Rich Internet Application, not a website/blog/etc. We have specifications available for applicants to review upon request." style="height:140px" class="form-control fullscreen"></textarea><span class="material-input"></span></div>
 				
 				<br><br>
 				
 				<h5 class="media-heading" style="font-size:18px; font-weight:900" >Services you offer clients</h5>
 			
-						<select name="Category" class="col-sm-8 select form-control" placeholder="This is a placeholder" style="display: none;">
+						<select required name="Category" class="col-sm-8 select form-control" placeholder="This is a placeholder" style="display: none;">
 						
 							<?php 
 								ini_set("allow_url_fopen", 1);
@@ -575,52 +575,29 @@ session_start();
 						<br><br>
 						<h5 class="media-heading" style="font-size:18px; font-weight:900" >Project time span</h5>
 			
-						<select name="TimeSpan" class="col-sm-8 select form-control" placeholder="This is a placeholder" style="display: none;">
-						
+						<select required name="TimeSpan" class="col-sm-8 select form-control" placeholder="This is a placeholder" style="display: none;">
+						<option value="">Choose Job TimeSpan</option>
 							<?php 
 							
 							
 								$myservices = array("0-1 week", "2-4 weeks", "1-2 months", "2-3 months", "4-8 months", "1 year", "other");
-								$index = -1;
+							
 								
-								
-								if($index>-1)
-								{
-									echo
-									"
-									<option value='".$myservices[$index]."' selected='' class='selected'>".$myservices[$index]."</option>
-									";
+									
 									
 									for($k=0;$k<count($myservices);$k++)
 									{
-										if($myservices[$k] != $myservices[$index])
-										{
+										
 											echo
 											"
 												<option value='".$myservices[$k]."' class='selected'>".$myservices[$k]."</option>
 												
 											";
-										}
+										
 										
 									}
-								}
-								elseif($index == -1)
-								{
-									echo
-									"
-									<option value='null' selected='' class='selected'>Choose a service</option>
-									";
-									for($k=0;$k<count($myservices);$k++)
-									{
-										
-										echo
-										"
-											<option value='".$myservices[$k]."' class='selected'>".$myservices[$k]."</option>
-											
-										";
-										
-									}
-								}
+								
+								
 								
 								
 							
