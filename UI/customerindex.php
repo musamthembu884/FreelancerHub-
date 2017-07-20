@@ -503,11 +503,13 @@ session_start();
 						</div>
 						<div class="tab-pane active" id="tab-8-2">								
 							
+
+
 							<div class="panel profile-tab">
 							
 							
        
-   
+   <form action="#" method="post" class="">
 								<div class="media">
 								 
            
@@ -658,25 +660,37 @@ session_start();
 							
 						</select>
 						<br><br>
+
+
+						
 				</div>
 				
 				
-				
-           <button id="submit" name="submit" onclick="javascript:JPDisplay()" class="btn-raised btn-primary btn">Continue Job Post</button>
 			
+           <button  type="button" id="submit" name="submit" onclick="javascript:JPDisplay()" class="btn-raised btn-primary btn">Continue Job Post</button>
+			               	</form>
 
 			<script>
+			var counter = 0;
 			function JPDisplay()
 			{
 				var JobPost = document.getElementById("JobP").classList;
- 
+				
+				counter++;
+				alert(counter);
  
 				if (JobPost.contains("DisplayJobPost")) 
 				{
 
 					JobPost.remove("DisplayJobPost");
 					document.getElementById('submit').innerText = 'Post Job';
+					
 				
+				}
+
+				if(counter == 2)
+				{
+					document.getElementById('submit').type = "submit";
 				}
  
 			}
