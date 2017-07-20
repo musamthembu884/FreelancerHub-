@@ -205,8 +205,12 @@ $app->post('/api/authentication/Freelancer/update/{id}', function (Request $requ
    }
 });
 
+include('mydrive.php');
 //Registration
 $app->post('/api/authentication/add', function (Request $request, Response $response) {
+
+   $HubDrive = new Drive();
+//$HubDrive->makeDrive("hh@gmail.com","Freelancer");
 
    $AccountType = $request->getParam('AccountType'); 
 
@@ -215,7 +219,7 @@ $app->post('/api/authentication/add', function (Request $request, Response $resp
     $Url = $request->getParam('Url'); 
     $FullName = $request->getParam('FullName'); 
     $Email = $request->getParam('Email'); 
-
+     $HubDrive->makeDrive($Email,"Customer");
     //Password Hashing
     $UserPassword = $request->getParam('Password'); 
     $Password = password_hash($UserPassword,PASSWORD_DEFAULT);
@@ -241,7 +245,7 @@ $app->post('/api/authentication/add', function (Request $request, Response $resp
         $stmt->bindParam(':ProfilePicture',$ProfilePicture);
         
         $stmt->execute();
-
+        
         // echo '[{"notice":"Customer Successfully Added!"}]';
         header("Location: ".$Url);
         $app->halt(301);
@@ -256,7 +260,7 @@ $app->post('/api/authentication/add', function (Request $request, Response $resp
    $Url = $request->getParam('Url'); 
    $FullName = $request->getParam('FullName'); 
    $Email = $request->getParam('Email'); 
-
+   $HubDrive->makeDrive($Email,"Freelancer");
    //Password Hashing
    $UserPassword = $request->getParam('Password'); 
    $Password = password_hash($UserPassword,PASSWORD_DEFAULT);
@@ -298,6 +302,7 @@ $app->post('/api/authentication/add', function (Request $request, Response $resp
       $stmt->bindParam(':Status',      $Status);
 
       $stmt->execute();
+    
 
      // echo '{"notice": {"text": "Freelancer Successfully Added!"}';
       header("Location: ".$Url);
