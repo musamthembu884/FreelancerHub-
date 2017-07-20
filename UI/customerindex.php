@@ -719,128 +719,88 @@ session_start();
 }
 		   
 		   </style>
-		   <div class='col-md-12'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Remove</a></li>
-					<li class="divider"></li>
-					<li><a href=''>Hire</a></li>
-					<li class="divider"></li>
-					<li><a href=''>View Profile</a></li>
-					
-					
-                </ul>
-            </div>
+		   
+		   <?php
+		ini_set("allow_url_fopen", 1);
+		$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerindex/LoadBookMarkedFreelancers/'.$_SESSION["User"]["ID"]);
+		$JSONArraySavedFreelancers = json_decode($json,true);
 
-                
-                <div class='widget-body '>
-                           <a class='media-left' href="">
-										<img class='media-object' src='assets\img\default.png' alt=''>
-										
-									</a>
-									<div class='media-body pb-md' style="">
-										<h5 class='media-heading'>Lefa Mashele</h5>
-										Software Engineer &ensp; R75 - R150 / Hour &ensp; <i class="fa fa-map-marker"></i> Gauteng
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic; color:grey' class='media-heading'>I am full stack developer, specializing in the asp.net web development and android application development. 
-It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects... </h5>
-									</div>
-		   
-                </div>
-            </div>
-			</div>
-			</div>
-		   
-           <div class='col-md-12'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Remove</a></li>
-					<li class="divider"></li>
-					<li><a href=''>Hire</a></li>
-					<li class="divider"></li>
-					<li><a href=''>View Profile</a></li>
-					
-					
-                </ul>
-            </div>
-
-                
-                <div class='widget-body '>
-                           <a class='media-left' href="">
-										<img class='media-object' src='assets\img\default.png' alt=''>
-										
-									</a>
-									<div class='media-body pb-md' style="">
-										<h5 class='media-heading'>Lefa Mashele</h5>
-										Software Engineer &ensp; R75 - R150 / Hour &ensp; <i class="fa fa-map-marker"></i> Gauteng
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic; color:grey' class='media-heading'>I am full stack developer, specializing in the asp.net web development and android application development. 
-It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects... </h5>
-									</div>
-		   
-                </div>
-            </div>
-			</div>
-			</div>
-			
+		if(empty($JSONArraySavedFreelancers))
+		{
+			echo"
 			<div class='col-md-12'>
+			<div class='profile-tab panel'>
+			<div class='widget'>
+
+			<div class='widget-body '>
+								
+			<h5 style='text-align:center;font-size: 28px; font-style: italic; color:grey' class='media-heading'>No Bookedmarked Freelancers Available </h5>
+						
+			</div>
+			</div>
+			</div>
+			</div>
+			";
+		}
+		else
+		{
+			for($k=0; $k<count($JSONArraySavedFreelancers);$k++)
+			{
+			echo"
+			<div class='col-md-12'>
+
 <div class='profile-tab panel'>
+
 <div class='widget'>
 <div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>Remove</a></li>
-					<li class="divider"></li>
-					<li><a href=''>Hire</a></li>
-					<li class="divider"></li>
-					<li><a href=''>View Profile</a></li>
-					
-					
-                </ul>
-            </div>
+<button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+<ul class='dropdown-menu' role='menu'>
+<li><a href=''>Remove</a></li>
+<li class='divider'></li>
+<li><a href=''>Hire</a></li>
+<li class='divider'></li>
+<li><a href=''>View Profile</a></li>
 
-                
-                <div class='widget-body '>
-                           <a class='media-left' href="">
-										<img class='media-object' src='assets\img\default.png' alt=''>
-										
-									</a>
-									<div class='media-body pb-md' style="">
-										<h5 class='media-heading'>Lefa Mashele</h5>
-										Software Engineer &ensp; R75 - R150 / Hour &ensp; <i class="fa fa-map-marker"></i> Gauteng
-										
-										<hr class='style14'>
-										
-										<h5 style='font-style: italic; color:grey' class='media-heading'>I am full stack developer, specializing in the asp.net web development and android application development. 
-It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects... </h5>
-									</div>
+</ul>
+</div>
+
+<div class='widget-body '>
+<a class='media-left' href=''>
+<img class='media-object' src='assets\img\default.png' alt=''>
+
+</a>
+<div class='media-body pb-md' style=''>
+			<h5 class='media-heading'>".$JSONArraySavedFreelancers[$k]["FullName"]."</h5>
+".$JSONArraySavedFreelancers[$k]["Profession"]." &ensp; R75 - R150 / Hour &ensp; <i class='fa fa-map-marker'></i> ".$JSONArraySavedFreelancers[$k]["Province"]."
+
+<hr class='style14'>
+
+<h5 style='font-style: italic; color:grey' class='media-heading'>".$JSONArraySavedFreelancers[$k]["AboutMe"]."</h5>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+			";
+		}
+		}
+
+	?>
 		   
-                </div>
-            </div>
-			</div>
-			</div>
+	
+		  
+	
+	
 
-			
-			
-			
-			
-									
-									
-									
-									
-								</div>
-								</div>
-							</div>
+
+
+
+
+								
+</div>
+</div>
+</div>
 							
 							<div class="panel profile-tab" >
 							<div class="media">
@@ -890,90 +850,111 @@ It's important to me to build long term relationships with clients, so I'm prima
 	$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerindex/LoadJobs/'.$JobStatus.'/'.$_SESSION["User"]["ID"]);
 	$JSONArrayJobs = json_decode($json,true);
 
-	if($JobStatus == "Active")
+	switch($JobStatus)
 	{
-	echo"
-
-	<div class='col-md-12'>
-	<div class='profile-tab panel'>
-	<div class='widget'>
-	<div class='panel-controls dropdown'>
-	<button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-	<ul class='dropdown-menu' role='menu'>
-
-	<li><a href=''>View Job</a></li>
-
-
-	</ul>
-	</div>
-
-
-	<div class='widget-body '>
-
-	<div class='media-body pb-md' style=''>
-	<h5 class='media-heading' style='font-size:20px; font-weight:900'>I need a video editor for my wedding</h5><br>
-	<h5 style='font-style: italic; color:grey' class='media-heading'>'I am full stack developer, specializing in the asp.net web development and android application development. 
-	It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects...' </h5>
-	<hr class='style14'>
-	Due 23 September 2017&ensp; Budget: R850 &ensp; Status: Active &ensp; Progress: 65% &ensp; Freelancer: <a href=''>Dan Daniels</a>
-	<br>
-	<br>
-	<div class='progress'>    
-	<div class='progress-bar progress-bar-primary' style='width: 65%'></div>
-	</div>
-
-
-	</div>
-
-	</div>
-	</div>
-	</div>
-	</div>
-
-	";
-	}
-	else if($JobStatus == "Pending")
+	case "Active":
 	{
-	
-	for($k=0; $k<count($JSONArrayJobs); $k++)	
+		echo"
+
+		<div class='col-md-12'>
+		<div class='profile-tab panel'>
+		<div class='widget'>
+		<div class='panel-controls dropdown'>
+		<button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+		<ul class='dropdown-menu' role='menu'>
+
+		<li><a href=''>View Job</a></li>
+
+
+		</ul>
+		</div>
+
+
+		<div class='widget-body '>
+
+		<div class='media-body pb-md' style=''>
+		<h5 class='media-heading' style='font-size:20px; font-weight:900'>I need a video editor for my wedding</h5><br>
+		<h5 style='font-style: italic; color:grey' class='media-heading'>'I am full stack developer, specializing in the asp.net web development and android application development. 
+		It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects...' </h5>
+		<hr class='style14'>
+		Due 23 September 2017&ensp; Budget: R850 &ensp; Status: Active &ensp; Progress: 65% &ensp; Freelancer: <a href=''>Dan Daniels</a>
+		<br>
+		<br>
+		<div class='progress'>    
+		<div class='progress-bar progress-bar-primary' style='width: 65%'></div>
+		</div>
+
+
+		</div>
+
+		</div>
+		</div>
+		</div>
+		</div>
+
+		";
+	}break;
+
+	case "Pending":
 	{
-	echo"
-	<div class='col-md-12'>
-	<div class='profile-tab panel'>
-	<div class='widget'>
-	<div class='panel-controls dropdown'>
-	<button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-	<ul class='dropdown-menu' role='menu'>
-	<li><a href=''>View Job</a></li>
-	<li class='divider'></li>
-	<li><a href=''>Delete Job</a></li>
-	</ul>
-	</div>
+		if(empty($JSONArrayJobs))
+		{
+			echo "
+			<div class='col-md-12'>
+			<div class='profile-tab panel'>
+			<div class='widget'>
+
+			<div class='widget-body '>
+								
+			<h5 style='text-align:center;font-size: 28px; font-style: italic; color:grey' class='media-heading'>No Pending Jobs Available </h5>
+						
+			</div>
+			</div>
+			</div>
+			</div>
+			";
+		}
+		else
+		{
+		for($k=0; $k<count($JSONArrayJobs); $k++)	
+		{
+		echo"
+		<div class='col-md-12'>
+		<div class='profile-tab panel'>
+		<div class='widget'>
+		<div class='panel-controls dropdown'>
+		<button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+		<ul class='dropdown-menu' role='menu'>
+		<li><a href=''>View Job</a></li>
+		<li class='divider'></li>
+		<li><a href=''>Delete Job</a></li>
+		</ul>
+		</div>
 
 
-	<div class='widget-body '>
+		<div class='widget-body '>
 
-	<div class='media-body pb-md' style=''>
-	<h5 class='media-heading' style='font-size:20px; font-weight:900'>".$JSONArrayJobs[$k]["Title"]."</h5><br>
-	<h5 style='font-style: italic; color:grey' class='media-heading'>".$JSONArrayJobs[$k]["Description"]."</h5>
-	<hr class='style14'>
-	Posted on: ".$JSONArrayJobs[$k]["DatePosted"]."&ensp; Proposals: <a href=''>5</a> &ensp; Status: Pending
-	<br>
+		<div class='media-body pb-md' style=''>
+		<h5 class='media-heading' style='font-size:20px; font-weight:900'>".$JSONArrayJobs[$k]["Title"]."</h5><br>
+		<h5 style='font-style: italic; color:grey' class='media-heading'>".$JSONArrayJobs[$k]["Description"]."</h5>
+		<hr class='style14'>
+		Posted on: ".$JSONArrayJobs[$k]["DatePosted"]."&ensp; Proposals: <a href=''>5</a> &ensp; Status: Pending
+		<br>
 
-	</div>
+		</div>
 
-	</div>
-	</div>
-	</div>
-	</div>
+		</div>
+		</div>
+		</div>
+		</div>
 
-	";
-	}
+		";
+		}			
+		}
+		
+	}break;
 	
-					
-				
 	}
-	
 	?>
 		   
 		  
@@ -1443,56 +1424,12 @@ It's important to me to build long term relationships with clients, so I'm prima
 						}
 						?>
 						
-						
-						
                     </ul>                                
                 </div>
             </div>
 			</div>
 			</div>
 			
-			<div class="col-md-3">
-<div class="profile-tab panel">
-<div class="widget">
-
-                
-				<div class="media-body" style="text-align:center;">
-                              <h5 style="text-align:center; font-size: 20px; margin-top: 10px" class="media-heading">Recommended Freelancers</h5>
-                                
-                            </div>
-                <div class="widget-body">
-                    <ul class="media-list contacts">
-                        <?php/*
-						$RecommendedF = array();
-						$RecommendedF = $CoolPeople->RecommendedFreelancers(11);
-						
-						for($k=0; $k<count($RecommendedF); $k++)
-						{
-							echo"
-							<li class='media notification-message'>
-                            <div class='media-left'>
-                               <a href=viewprofile.php?id=".$RecommendedF[$k]->get_ID()."> <img class='img-circle avatar' src='"; echo "classes/freelancer"; echo "/". $RecommendedF[$k]->get_email(); echo"/propic";echo "/".$RecommendedF[$k]->get_propic(); echo"'"; echo" alt=''></a>
-                            </div>
-                            <div class='media-body'>
-                                <span class='text-gray'>".$RecommendedF[$k]->get_fullname()."</span>
-                                <span class='contact-status text-success'>".$RecommendedF[$k]->get_worktype()."</span>
-                            </div>
-                        </li>
-							";
-						}*/
-						
-						?>
-                        
-                    </ul>                                
-                </div>
-            </div>
-			</div>
-			</div>
-			
-			
-			
-		
-		
 	</div>
 </div>
 
