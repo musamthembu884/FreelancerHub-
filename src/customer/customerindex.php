@@ -68,7 +68,7 @@ $app->get('/api/customerindex/LoadJobs/{JobStatus}/{CustomerID}', function (Requ
    $JobStatus = $request->getAttribute('JobStatus'); 
    $CustomerID = $request->getAttribute('CustomerID'); 
 
-   $sql = "SELECT * FROM job WHERE Status = '$JobStatus' AND CustomerID = '$CustomerID'";
+   $sql = "SELECT * FROM job WHERE Status = '$JobStatus' AND CustomerID = '$CustomerID' ORDER BY job.ID DESC";
   
    try{
        $db = new db();
