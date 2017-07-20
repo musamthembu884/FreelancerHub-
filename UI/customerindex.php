@@ -1421,10 +1421,9 @@ It's important to me to build long term relationships with clients, so I'm prima
                 <div class="widget-body">
                     <ul class="media-list contacts">
                         <?php
-						$cats = array();
-						$cats = $CoolPeople->loadServices();
 						
-						for($k=0; $k<count($cats); $k++)
+						
+						for($k=0; $k<10; $k++)
 						{
 							echo
 							"
@@ -1433,7 +1432,7 @@ It's important to me to build long term relationships with clients, so I'm prima
                                <a href='#' ><img class='media-object avatar' src='assets/img/propic/r2.jpg' alt=''></a>
                             </div>
                             <div class='media-body'>
-                              <h5 style='font-size:14px' class='media-heading'>".$cats[$k]."</h5>
+                              <h5 style='font-size:14px' class='media-heading'>Mock</h5>
                                 
                             </div>
                         </li>
@@ -1460,7 +1459,7 @@ It's important to me to build long term relationships with clients, so I'm prima
                             </div>
                 <div class="widget-body">
                     <ul class="media-list contacts">
-                        <?php
+                        <?php/*
 						$RecommendedF = array();
 						$RecommendedF = $CoolPeople->RecommendedFreelancers(11);
 						
@@ -1477,7 +1476,7 @@ It's important to me to build long term relationships with clients, so I'm prima
                             </div>
                         </li>
 							";
-						}
+						}*/
 						
 						?>
                         
