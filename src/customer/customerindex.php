@@ -8,7 +8,7 @@ $app = new \Slim\App;
 require '../src/freelancer/viewprofile.php';
 
 //Post Job
-$app->put('/api/customerindex/PostJob/{customerID}', function (Request $request, Response $response) {
+$app->post('/api/customerindex/PostJob/{customerID}', function (Request $request, Response $response) {
 
    $customerID = $request->getAttribute('customerID'); 
 
