@@ -11,7 +11,7 @@ require '../src/freelancer/viewprofile.php';
 $app->post('/api/customerindex/PostJob/{customerID}', function (Request $request, Response $response) {
 
    $customerID = $request->getAttribute('customerID'); 
-
+   $Url = $request->getParam('Url'); 
    $Title = $request->getParam('Title'); 
    $Description = $request->getParam('Description'); 
    $DatePosted = date("d M Y"); 
@@ -46,7 +46,16 @@ $app->post('/api/customerindex/PostJob/{customerID}', function (Request $request
       
       $stmt->execute();
 
-      echo '{"notice": {"text": "Job Successfully Posted!"}';
+      if(empty($Url))
+      {
+         echo '[{"notice": "Job Successfully Posted!"}]'; 
+      }
+      else
+      {
+        header("Location: ".$Url);
+        $app->halt(301);
+      }
+      
        
    }catch(PDOException $e){
        echo '{"error": {"text": '.$e->getMessage().'}';
