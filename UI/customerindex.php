@@ -39,7 +39,7 @@ session_start();
 
     <body class="animated-content sidebar-scroll infobar-overlay">
         
-        
+       
 <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
 	<!-- <div id="page-progress-loader" class="show"></div> -->
 
@@ -262,6 +262,7 @@ session_start();
 
 </header>
 
+
         <div id="wrapper">
             <div id="layout-static">
                 <div class="static-sidebar-wrapper sidebar-cyan">
@@ -323,21 +324,56 @@ session_start();
 </div>
                     </div>
                 </div>
+
+ 
+
                 <div class="static-content-wrapper">
                     <div class="static-content">
                         <div class="page-content">
                             <div class="container-fluid">
                                  
 <div data-widget-group="group1">
+
 	<div class="row">
+
+	
 		
 		<div class="col-md-12 pl-n pr-n">
+		
 			<ul class="nav nav-tabs material-nav-tabs mb-lg">
 				
 			</ul>
 		</div>
+
+		
+
 		
        <div class="col-md-12">
+	   <?php
+		if(isset($_GET['CredError']))
+		{
+			echo
+			"
+				<div class='alert alert-dismissable alert-danger' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
+						<i class='fa fa-close'></i>&nbsp; <strong>Oh snap!</strong> Incorrect Username or Password!
+						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+					</div>
+			
+			";
+		}
+        elseif(isset($_GET['JobPostSuccess']))
+        {
+            echo
+			"
+				<div class='alert alert-dismissable alert-success' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
+						<i class='fa fa-check'></i>&nbsp; <strong>Success!</strong> Your Job Post was successfully posted.
+						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+					</div>
+			
+			";
+        }
+		
+	?>
 	  <div class="panel profile-tab card-moviecard">
 							
 							
@@ -611,7 +647,7 @@ session_start();
 						
 				</div>
 				
-				 <input type="hidden" name="Url" value="/freelancer_hub2.0/freelancerhub/UI/customerindex.php?SuccessJobPost">
+				 <input type="hidden" name="Url" value="/freelancer_hub2.0/freelancerhub/UI/customerindex.php?JobPostSuccess">
 						
 			
            <button  type="button" id="submit" name="submit" onclick="javascript:JPDisplay()" class="btn-raised btn-primary btn">Continue Job Post</button>
@@ -847,92 +883,98 @@ It's important to me to build long term relationships with clients, so I'm prima
 }
 		   
 		   </style>
-		   <?php
-			$Title = "Active Jobs";
-			
-			for($k=0;$k<3;$k++)
-			{
-				if($Title == "Active Jobs")
-				{
-				echo"
-				
-				 <div class='col-md-12'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                   
-					<li><a href=''>View Job</a></li>
-					
-					
-                </ul>
-            </div>
+	<?php
+	$JobStatus = "Pending";
 
-                
-                <div class='widget-body '>
-                           
-									<div class='media-body pb-md' style=''>
-										<h5 class='media-heading' style='font-size:20px; font-weight:900'>I need a video editor for my wedding</h5><br>
-										<h5 style='font-style: italic; color:grey' class='media-heading'>'I am full stack developer, specializing in the asp.net web development and android application development. 
-It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects...' </h5>
-<hr class='style14'>
-										Due 23 September 2017&ensp; Budget: R850 &ensp; Status: Active &ensp; Progress: 65% &ensp; Freelancer: <a href=''>Dan Daniels</a>
-										<br>
-										<br>
-										<div class='progress'>    
-                                    <div class='progress-bar progress-bar-primary' style='width: 65%'></div>
-                                  </div>
-										
-										
-									</div>
-		   
-                </div>
-            </div>
-			</div>
-			</div>
-				
-				";
-				}
-				else if($Title == "Pending Jobs")
-				{
-					echo"
-					<div class='col-md-12'>
-<div class='profile-tab panel'>
-<div class='widget'>
-<div class='panel-controls dropdown'>
-                <button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
-                <ul class='dropdown-menu' role='menu'>
-                    <li><a href=''>View Job</a></li>
-					<li class='divider'></li>
-					<li><a href=''>Delete Job</a></li>
-                </ul>
-            </div>
+	ini_set("allow_url_fopen", 1);
+	$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerindex/LoadJobs/'.$JobStatus.'/'.$_SESSION["User"]["ID"]);
+	$JSONArrayJobs = json_decode($json,true);
 
-                
-                <div class='widget-body '>
-                           
-									<div class='media-body pb-md' style=''>
-										<h5 class='media-heading' style='font-size:20px; font-weight:900'>I need a video editor for my wedding</h5><br>
-										<h5 style='font-style: italic; color:grey' class='media-heading'>'I am full stack developer, specializing in the asp.net web development and android application development. 
-It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects...' </h5>
-<hr class='style14'>
-										Posted on: 23 May 2017&ensp; Proposals: <a href=''>5</a> &ensp; Status: Pending
-										<br>
-										
-									</div>
-		   
-                </div>
-            </div>
-			</div>
-			</div>
-			
-					";
+	if($JobStatus == "Active")
+	{
+	echo"
+
+	<div class='col-md-12'>
+	<div class='profile-tab panel'>
+	<div class='widget'>
+	<div class='panel-controls dropdown'>
+	<button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+	<ul class='dropdown-menu' role='menu'>
+
+	<li><a href=''>View Job</a></li>
+
+
+	</ul>
+	</div>
+
+
+	<div class='widget-body '>
+
+	<div class='media-body pb-md' style=''>
+	<h5 class='media-heading' style='font-size:20px; font-weight:900'>I need a video editor for my wedding</h5><br>
+	<h5 style='font-style: italic; color:grey' class='media-heading'>'I am full stack developer, specializing in the asp.net web development and android application development. 
+	It's important to me to build long term relationships with clients, so I'm primarily looking for long term projects...' </h5>
+	<hr class='style14'>
+	Due 23 September 2017&ensp; Budget: R850 &ensp; Status: Active &ensp; Progress: 65% &ensp; Freelancer: <a href=''>Dan Daniels</a>
+	<br>
+	<br>
+	<div class='progress'>    
+	<div class='progress-bar progress-bar-primary' style='width: 65%'></div>
+	</div>
+
+
+	</div>
+
+	</div>
+	</div>
+	</div>
+	</div>
+
+	";
+	}
+	else if($JobStatus == "Pending")
+	{
+	
+	for($k=0; $k<count($JSONArrayJobs); $k++)	
+	{
+	echo"
+	<div class='col-md-12'>
+	<div class='profile-tab panel'>
+	<div class='widget'>
+	<div class='panel-controls dropdown'>
+	<button class='btn btn-icon-rounded dropdown-toggle' data-toggle='dropdown'><span class='material-icons inverted'>more_vert</span></button>
+	<ul class='dropdown-menu' role='menu'>
+	<li><a href=''>View Job</a></li>
+	<li class='divider'></li>
+	<li><a href=''>Delete Job</a></li>
+	</ul>
+	</div>
+
+
+	<div class='widget-body '>
+
+	<div class='media-body pb-md' style=''>
+	<h5 class='media-heading' style='font-size:20px; font-weight:900'>".$JSONArrayJobs[$k]["Title"]."</h5><br>
+	<h5 style='font-style: italic; color:grey' class='media-heading'>".$JSONArrayJobs[$k]["Description"]."</h5>
+	<hr class='style14'>
+	Posted on: ".$JSONArrayJobs[$k]["DatePosted"]."&ensp; Proposals: <a href=''>5</a> &ensp; Status: Pending
+	<br>
+
+	</div>
+
+	</div>
+	</div>
+	</div>
+	</div>
+
+	";
+	}
+	
 					
-				}
-			}
-			
-		   ?>
+				
+	}
+	
+	?>
 		   
 		  
 		   
