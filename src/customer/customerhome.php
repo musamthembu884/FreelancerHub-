@@ -197,17 +197,18 @@ function ValidateBookmark($customerID,$freelancerID){
    }
    else
    {
-       $CustomerID = $request->getAttribute('CustomerID');
-   $FreelancerID = $request->getAttribute('FreelancerID');
-
-   $sql = "DELETE FROM bookedmarkedfreelancers WHERE customerID='$CustomerID' AND freelancerID='$FreelancerID'";
+      
+   $sql = "DELETE FROM bookedmarkedfreelancers WHERE customerID=:customerID AND freelancerID=:freelancerID";
   
    try{
        $db = new db();
        $db = $db->connect();
 
        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':freelancerID', $freelancerID);
+        $stmt->bindParam(':customerID',   $customerID);
        $stmt->execute();
+
        $db = null;
 
        echo '[{"deletenotice":"BookMarkedFreelancer Succesfully Deleted!"}]';
