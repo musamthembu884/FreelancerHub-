@@ -140,7 +140,7 @@ $app->get('/api/customerhome/Categories', function (Request $request, Response $
 });
 
 //Bookmark Freelancer
-$app->put('/api/customerhome/BookMarkFreelancer/{customerID}/{freelancerID}', function (Request $request, Response $response) {
+$app->get('/api/customerhome/BookMarkFreelancer/{customerID}/{freelancerID}', function (Request $request, Response $response) {
 
 ////Preventing duplicate insertion<ValidateBookmark>
 function ValidateBookmark($customerID,$freelancerID){
@@ -187,8 +187,9 @@ function ValidateBookmark($customerID,$freelancerID){
         $stmt->bindParam(':customerID',   $customerID);
 
         $stmt->execute();
+        $db=null;
 
-        echo '{"notice": {"text": "Freelancer Successfully BookedMarked!"}';
+        echo '[{"notice": "Freelancer Successfully BookedMarked!"}]';
 
     }catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
@@ -196,7 +197,24 @@ function ValidateBookmark($customerID,$freelancerID){
    }
    else
    {
-       echo '{"notice": {"text": "Already BookedMarked!"}';
+       $CustomerID = $request->getAttribute('CustomerID');
+   $FreelancerID = $request->getAttribute('FreelancerID');
+
+   $sql = "DELETE FROM bookedmarkedfreelancers WHERE customerID='$CustomerID' AND freelancerID='$FreelancerID'";
+  
+   try{
+       $db = new db();
+       $db = $db->connect();
+
+       $stmt = $db->prepare($sql);
+       $stmt->execute();
+       $db = null;
+
+       echo '[{"deletenotice":"BookMarkedFreelancer Succesfully Deleted!"}]';
+    
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
    }
   
 });
