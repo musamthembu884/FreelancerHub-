@@ -450,7 +450,13 @@ hr.style1{
 			$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/freelancer/IncrementProfileViews/'.$ID);
 			$JSONUpdated = json_decode($json,true);
 
-				
+			ini_set("allow_url_fopen", 1);
+			$json2 = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/freelancer/ViewProfile/'.$ID);
+			$JSONTheFreelancer = json_decode($json2,true);	
+		}
+		else
+		{
+			//Redirect to 404 Page
 		}
 		
 		
@@ -465,16 +471,16 @@ hr.style1{
            
 			<div class="media col-md-12 col-sm-12 col-xs-12">
 				<a class="media-left pr-n" href="#">
-					<img class="media-object img-resposnive" src="classes/freelancer/<?php echo"".$myfreelancer->get_email(); ?>/propic/<?php echo"".$myfreelancer->get_propic(); ?>" style="height:135px; width:135px;">
+					<img class="media-object img-resposnive" src="classes/freelancer/<?php echo"".$JSONTheFreelancer[0]["Email"]; ?>/propic/<?php echo"".$JSONTheFreelancer[0]["ProfilePicture"]; ?>" style="height:135px; width:135px;">
 				</a>
 				<div class="media-body pl-xl">
-					<h5 class="media-heading" style="font-size:18px; font-weight:900" ><?php echo"".$myfreelancer->get_fullname(); ?></h5>
-					<h5 style="font-style: italic" class="media-heading">Specialises in <?php echo"".$myfreelancer->get_service(); ?></h5>
+					<h5 class="media-heading" style="font-size:18px; font-weight:900" ><?php echo"".$JSONTheFreelancer[0]["FullName"] ?></h5>
+					<h5 style="font-style: italic" class="media-heading"><?php echo"".$JSONTheFreelancer[0]["Profession"]; ?></h5>
 					<hr class="style14">
-					<span style="font-style: italic">Located in <?php echo"".$myfreelancer->get_province(); ?>, South Africa</span><br><br>
+					<span style="font-style: italic">Located in <?php echo"".$JSONTheFreelancer[0]["Province"]; ?>, South Africa</span><br><br>
 					
 					<?php   
-					$skills = explode(',',$myfreelancer->get_skills());
+					$skills = explode(',',$JSONTheFreelancer[0]["Skills"]);
 					
 					for($k=0;$k<count($skills);$k++)
 					{
@@ -494,7 +500,7 @@ hr.style1{
 										<h5 class="media-heading" style="font-size:24px; font-weight:900" >About Me</h5>
 									</blockquote>
 				<p><strong> 
-					<?php echo"".$myfreelancer->get_about(); ?>
+					<?php echo"".$JSONTheFreelancer[0]["AboutMe"]; ?>
 				</strong></p>
 				<br>
 				
@@ -504,7 +510,7 @@ hr.style1{
 										<h5 class="media-heading" style="font-size:24px; font-weight:900" >Why hire me</h5>
 									</blockquote>
 				<p><strong> 
-					<?php echo"".$myfreelancer->get_about2(); ?>
+					<?php echo"".$JSONTheFreelancer[0]["WhyHireMe"]; ?>
 				</strong></p>
 				<br>
 				
@@ -513,7 +519,7 @@ hr.style1{
 										<h5 class="media-heading" style="font-size:24px; font-weight:900" >Professional Overview</h5>
 									</blockquote>
 				<p><strong> 
-					<?php echo"".$myfreelancer->get_about3(); ?>
+					<?php echo"".$JSONTheFreelancer[0]["ProfessionalOverview"]; ?>
 				</strong></p>
 				<br>
 				
@@ -978,7 +984,7 @@ hr.style1{
 				<h5 class="media-heading" style="font-size:16px; font-weight:900" >Availability</h5>
 				<p><strong> 
 				<p><strong> 
-					<?php echo"".$myfreelancer->get_workhrs(); ?>/week
+					<?php //echo"".$myfreelancer->get_workhrs(); ?>/week
 				</strong></p>
 				
 				
@@ -986,7 +992,7 @@ hr.style1{
 				
 				<h5 class="media-heading" style="font-size:16px; font-weight:900" >Fee</h5>
 				<p><strong> 
-				From R<?php echo"".$myfreelancer->get_fee(); ?>/hour
+				From R<?php //echo"".$myfreelancer->get_fee(); ?>/hour
 				</strong></p>
 				
 				<br>
