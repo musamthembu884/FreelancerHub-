@@ -140,6 +140,8 @@ $app->get('/api/customerhome/Categories', function (Request $request, Response $
 });
 
 $app->get('/api/customerhome/isFreelancerSaved/{customerID}/{freelancerID}', function (Request $request, Response $response) {
+    $customerID = $request->getAttribute('customerID'); 
+   $freelancerID = $request->getAttribute('freelancerID');
  $sql = "SELECT * FROM bookedmarkedfreelancers WHERE customerID = '$customerID' AND freelancerID = '$freelancerID'";
   
    try{
@@ -152,11 +154,11 @@ $app->get('/api/customerhome/isFreelancerSaved/{customerID}/{freelancerID}', fun
 
        if(empty($FreelancerSaved))
        {
-           echo '[{"notice": "FreelancerUnsaved!"}]';
+           echo '[{"Ynotice": "FreelancerUnsaved!"}]';
        }
        else
        {
-          echo '[{"notice": "FreelancerSaved!"}]';
+          echo '[{"Nnotice": "FreelancerSaved!"}]';
        }
         
    }catch(PDOException $e){

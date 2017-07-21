@@ -949,20 +949,32 @@ hr.style1{
 			
 			<div class="col-md-3">
 			<div class="profile-tab panel" style="padding:8px">
+			<button class="btn btn-default btn-raised btn-block">Hire Me Now</button>
+			<?php
+			ini_set("allow_url_fopen", 1);
+			$json3 = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerhome/isFreelancerSaved/'.$_SESSION["User"]["ID"].'/'.$ID);
+			$JSONisSaved = json_decode($json3,true);
+			
 
-				<button class="btn btn-default btn-raised btn-block">Hire Me Now</button>
-				
-				<?php
-					/*ini_set("allow_url_fopen", 1);
-					$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/freelancer/IncrementProfileViews/'.$ID);
-					$JSONUpdated = json_decode($json,true);*/
-
-					echo "
-					
+			if(array_key_exists("Ynotice",$JSONisSaved[0]))
+			{
+				echo"
 					<a href='bridge/savefreelancer.php?CustID=".$_SESSION["User"]["ID"]."&FreeID=".$ID."' ><button class='btn btn-default btn-raised btn-block'>Save</button></a>
 					
-					";
-				?>
+				";
+			}
+			else
+			{
+				echo"
+	<a href='bridge/savefreelancer.php?CustID=".$_SESSION["User"]["ID"]."&FreeID=".$ID."' ><button class='btn btn-default btn-raised btn-block'>UnSave</button></a>
+					
+				";
+			}
+
+			?>
+				
+				
+				
 
 				
 				
