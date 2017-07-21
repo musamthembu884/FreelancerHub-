@@ -531,6 +531,19 @@ session_start();
 			ini_set("allow_url_fopen", 1);
 			$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerhome/MostRankedFreelancers/9');
 			$JSONMostRanked = json_decode($json,true);
+
+			function WordCut($String)
+			{
+				if(strlen($String) > 18)
+				{
+				  return substr($String,0,18)."...";
+				}
+				else
+				{
+					return $String;
+				}
+
+			}
 	
 		   for($k=0; $k<count($JSONMostRanked);$k++)
 		   {
@@ -558,7 +571,7 @@ session_start();
 										
 										<hr class='style14'>
 										
-										<h5 style='font-style: italic' class='media-heading'>".$JSONMostRanked[$k]["Profession"]."</h5>
+										<h5 style='font-style: italic' class='media-heading'>".WordCut($JSONMostRanked[$k]["Profession"])."</h5>
 										<span style='font-style: italic'>".$JSONMostRanked[$k]["Province"]."</span>
 									</div>
 		   
@@ -652,7 +665,7 @@ session_start();
 										
 										<hr class='style14'>
 										
-										<h5 style='font-style: italic' class='media-heading'>".$JSONLocation[$k]["Profession"]."</h5>
+										<h5 style='font-style: italic' class='media-heading'>".WordCut($JSONLocation[$k]["Profession"])."</h5>
 										<span style='font-style: italic'>".$JSONLocation[$k]["Province"]."</span>
 									</div>
 		   
@@ -735,7 +748,7 @@ session_start();
 										
 										<hr class='style14'>
 										
-										<h5 style='font-style: italic' class='media-heading'>".$JSONDiscoverNew[$k]["Profession"]."</h5>
+										<h5 style='font-style: italic' class='media-heading'>".WordCut($JSONDiscoverNew[$k]["Profession"])."</h5>
 										<span style='font-style: italic'>".$JSONDiscoverNew[$k]["Province"]."</span>
 									</div>
 		   
