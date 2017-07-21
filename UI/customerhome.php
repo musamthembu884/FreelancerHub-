@@ -542,7 +542,6 @@ session_start();
 				{
 					return $String;
 				}
-
 			}
 	
 		   for($k=0; $k<count($JSONMostRanked);$k++)
