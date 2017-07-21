@@ -471,7 +471,7 @@ hr.style1{
            
 			<div class="media col-md-12 col-sm-12 col-xs-12">
 				<a class="media-left pr-n" href="#">
-					<img class="media-object img-resposnive" src="classes/freelancer/<?php echo"".$JSONTheFreelancer[0]["Email"]; ?>/propic/<?php echo"".$JSONTheFreelancer[0]["ProfilePicture"]; ?>" style="height:135px; width:135px;">
+					<img class="media-object img-resposnive" src="freelancer/<?php echo"".$JSONTheFreelancer[0]["Email"]; ?>/propic/<?php echo"".$JSONTheFreelancer[0]["ProfilePicture"]; ?>" style="height:135px; width:135px;">
 				</a>
 				<div class="media-body pl-xl">
 					<h5 class="media-heading" style="font-size:18px; font-weight:900" ><?php echo"".$JSONTheFreelancer[0]["FullName"] ?></h5>
@@ -984,7 +984,7 @@ hr.style1{
 				<h5 class="media-heading" style="font-size:16px; font-weight:900" >Availability</h5>
 				<p><strong> 
 				<p><strong> 
-					<?php //echo"".$myfreelancer->get_workhrs(); ?>/week
+					<?php echo"".$JSONTheFreelancer[0]["Availability"]; ?>
 				</strong></p>
 				
 				
@@ -992,14 +992,24 @@ hr.style1{
 				
 				<h5 class="media-heading" style="font-size:16px; font-weight:900" >Fee</h5>
 				<p><strong> 
-				From R<?php //echo"".$myfreelancer->get_fee(); ?>/hour
+				From R<?php echo"".$JSONTheFreelancer[0]["Fee"]; ?>/hour
 				</strong></p>
 				
 				<br>
 				
 				<h5 class="media-heading" style="font-size:16px; font-weight:900" >Languages</h5>
 				<p><strong> 
-				English<br>
+				
+				<?php   
+					$Lingos = explode(',',$JSONTheFreelancer[0]["Languages"]);
+					
+					for($k=0;$k<count($Lingos);$k++)
+					{
+						echo"".$Lingos[$k]."</br>
+						";
+					}
+				?>
+
 				</strong></p>
 				
           
