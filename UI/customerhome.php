@@ -384,7 +384,7 @@ session_start();
 								   {
 									  // echo"'assets\img\'".$arrCoolPeople[$k]->get_propic()."";
 									   echo"
-									   <li><a href=viewprofile.php?id=".$JSONInterestingPeople[$k]["ID"]."><img style='height:64px; width: 64px; border: 2px solid #212121' src='"; echo "classes/freelancer"; echo "/". $JSONInterestingPeople[$k]["Email"]; echo"/propic";echo "/".$JSONInterestingPeople[$k]["ProfilePicture"]; echo"'"; echo" alt=''></a></li>
+									   <li><a href=viewprofile.php?id=".$JSONInterestingPeople[$k]["ID"]."><img style='height:64px; width: 64px; border: 2px solid #212121' src='"; echo "freelancer"; echo "/". $JSONInterestingPeople[$k]["Email"]; echo"/propic";echo "/".$JSONInterestingPeople[$k]["ProfilePicture"]; echo"'"; echo" alt=''></a></li>
 									   ";
 								   }
 								   
@@ -549,7 +549,7 @@ session_start();
                 
                 <div class='widget-body'>
                            <a class='media-left' href=viewprofile.php?id=".$JSONMostRanked[$k]["ID"].">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $JSONMostRanked[$k]["Email"]; echo"/propic";echo "/".$JSONMostRanked[$k]["ProfilePicture"]; echo"'"; echo" alt=''>
+										<img class='media-object' src='"; echo "freelancer"; echo "/". $JSONMostRanked[$k]["Email"]; echo"/propic";echo "/".$JSONMostRanked[$k]["ProfilePicture"]; echo"'"; echo" alt=''>
 										
 									</a>
 									<div class='media-body pb-md'>
@@ -643,7 +643,7 @@ session_start();
                 
                 <div class='widget-body'>
                           <a class='media-left' href=viewprofile.php?id=".$JSONLocation[$k]["ID"].">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $JSONLocation[$k]["Email"]; echo"/propic";echo "/".$JSONLocation[$k]["Province"]; echo"'"; echo" alt=''>
+										<img class='media-object' src='"; echo "freelancer"; echo "/". $JSONLocation[$k]["Email"]; echo"/propic";echo "/".$JSONLocation[$k]["ProfilePicture"]; echo"'"; echo" alt=''>
 										
 									</a>
 									<div class='media-body pb-md'>
@@ -726,7 +726,7 @@ session_start();
                 
                 <div class='widget-body'>
                            <a class='media-left' href=viewprofile.php?id=".$JSONDiscoverNew[$k]["ID"].">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $JSONDiscoverNew[$k]["Email"]; echo"/propic";echo "/".$JSONDiscoverNew[$k]["ProfilePicture"]; echo"'"; echo" alt=''>
+										<img class='media-object' src='"; echo "freelancer"; echo "/". $JSONDiscoverNew[$k]["Email"]; echo"/propic";echo "/".$JSONDiscoverNew[$k]["ProfilePicture"]; echo"'"; echo" alt=''>
 										
 									</a>
 									<div class='media-body pb-md'>
@@ -1190,19 +1190,20 @@ session_start();
                 <div class="widget-body">
                     <ul class="media-list contacts">
                         <?php
-						$cats = array();
-						$cats = $CoolPeople->loadServices();
+						ini_set("allow_url_fopen", 1);
+						$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerhome/Categories');
+						$JSONCategories = json_decode($json,true);
 						
-						for($k=0; $k<count($cats); $k++)
+						for($k=0; $k<count($JSONCategories); $k++)
 						{
 							echo
 							"
 							<li class='media notification-message'>
                             <div class='media-left'>
-                               <a href='#' ><img class='media-object avatar' src='assets/img/propic/r2.jpg' alt=''></a>
+                               <a href='' ><img class='media-object avatar' src='assets/img/propic/r2.jpg' alt=''></a>
                             </div>
                             <div class='media-body'>
-                              <h5 style='font-size:14px' class='media-heading'>".$cats[$k]."</h5>
+                              <h5 style='font-size:14px' class='media-heading'>".$JSONCategories[$k]["Name"]."</h5>
                                 
                             </div>
                         </li>
@@ -1230,19 +1231,20 @@ session_start();
                 <div class="widget-body">
                     <ul class="media-list contacts">
                         <?php
-						$RecommendedF = array();
-						$RecommendedF = $CoolPeople->RecommendedFreelancers(14);
+						ini_set("allow_url_fopen", 1);
+						$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerhome/RecommendedFreelancers/14');
+						$JSONRecommended = json_decode($json,true);
 						
-						for($k=0; $k<count($RecommendedF); $k++)
+						for($k=0; $k<count($JSONRecommended); $k++)
 						{
 							echo"
 							<li class='media notification-message'>
                             <div class='media-left'>
-                               <a href=viewprofile.php?id=".$RecommendedF[$k]->get_ID()."> <img class='img-circle avatar' src='"; echo "classes/freelancer"; echo "/". $RecommendedF[$k]->get_email(); echo"/propic";echo "/".$RecommendedF[$k]->get_propic(); echo"'"; echo" alt=''></a>
+                               <a href=viewprofile.php?id=".$JSONRecommended[$k]["ID"]."> <img class='img-circle avatar' src='"; echo "freelancer"; echo "/". $JSONRecommended[$k]["Email"]; echo"/propic";echo "/".$JSONRecommended[$k]["ProfilePicture"]; echo"'"; echo" alt=''></a>
                             </div>
                             <div class='media-body'>
-                                <span class='text-gray'>".$RecommendedF[$k]->get_fullname()."</span>
-                                <span class='contact-status text-success'>".$RecommendedF[$k]->get_worktype()."</span>
+                                <span class='text-gray'>".$JSONRecommended[$k]["FullName"]."</span>
+                                <span class='contact-status text-success'>".$JSONRecommended[$k]["Profession"]."</span>
                             </div>
                         </li>
 							";
