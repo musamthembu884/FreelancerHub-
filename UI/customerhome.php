@@ -261,15 +261,7 @@ session_start();
 	</ul>
 
 </header>
-<?php
-include("classes/customerhome.php");
-			include("database/database.php");
-		
-		
-			$CEmail = $_SESSION['Email'];
-			$CustProfile = new CustomerHome();
-			$mycust = $CustProfile->CProfile($CEmail);
-?>
+
         <div id="wrapper">
             <div id="layout-static">
                 <div class="static-sidebar-wrapper sidebar-cyan">
@@ -278,14 +270,14 @@ include("classes/customerhome.php");
 	<div class="widget" id="widget-profileinfo">
         <div class="widget-body">
             <div class="userinfo ">
-                <div class="avatar pull-left">
-                   <img src="classes/freelancer/<?php echo"".$mycust[1]; ?>/propic/<?php echo"".$mycust[2]; ?>" class="img-responsive img-circle"> 
+               <div class="avatar pull-left">
+                   <img src="customer/<?php echo $_SESSION["User"]["Email"]?>/propic/<?php echo $_SESSION["User"]["ProfilePicture"]?>" class="img-responsive img-circle"> 
                 </div>
                 <div class="info">
 
-                    <span class="username"><?php echo"".$mycust[0]; ?></span>
+                    <span class="username"><?php echo $_SESSION["User"]["FullName"] ?></span>
 					
-                    <span class="useremail"><?php echo"".$mycust[1]; ?></span>
+                    <span class="useremail"><?php echo $_SESSION["User"]["Email"] ?></span>
                 </div>
 
                 <div class="acct-dropdown clearfix dropdown">
@@ -383,20 +375,16 @@ include("classes/customerhome.php");
 								
                                 <ul id="horizontal-list" class="avatar">
                                    <?php
+								  	ini_set("allow_url_fopen", 1);
+									$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerhome/InterestingFreelancers/12');
+									$JSONInterestingPeople = json_decode($json,true);
+							
 								  
-								  // include("classes/customerhome.php");
-								  // include("database/database.php");
-								   $CoolPeople = new CustomerHome();
-								  $arrCoolPeople = array();
-								  $arrCoolPeople = $CoolPeople->InterestingFreelancers(12);
-								 // echo "R: " . count($arrCoolPeople);
-								 
-								  
-								   for($k=0; $k<count($arrCoolPeople);$k++)
+								   for($k=0; $k<count($JSONInterestingPeople);$k++)
 								   {
 									  // echo"'assets\img\'".$arrCoolPeople[$k]->get_propic()."";
 									   echo"
-									   <li><a href=viewprofile.php?id=".$arrCoolPeople[$k]->get_ID()."><img style='height:64px; width: 64px; border: 2px solid #212121' src='"; echo "classes/freelancer"; echo "/". $arrCoolPeople[$k]->get_email(); echo"/propic";echo "/".$arrCoolPeople[$k]->get_propic(); echo"'"; echo" alt=''></a></li>
+									   <li><a href=viewprofile.php?id=".$JSONInterestingPeople[$k]["ID"]."><img style='height:64px; width: 64px; border: 2px solid #212121' src='"; echo "classes/freelancer"; echo "/". $JSONInterestingPeople[$k]["Email"]; echo"/propic";echo "/".$JSONInterestingPeople[$k]["ProfilePicture"]; echo"'"; echo" alt=''></a></li>
 									   ";
 								   }
 								   
@@ -540,11 +528,11 @@ include("classes/customerhome.php");
 		   
 		   </style>
 		   <?php
-			$arrMostRanked = array();
-			$arrMostRanked = $CoolPeople->MostRankedFreelancers(9);
-			//echo "R: ".count($arrMostRanked);
-			// loadFreelancerConnect
-		   for($k=0; $k<count($arrMostRanked);$k++)
+			ini_set("allow_url_fopen", 1);
+			$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerhome/MostRankedFreelancers/9');
+			$JSONMostRanked = json_decode($json,true);
+	
+		   for($k=0; $k<count($JSONMostRanked);$k++)
 		   {
 			echo"
 			<div class='col-md-4'>
@@ -560,18 +548,18 @@ include("classes/customerhome.php");
 
                 
                 <div class='widget-body'>
-                           <a class='media-left' href=viewprofile.php?id=".$arrMostRanked[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrMostRanked[$k]->get_email(); echo"/propic";echo "/".$arrMostRanked[$k]->get_propic(); echo"'"; echo" alt=''>
+                           <a class='media-left' href=viewprofile.php?id=".$JSONMostRanked[$k]["ID"].">
+										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $JSONMostRanked[$k]["Email"]; echo"/propic";echo "/".$JSONMostRanked[$k]["ProfilePicture"]; echo"'"; echo" alt=''>
 										
 									</a>
 									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrMostRanked[$k]->get_fullname()."</h5>
-										".$arrMostRanked[$k]->get_views()." Profile Views
+										<h5 class='media-heading'>".$JSONMostRanked[$k]["FullName"]."</h5>
+										".$JSONMostRanked[$k]["ProfileViews"]." Profile Views
 										
 										<hr class='style14'>
 										
-										<h5 style='font-style: italic' class='media-heading'>".$arrMostRanked[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrMostRanked[$k]->get_province()."</span>
+										<h5 style='font-style: italic' class='media-heading'>".$JSONMostRanked[$k]["Profession"]."</h5>
+										<span style='font-style: italic'>".$JSONMostRanked[$k]["Province"]."</span>
 									</div>
 		   
                 </div>
@@ -612,15 +600,8 @@ include("classes/customerhome.php");
 			<div class="media-body pb-md">
 										<h5 class="media-heading" style="font-size:28px; font-weight:900" > 
 								<?php
-								$customers ="select * from customerprofile WHERE Cust_ID='".$_SESSION['user']."'";
-								$customers_query=mysql_query($customers);
-
-								while($customers_row=mysql_fetch_array($customers_query))
-								{
-									$C_location= $customers_row['Province'];
-								}
 								
-								echo"Freelancers In ".$C_location;
+								echo"Freelancers In ".$_SESSION["User"]["Province"];
 								?>
 								
 								
