@@ -156,6 +156,9 @@ $app->post('/api/authentication/Freelancer/update/{id}', function (Request $requ
    $ProfilePicture = $request->getParam('ProfilePicture'); 
    $Status = $request->getParam('Status'); 
 
+   $Availability = $request->getParam('Availability'); 
+   $Fee = $request->getParam('Fee');
+   $Languages = $request->getParam('Languages'); 
 
    $sql = "UPDATE freelancer SET
     AccountType = :AccountType,
@@ -172,7 +175,10 @@ $app->post('/api/authentication/Freelancer/update/{id}', function (Request $requ
     ProfessionalOverview = :ProfessionalOverview,
     ProfileViews = :ProfileViews,
     ProfilePicture = :ProfilePicture,
-    Status = :Status
+    Status = :Status,
+    Availability = :Availability,
+    Fee = :Fee,
+    Languages = :Languages
    WHERE ID = $ID";
   
    try{
@@ -196,6 +202,9 @@ $app->post('/api/authentication/Freelancer/update/{id}', function (Request $requ
       $stmt->bindParam(':ProfileViews',            $ProfileViews);
       $stmt->bindParam(':ProfilePicture',          $ProfilePicture);
       $stmt->bindParam(':Status',      $Status);
+      $stmt->bindParam(':Availability',$Availability);
+      $stmt->bindParam(':Fee',         $Fee);
+      $stmt->bindParam(':Languages',   $Languages);
       
       $stmt->execute();
 
