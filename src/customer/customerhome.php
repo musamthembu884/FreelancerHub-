@@ -152,11 +152,11 @@ $app->get('/api/customerhome/isFreelancerSaved/{customerID}/{freelancerID}', fun
 
        if(empty($FreelancerSaved))
        {
-           return true; //OK!
+           echo '[{"notice": "FreelancerUnsaved!"}]';
        }
        else
        {
-           return false;//NOT OKAY:(
+          echo '[{"notice": "FreelancerSaved!"}]';
        }
         
    }catch(PDOException $e){
@@ -184,11 +184,11 @@ function ValidateBookmark($customerID,$freelancerID){
 
        if(empty($ValidateBookmark))
        {
-            echo '[{"notice": "FreelancerUnsaved!"}]';
+           return true; //OK!
        }
        else
        {
-           echo '[{"notice": "FreelancerSaved!"}]';
+           return false;//NOT OKAY:(
        }
         
    }catch(PDOException $e){
