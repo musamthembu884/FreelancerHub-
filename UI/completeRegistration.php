@@ -172,7 +172,7 @@ session_start();
 					<input required type="text" name="Languages" id="Languages" placeholder="EXAMPLE: English, Afrikaans, Zulu" class="form-control tooltips" data-trigger="hover" >
 						
 					</div>
-					<div class="col-sm-2"><p class="help-block">Separate your languages in commas</p></div>
+					<div class="col-sm-2"><p class="help-block">Separate your languages with commas</p></div>
 				<span class="material-input"></span></div>
 				
 					
