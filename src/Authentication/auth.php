@@ -156,6 +156,7 @@ $app->post('/api/authentication/Freelancer/update/{id}', function (Request $requ
    $ProfilePicture = $request->getParam('ProfilePicture'); 
    $Status = $request->getParam('Status'); 
 
+
    $sql = "UPDATE freelancer SET
     AccountType = :AccountType,
     FullName = :FullName,
@@ -277,7 +278,7 @@ $app->post('/api/authentication/add', function (Request $request, Response $resp
    $ProfilePicture = $request->getParam('ProfilePicture'); 
    $Status ="Not Active"; 
 
-  $sql = "INSERT INTO freelancer(AccountType,FullName,Email,Password,DOB,Province,Profession,Category,Skills,AboutMe,WhyHireMe,ProfessionalOverview,ProfileViews,ProfilePicture,Status) VALUES (:AccountType,:FullName,:Email,:Password,:DOB,:Province,:Profession,:Category,:Skills,:AboutMe,:WhyHireMe,:ProfessionalOverview,:ProfileViews,:ProfilePicture,:Status)";
+  $sql = "INSERT INTO freelancer(AccountType,FullName,Email,Password,DOB,Province,Profession,Category,Skills,AboutMe,WhyHireMe,ProfessionalOverview,ProfileViews,ProfilePicture,Status,Availability,Fee,Languages) VALUES (:AccountType,:FullName,:Email,:Password,:DOB,:Province,:Profession,:Category,:Skills,:AboutMe,:WhyHireMe,:ProfessionalOverview,:ProfileViews,:ProfilePicture,:Status,'null','null','null')";
 
    try{
        $db = new db();
