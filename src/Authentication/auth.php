@@ -139,7 +139,7 @@ $app->post('/api/authentication/Freelancer/add', function (Request $request, Res
 //Update Freelancer
 $app->post('/api/authentication/Freelancer/update/{id}', function (Request $request, Response $response) {
    $ID = $request->getAttribute('id'); 
-
+    $Url = $request->getParam('Url'); 
    $AccountType = $request->getParam('AccountType'); 
    $FullName = $request->getParam('FullName'); 
    $Email = $request->getParam('Email'); 
@@ -208,7 +208,15 @@ $app->post('/api/authentication/Freelancer/update/{id}', function (Request $requ
       
       $stmt->execute();
 
-      echo '[{"notice":"Freelancer Successfully Updated!"}]';
+      if(empty($Url))
+      {
+         echo '[{"notice": "Freelancer Successfully Updated!"}]'; 
+      }
+      else
+      {
+        header("Location: ".$Url);
+        $app->halt(301);
+      }
        
    }catch(PDOException $e){
        echo '{"error": {"text": '.$e->getMessage().'}';
