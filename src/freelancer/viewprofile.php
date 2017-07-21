@@ -39,7 +39,7 @@ $app->get('/api/freelancer/ViewProfile/{FreelancerID}', function (Request $reque
 });
 
 //Freelancer Profile Views 
-$app->put('/api/freelancer/IncrementProfileViews/{FreelancerID}', function (Request $request, Response $response) {
+$app->get('/api/freelancer/IncrementProfileViews/{FreelancerID}', function (Request $request, Response $response) {
    $FreelancerID = $request->getAttribute('FreelancerID'); 
 
    $sql = "UPDATE freelancer SET
