@@ -262,16 +262,7 @@ session_start();
 
 </header>
 
-        <?php
-include("classes/customerhome.php");
-			include("database/database.php");
-		
-		
-			$CEmail = $_SESSION['Email'];
-			$CustProfile = new CustomerHome();
-			$mycust = $CustProfile->CProfile($CEmail);
-			
-?>
+      
         <div id="wrapper">
             <div id="layout-static">
                 <div class="static-sidebar-wrapper sidebar-cyan">
@@ -281,13 +272,13 @@ include("classes/customerhome.php");
         <div class="widget-body">
             <div class="userinfo ">
                 <div class="avatar pull-left">
-                   <img src="classes/freelancer/<?php echo"".$mycust[1]; ?>/propic/<?php echo"".$mycust[2]; ?>" class="img-responsive img-circle"> 
+                   <img src="customer/<?php echo $_SESSION["User"]["Email"]?>/propic/<?php echo $_SESSION["User"]["ProfilePicture"]?>" class="img-responsive img-circle"> 
                 </div>
                 <div class="info">
 
-                    <span class="username"><?php echo"".$mycust[0]; ?></span>
+                    <span class="username"><?php echo $_SESSION["User"]["FullName"] ?></span>
 					
-                    <span class="useremail"><?php echo"".$mycust[1]; ?></span>
+                    <span class="useremail"><?php echo $_SESSION["User"]["Email"] ?></span>
                 </div>
                 <div class="acct-dropdown clearfix dropdown">
                     <span class="pull-left"><span class="online-status online"></span>Online</span>
@@ -454,9 +445,12 @@ hr.style1{
 		if(isset($_GET['id']))
 		{
 			$ID = $_GET['id'];
-			$myfreelancer=$CustProfile->UpdateViews($ID);
-			$myfreelancer=$CustProfile->FreeProfile($ID);
-			
+			//$myfreelancer=$CustProfile->UpdateViews($ID);
+			ini_set("allow_url_fopen", 1);
+			$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/freelancer/IncrementProfileViews/'.$ID);
+			$JSONUpdated = json_decode($json,true);
+
+				
 		}
 		
 		
