@@ -305,18 +305,7 @@ session_start();
 		<li><a  class="withripple" href="login.php"><span class="icon">
 		<i class="material-icons">subdirectory_arrow_left</i></span><span>Log Out</span></a></li>
 		
-		
-		
-
-		
-
-        
-		
-		
-
-		
-
-		
+			
 	</ul>
 </nav>
     </div>
@@ -441,7 +430,6 @@ hr.style1{
 							
 		<?php
 	
-		
 		if(isset($_GET['id']))
 		{
 			$ID = $_GET['id'];
@@ -458,17 +446,9 @@ hr.style1{
 		{
 			//Redirect to 404 Page
 		}
-		
-		
-		
+
 		?>		
-       
-   
-								
-				
-				
-				
-           
+
 			<div class="media col-md-12 col-sm-12 col-xs-12">
 				<a class="media-left pr-n" href="#">
 					<img class="media-object img-resposnive" src="freelancer/<?php echo"".$JSONTheFreelancer[0]["Email"]; ?>/propic/<?php echo"".$JSONTheFreelancer[0]["ProfilePicture"]; ?>" style="height:135px; width:135px;">
@@ -971,7 +951,20 @@ hr.style1{
 			<div class="profile-tab panel" style="padding:8px">
 
 				<button class="btn btn-default btn-raised btn-block">Hire Me Now</button>
-				<button class="btn btn-default btn-raised btn-block">Save</button>
+				
+				<?php
+					/*ini_set("allow_url_fopen", 1);
+					$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/freelancer/IncrementProfileViews/'.$ID);
+					$JSONUpdated = json_decode($json,true);*/
+
+					echo "
+					
+					<a href='bridge/savefreelancer.php?CustID=".$_SESSION["User"]["ID"]."&FreeID=".$ID."' ><button class='btn btn-default btn-raised btn-block'>Save</button></a>
+					
+					";
+				?>
+
+				
 				
 				
           
