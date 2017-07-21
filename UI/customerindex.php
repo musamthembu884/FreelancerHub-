@@ -366,7 +366,7 @@ session_start();
             echo
 			"
 				<div class='alert alert-dismissable alert-success' style='visibility: visible; opacity: 1; display: block; transform: translateY(0px);'>
-						<i class='fa fa-check'></i>&nbsp; <strong>Success!</strong> Your Job Post was successfully posted.
+						<i class='fa fa-check'></i>&nbsp; <strong>Success!</strong> Your Job was successfully posted.
 						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
 					</div>
 			

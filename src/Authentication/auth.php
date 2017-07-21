@@ -242,7 +242,7 @@ $app->post('/api/authentication/add', function (Request $request, Response $resp
     $UserPassword = $request->getParam('Password'); 
     $Password = password_hash($UserPassword,PASSWORD_DEFAULT);
 
-    $DOB = $request->getParam('DOB'); 
+    $DOB =  date("d M Y");  
     $Province = $request->getParam('Province'); 
     $ProfilePicture = $request->getParam('ProfilePicture'); 
 
@@ -283,7 +283,7 @@ $app->post('/api/authentication/add', function (Request $request, Response $resp
    $UserPassword = $request->getParam('Password'); 
    $Password = password_hash($UserPassword,PASSWORD_DEFAULT);
 
-   $DOB = $request->getParam('DOB'); 
+   $DOB =  date("d M Y"); 
    $Province = $request->getParam('Province'); 
    $Profession = $request->getParam('Profession'); 
    $Category = $request->getParam('Category'); 
