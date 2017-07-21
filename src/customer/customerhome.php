@@ -12,7 +12,7 @@ $app->get('/api/customerhome/InterestingFreelancers/{num}', function (Request $r
 
    $Count = $request->getAttribute('num'); 
 
-   $sql = "SELECT * FROM freelancer order by RAND() LIMIT $Count";
+   $sql = "SELECT * FROM freelancer WHERE Status='Active' order by RAND() LIMIT $Count";
   
    try{
        $db = new db();
@@ -34,7 +34,7 @@ $app->get('/api/customerhome/MostRankedFreelancers/{num}', function (Request $re
 
    $Count = $request->getAttribute('num'); 
 
-   $sql = "SELECT * FROM freelancer order by ProfileViews DESC limit 0,$Count";
+   $sql = "SELECT * FROM freelancer WHERE Status='Active' order by ProfileViews DESC limit 0,$Count";
   
    try{
        $db = new db();
@@ -57,7 +57,7 @@ $app->get('/api/customerhome/FreelancersInLocation/{CustomerProvince}/{num}', fu
    $CustomerProvince = $request->getAttribute('CustomerProvince'); 
    $Count = $request->getAttribute('num'); 
 
-   $sql = "SELECT * FROM freelancer WHERE Province = '$CustomerProvince' limit 0,$Count";
+   $sql = "SELECT * FROM freelancer WHERE Province = '$CustomerProvince' AND Status='Active' limit 0,$Count";
   
    try{
        $db = new db();
@@ -79,7 +79,7 @@ $app->get('/api/customerhome/DiscoverNewFreelancers/{num}', function (Request $r
 
    $Count = $request->getAttribute('num'); 
 
-   $sql = "SELECT * FROM freelancer ORDER BY freelancer.ID DESC limit 0,$Count";
+   $sql = "SELECT * FROM freelancer WHERE Status='Active' ORDER BY freelancer.ID DESC limit 0,$Count";
   
    try{
        $db = new db();
@@ -102,7 +102,7 @@ $app->get('/api/customerhome/RecommendedFreelancers/{num}', function (Request $r
 
    $Count = $request->getAttribute('num'); 
 
-   $sql = "SELECT * FROM freelancer order by RAND() LIMIT $Count";
+   $sql = "SELECT * FROM freelancer WHERE Status='Active' order by RAND() LIMIT $Count";
   
    try{
        $db = new db();
@@ -212,19 +212,19 @@ $app->get('/api/customerhome/ViewMoreFreelancers/{Category}/{num}/{CustomerProvi
    {
        case "MostRankedFreelancers":
        {
-        $sql = "SELECT * FROM freelancer order by ProfileViews DESC limit 0,$Count";
+        $sql = "SELECT * FROM freelancer WHERE Status='Active' order by ProfileViews DESC limit 0,$Count";
        }
        break;
 
        case "FreelancersInLocation":
        {
-        $sql = "SELECT * FROM freelancer WHERE Province = '$CustomerProvince' limit 0,$Count";
+        $sql = "SELECT * FROM freelancer WHERE Province = '$CustomerProvince' AND Status='Active' limit 0,$Count";
        }
        break;
 
        case "DiscoverNewFreelancers":
        {
-        $sql = "SELECT * FROM freelancer ORDER BY freelancer.ID DESC limit 0,$Count";
+        $sql = "SELECT * FROM freelancer WHERE Status='Active' ORDER BY freelancer.ID DESC limit 0,$Count";
        }
        break;
 
