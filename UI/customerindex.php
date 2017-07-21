@@ -766,7 +766,7 @@ session_start();
 
 <div class='widget-body '>
 <a class='media-left' href=''>
-<img class='media-object' src='assets\img\default.png' alt=''>
+<img class='media-object' src='freelancer/".$JSONArraySavedFreelancers[$k]["Email"]."/propic/".$JSONArraySavedFreelancers[$k]["ProfilePicture"]."' alt=''>
 
 </a>
 <div class='media-body pb-md' style=''>
