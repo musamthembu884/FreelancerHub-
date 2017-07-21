@@ -131,6 +131,50 @@ session_start();
 					<div class="col-sm-2"><p class="help-block">Provide a brief professinal overview</p></div>
 				<span class="material-input"></span></div>
 
+				<div class="form-group">
+				<label for="form-password" class="col-sm-2 control-label">Availability</label>
+				<div class="col-sm-8 tabular-border">
+				<select required name="Availability" id="Availability" class="form-control"  required>
+
+				<option value="">Choose Availability</option>
+
+				
+
+				<?php
+				$JSONArray = array("Less than 30 Hours/week","More than 30 Hours/week","All the time");
+				for($k=0; $k<count($JSONArray); $k++)
+				{
+				echo"
+				<option value='".$JSONArray[$k]."'>".$JSONArray[$k]."</option>
+				";
+				}
+
+				?>
+
+				</select></div>
+				<div class="col-sm-2"><p class="help-block">How many hours do you have available for work each week</p></div>
+				<span class="material-input"></span></div>
+
+				<div class="form-group is-empty">
+					<label for="form-password" class="col-sm-2 control-label">Fee</label>
+					<div class="col-sm-2 tabular-border">
+					
+					<input required type="text" name="Fee" id="Fee" placeholder="85" class="form-control tooltips" data-trigger="hover" >
+						
+					</div>
+					<div class="col-sm-2"><p class="help-block">Set your hourly rate in ZAR currency</p></div>
+				<span class="material-input"></span></div>
+
+				<div class="form-group is-empty">
+					<label for="form-password" class="col-sm-2 control-label">Languages</label>
+					<div class="col-sm-8 tabular-border">
+					
+					<input required type="text" name="Languages" id="Languages" placeholder="EXAMPLE: English, Afrikaans, Zulu" class="form-control tooltips" data-trigger="hover" >
+						
+					</div>
+					<div class="col-sm-2"><p class="help-block">Separate your languages in commas</p></div>
+				<span class="material-input"></span></div>
+				
 					
 					<input type="hidden" name="AccountType"	 value="<?php echo $_SESSION["User"]["AccountType"]?>">
 					<input type="hidden" name="FullName" 	 value="<?php echo $_SESSION["User"]["FullName"]?>">
