@@ -622,16 +622,11 @@ session_start();
 		   </style>
            
 			<?php
-			$arrInLocation = array();
-			//$_SESSION["user"] = 666;
-			//echo "R ". $_SESSION['user'];
-			$arrInLocation = $CoolPeople->FreelancersInLocation(9,$_SESSION['user']);
-			//echo "R: ".count($arrMostRanked);
-			// loadFreelancerConnect
-			
-			//echo "R ". $arrInLocation[1]->get_fullname();
-			//echo "M ". $CoolPeople->loadFreelancerConnect(16);
-		   for($k=0; $k<count($arrInLocation);$k++)
+			ini_set("allow_url_fopen", 1);
+			$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerhome/FreelancersInLocation/'.$_SESSION["User"]["Province"].'/9');
+			$JSONLocation = json_decode($json,true);
+
+		   for($k=0; $k<count($JSONLocation);$k++)
 		   {
 			echo"
 			<div class='col-md-4'>
@@ -647,18 +642,18 @@ session_start();
 
                 
                 <div class='widget-body'>
-                          <a class='media-left' href=viewprofile.php?id=".$arrInLocation[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrInLocation[$k]->get_email(); echo"/propic";echo "/".$arrInLocation[$k]->get_propic(); echo"'"; echo" alt=''>
+                          <a class='media-left' href=viewprofile.php?id=".$JSONLocation[$k]["ID"].">
+										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $JSONLocation[$k]["Email"]; echo"/propic";echo "/".$JSONLocation[$k]["Province"]; echo"'"; echo" alt=''>
 										
 									</a>
 									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrInLocation[$k]->get_fullname()."</h5>
-										".$arrInLocation[$k]->get_views()." Profile Views
+										<h5 class='media-heading'>".$JSONLocation[$k]["FullName"]."</h5>
+										".$JSONLocation[$k]["ProfileViews"]." Profile Views
 										
 										<hr class='style14'>
 										
-										<h5 style='font-style: italic' class='media-heading'>".$arrInLocation[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrInLocation[$k]->get_province()."</span>
+										<h5 style='font-style: italic' class='media-heading'>".$JSONLocation[$k]["Profession"]."</h5>
+										<span style='font-style: italic'>".$JSONLocation[$k]["Province"]."</span>
 									</div>
 		   
                 </div>
@@ -710,10 +705,11 @@ session_start();
 		   
 		   </style>
            <?php
-			$arrDiscoverNew = array();
-			$arrDiscoverNew = $CoolPeople->DiscoverNewFreelancers(9);
-			
-		   for($k=0; $k<count($arrDiscoverNew);$k++)
+			ini_set("allow_url_fopen", 1);
+			$json = file_get_contents('http://localhost/freelancer_hub2.0/freelancerhub/public/index.php/api/customerhome/DiscoverNewFreelancers/9');
+			$JSONDiscoverNew = json_decode($json,true);
+
+		   for($k=0; $k<count($JSONDiscoverNew);$k++)
 		   {
 			echo"
 			<div class='col-md-4'>
@@ -729,18 +725,18 @@ session_start();
 
                 
                 <div class='widget-body'>
-                           <a class='media-left' href=viewprofile.php?id=".$arrDiscoverNew[$k]->get_ID().">
-										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $arrDiscoverNew[$k]->get_email(); echo"/propic";echo "/".$arrDiscoverNew[$k]->get_propic(); echo"'"; echo" alt=''>
+                           <a class='media-left' href=viewprofile.php?id=".$JSONDiscoverNew[$k]["ID"].">
+										<img class='media-object' src='"; echo "classes/freelancer"; echo "/". $JSONDiscoverNew[$k]["Email"]; echo"/propic";echo "/".$JSONDiscoverNew[$k]["ProfilePicture"]; echo"'"; echo" alt=''>
 										
 									</a>
 									<div class='media-body pb-md'>
-										<h5 class='media-heading'>".$arrDiscoverNew[$k]->get_fullname()."</h5>
-										".$arrDiscoverNew[$k]->get_views()." Profile Views
+										<h5 class='media-heading'>".$JSONDiscoverNew[$k]["FullName"]."</h5>
+										".$JSONDiscoverNew[$k]["ProfileViews"]." Profile Views
 										
 										<hr class='style14'>
 										
-										<h5 style='font-style: italic' class='media-heading'>".$arrDiscoverNew[$k]->get_worktype()."</h5>
-										<span style='font-style: italic'>".$arrDiscoverNew[$k]->get_province()."</span>
+										<h5 style='font-style: italic' class='media-heading'>".$JSONDiscoverNew[$k]["Profession"]."</h5>
+										<span style='font-style: italic'>".$JSONDiscoverNew[$k]["Province"]."</span>
 									</div>
 		   
                 </div>
