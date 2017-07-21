@@ -139,6 +139,34 @@ $app->get('/api/customerhome/Categories', function (Request $request, Response $
    }
 });
 
+$app->get('/api/customerhome/isFreelancerSaved/{customerID}/{freelancerID}', function (Request $request, Response $response) {
+ $sql = "SELECT * FROM bookedmarkedfreelancers WHERE customerID = '$customerID' AND freelancerID = '$freelancerID'";
+  
+   try{
+       $db = new db();
+       $db = $db->connect();
+
+       $stmt = $db->query($sql);
+       $FreelancerSaved = $stmt->fetchAll(PDO::FETCH_OBJ);
+       $db = null;
+
+       if(empty($FreelancerSaved))
+       {
+           return true; //OK!
+       }
+       else
+       {
+           return false;//NOT OKAY:(
+       }
+        
+   }catch(PDOException $e){
+       echo '{"error": {"text": '.$e->getMessage().'}';
+   }
+});
+
+
+
+
 //Bookmark Freelancer
 $app->get('/api/customerhome/BookMarkFreelancer/{customerID}/{freelancerID}', function (Request $request, Response $response) {
 
@@ -156,11 +184,11 @@ function ValidateBookmark($customerID,$freelancerID){
 
        if(empty($ValidateBookmark))
        {
-           return true; //OK!
+            echo '[{"notice": "FreelancerUnsaved!"}]';
        }
        else
        {
-           return false;//NOT OKAY:(
+           echo '[{"notice": "FreelancerSaved!"}]';
        }
         
    }catch(PDOException $e){
