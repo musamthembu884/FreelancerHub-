@@ -4,6 +4,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 $app = new \Slim\App;
 
+//Freelancer Search
+require '../src/freelancer/freelancersearch.php';
 
 //Bookmark Job
 $app->put('/api/freelancerhome/BookMarkJob/{freelancerID}/{JobID}', function (Request $request, Response $response) {
