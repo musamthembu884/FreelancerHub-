@@ -27,6 +27,10 @@ require '../src/Authentication/auth.php';
 //FreelancerHome API
 //require '../src/freelancer/freelancerhome.php';
 
+//Freelancer Search
+//require '../src/freelancer/freelancersearch.php';
+
+
 
 
 $app->run();
