@@ -12,7 +12,7 @@ $app->get('/api/freelancersearch/Search/{freelancerID}', function (Request $requ
    $FreelancerID = $request->getAttribute('freelancerID');
    $sql = "SELECT * FROM job,customer, freelancer WHERE freelancer.id=$FreelancerID and job.Category=freelancer.Category and
            customer.Province=freelancer.Province";
- 
+   
    try{
        $db = new db();
        $db = $db->connect();
