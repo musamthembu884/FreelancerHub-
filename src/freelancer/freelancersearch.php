@@ -6,12 +6,13 @@ $app = new \Slim\App;
 
 
 //Search for job api
-$app->get('/api/freelancersearch/Search/{freelancerID}', function (Request $request, Response $response) {
+$app->get('/api/freelancersearch/Search', function (Request $request, Response $response) {
 
-  // $SearchQuery = $request->getAttribute('Query'); 
-   $FreelancerID = $request->getAttribute('freelancerID');
-   $sql = "SELECT * FROM job,customer, freelancer WHERE freelancer.id=$FreelancerID and job.Category=freelancer.Category and
-           customer.Province=freelancer.Province";
+
+   $SearchQuery = $request->getParam('Query');
+  
+    $sql = "SELECT * FROM job,customer, freelancer WHERE  job.Category=freelancer.Category and
+customer.Province=freelancer.Province  and  (freelancer.Skills LIKE  '%$SearchQuery%' or freelancer.Province Like '%$SearchQuery%')";
    
    try{
        $db = new db();
